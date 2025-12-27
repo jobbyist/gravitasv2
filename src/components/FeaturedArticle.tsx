@@ -1,73 +1,79 @@
-import heroImage from '@/assets/hero-image.jpg';
+import skinlabsBanner from '@/assets/skinlabs-banner.jpg';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 interface FeaturedArticleProps {
   title: string;
-  author: string;
+  subtitle?: string;
   category: string;
   date: string;
   excerpt: string;
   image: string;
+  isAnnouncement?: boolean;
 }
 
 const FeaturedArticle = ({
   title,
-  author,
+  subtitle,
   category,
   date,
   excerpt,
-  image
+  image,
+  isAnnouncement = false
 }: FeaturedArticleProps) => {
   return (
-    <article className="container-blog py-16">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-          <img
-            src={image}
-            alt={`Featured article: ${title} - A professional image related to ${category.toLowerCase()}`}
-            className="object-cover w-full h-full transition-transform duration-700 hover:scale-105"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-            width="592"
-            height="444"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 592px"
-          />
-        </div>
+    <article className="relative w-full">
+      {/* Full-width hero image */}
+      <div className="relative w-full h-[70vh] min-h-[500px] overflow-hidden">
+        <img
+          src={image}
+          alt={`${title} - ${category}`}
+          className="object-cover w-full h-full"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+        
+        {/* Content overlay */}
+        <div className="absolute inset-0 flex items-end">
+          <div className="container-blog pb-16 space-y-6">
+            {isAnnouncement && (
+              <Badge variant="secondary" className="bg-primary text-primary-foreground uppercase tracking-wider px-4 py-1.5 text-xs font-semibold">
+                Official Announcement
+              </Badge>
+            )}
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl">
+              {title}
+            </h1>
+            
+            {subtitle && (
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl">
+                {subtitle}
+              </p>
+            )}
+            
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+              {excerpt}
+            </p>
+            
+            <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
+              <span className="uppercase tracking-wider">{category}</span>
+              <span aria-hidden="true">•</span>
+              <time dateTime={date}>{date}</time>
+            </div>
 
-        {/* Content */}
-        <div className="space-y-6">
-          <h1 className="featured-title">
-            {title}
-          </h1>
-          
-          <div className="flex items-center space-x-4 text-sm">
-            <span className="blog-meta">{author} / WRITER</span>
-            <span className="text-muted-foreground" aria-hidden="true">—</span>
-            <span className="blog-meta">{category}</span>
-            <span className="text-muted-foreground" aria-hidden="true">—</span>
-            <time className="blog-meta" dateTime="2023-09-02">{date}</time>
-          </div>
-          
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            {excerpt}
-          </p>
-          
-          <div className="pt-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              asChild
-            >
-              <a
-                href="/blog/rise-of-fashion-blogging"
-                aria-label={`Read more about: ${title}`}
-              >
-                READ MORE
+            <div className="pt-4 flex gap-4">
+              <Button size="lg" className="uppercase tracking-wider">
+                Get Notified
                 <span className="ml-2" aria-hidden="true">→</span>
-              </a>
-            </Button>
+              </Button>
+              <Button variant="outline" size="lg" className="uppercase tracking-wider">
+                Learn More
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -75,15 +81,16 @@ const FeaturedArticle = ({
   );
 };
 
-// Default Featured Article
+// Default Featured Article - SkinLabs Relaunch Announcement
 export const DefaultFeaturedArticle = () => (
   <FeaturedArticle
-    title="Featured Article Title — Hero Content Showcase"
-    author="AUTHOR NAME"
-    category="CATEGORY"
-    date="Date Format"
-    excerpt="Featured article description — This is where your main content excerpt would appear to give readers a preview of the full article."
-    image={heroImage}
+    title="The Official SkinLabs® Product Relaunch Is Finally Here"
+    subtitle="Next Generation Skincare Science"
+    category="Product Launch"
+    date="2025-01-15"
+    excerpt="After months of anticipation, we're thrilled to announce that SkinLabs® is officially relaunching with an entirely reimagined product line. Stay tuned for exclusive details coming soon."
+    image={skinlabsBanner}
+    isAnnouncement={true}
   />
 );
 
