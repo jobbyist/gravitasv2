@@ -62,12 +62,46 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/65c2f9ed-16cc-427a-af29-7a59108fd09a) and click on Share -> Publish.
+This project is configured to automatically deploy to GitHub Pages using GitHub Actions.
 
-## Can I connect a custom domain to my Lovable project?
+### Automatic Deployment
 
-Yes, you can!
+Every push to the `main` branch will trigger an automatic deployment to GitHub Pages. The workflow will:
+1. Install dependencies
+2. Build the project using Vite
+3. Deploy the built files to GitHub Pages
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Custom Domain Setup
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is configured to use the custom domain **gravitas.uno**. To complete the DNS setup:
+
+1. Go to your DNS provider and add these DNS records:
+   - For apex domain (gravitas.uno):
+     ```
+     A     @     185.199.108.153
+     A     @     185.199.109.153
+     A     @     185.199.110.153
+     A     @     185.199.111.153
+     ```
+   - For www subdomain (optional):
+     ```
+     CNAME www   jobbyist.github.io
+     ```
+
+2. In your GitHub repository settings:
+   - Go to Settings → Pages
+   - Under "Custom domain", enter: `gravitas.uno`
+   - Enable "Enforce HTTPS" (wait for SSL certificate to provision)
+
+3. Wait for DNS propagation (can take up to 48 hours, usually much faster)
+
+### Manual Deployment
+
+You can also manually trigger a deployment:
+1. Go to the "Actions" tab in your GitHub repository
+2. Select the "Deploy to GitHub Pages" workflow
+3. Click "Run workflow"
+
+### Alternative: Lovable Deployment
+
+You can also deploy via [Lovable](https://lovable.dev/projects/65c2f9ed-16cc-427a-af29-7a59108fd09a) by clicking Share → Publish.
