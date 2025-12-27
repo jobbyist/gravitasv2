@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { MessageCircle, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -28,15 +28,15 @@ const Comments = ({ contentId }: CommentsProps) => {
   const [newComment, setNewComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    loadComments();
-  }, [contentId]);
-
-  const loadComments = () => {
+  const loadComments = useCallback(() => {
     const allComments = JSON.parse(localStorage.getItem('content_comments') || '{}');
     const contentComments = allComments[contentId] || [];
     setComments(contentComments);
-  };
+  }, [contentId]);
+
+  useEffect(() => {
+    loadComments();
+  }, [loadComments]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

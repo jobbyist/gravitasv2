@@ -23,7 +23,7 @@ const AudioPlayer = ({
   image,
   episodeNumber
 }: AudioPlayerProps) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -38,14 +38,28 @@ const AudioPlayer = ({
     const audio = audioRef.current;
     if (!audio) return;
 
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
     const handleEnded = () => {
       setIsPlaying(false);
       setCurrentTime(0);
       // Track completion analytics here
-      trackPlay('completed');
+      if (isAuthenticated && user) {
+        const playData = {
+          title,
+          action: 'completed' as const,
+          timestamp: new Date().toISOString(),
+          userId: user.id,
+          progress: currentTime,
+          duration
+        };
+        console.log('Analytics tracked:', playData);
+        const plays = JSON.parse(localStorage.getItem('podcast_analytics') || '[]');
+        plays.push(playData);
+        localStorage.setItem('podcast_analytics', JSON.stringify(plays));
+      }
     };
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
 
     audio.addEventListener('timeupdate', updateTime);
     audio.addEventListener('loadedmetadata', updateDuration);
@@ -56,17 +70,17 @@ const AudioPlayer = ({
       audio.removeEventListener('loadedmetadata', updateDuration);
       audio.removeEventListener('ended', handleEnded);
     };
-  }, []);
+  }, [isAuthenticated, user, title, currentTime, duration]);
 
   const trackPlay = (action: 'started' | 'paused' | 'completed') => {
-    if (!isAuthenticated) return;
+    if (!isAuthenticated || !user) return;
     
     // Mock analytics tracking - in production, this would send to an analytics service
     const playData = {
       title,
       action,
       timestamp: new Date().toISOString(),
-      userId: 'mock-user-id',
+      userId: user.id,
       progress: currentTime,
       duration
     };

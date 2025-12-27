@@ -74,7 +74,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const newUser = {
       id: Date.now().toString(),
       email,
-      password, // In production, this would be hashed
+      password, // WARNING: In production, passwords must be hashed on the server side
       name
     };
     
