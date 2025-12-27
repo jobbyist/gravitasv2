@@ -32,7 +32,7 @@ const Rating = ({ contentId, contentType }: RatingProps) => {
 
     // Check if user has already rated
     if (isAuthenticated && user) {
-      const userRating = contentRatings.ratings.find((r: any) => r.userId === user.id);
+      const userRating = contentRatings.ratings.find((r: { userId: string; rating: number }) => r.userId === user.id);
       if (userRating) {
         setRating(userRating.rating);
         setHasRated(true);
@@ -56,7 +56,7 @@ const Rating = ({ contentId, contentType }: RatingProps) => {
     const contentRatings = ratings[contentId] || { ratings: [], total: 0, count: 0 };
     
     // Check if user already rated
-    const existingRatingIndex = contentRatings.ratings.findIndex((r: any) => r.userId === user?.id);
+    const existingRatingIndex = contentRatings.ratings.findIndex((r: { userId: string; rating: number }) => r.userId === user?.id);
     
     if (existingRatingIndex >= 0) {
       // Update existing rating
