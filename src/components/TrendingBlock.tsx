@@ -1,70 +1,82 @@
-import BlogCard from './BlogCard';
-import businessPost from '@/assets/business-post.jpg';
-import techPost from '@/assets/tech-post.jpg';
-import fashionPost from '@/assets/fashion-post.jpg';
+import AudioPlayer from './AudioPlayer';
 import lifestylePost from '@/assets/lifestyle-post.jpg';
+import fashionPost from '@/assets/fashion-post.jpg';
 import workLifestyle from '@/assets/work-lifestyle.jpg';
+import techPost from '@/assets/tech-post.jpg';
+import businessPost from '@/assets/business-post.jpg';
 import fashionLifestyle from '@/assets/fashion-lifestyle.jpg';
 
-const trendingPosts = [
+// Mock audio files - in production, these would be real podcast audio URLs
+const MOCK_AUDIO_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+
+const latestPodcastEpisodes = [
   {
-    title: "Trending Title — Popular Content Description",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Trending excerpt — Description of what makes this content popular.",
-    image: businessPost
+    title: "The Future of AI in Content Creation",
+    category: "PODCAST",
+    date: "December 26, 2025",
+    image: techPost,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 12
   },
   {
-    title: "Hot Topic — Trending Article Summary",
-    category: "CATEGORY", 
-    date: "DATE",
-    excerpt: "Hot topic excerpt — Brief summary of this trending article.",
-    image: techPost
+    title: "Building Sustainable Businesses in 2025",
+    category: "PODCAST", 
+    date: "December 20, 2025",
+    image: businessPost,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 11
   },
   {
-    title: "Popular Post — Trending Content Preview",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Popular excerpt — Preview of why this content is trending.",
-    image: fashionLifestyle
+    title: "The Psychology of User Experience Design",
+    category: "PODCAST",
+    date: "December 14, 2025",
+    image: fashionLifestyle,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 10
   },
   {
-    title: "Trending Article — Content Highlight",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Article excerpt — Highlight of the trending topic discussion.",
-    image: workLifestyle
+    title: "Remote Work Revolution: What's Next?",
+    category: "PODCAST",
+    date: "December 7, 2025",
+    image: workLifestyle,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 9
   },
   {
-    title: "Popular Content — Trending Description",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Content excerpt — Description of this popular trending topic.",
-    image: lifestylePost
+    title: "The Rise of Creator Economy",
+    category: "PODCAST",
+    date: "November 30, 2025",
+    image: lifestylePost,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 8
   },
   {
-    title: "Hot Content — Trending Summary",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Summary excerpt — Brief overview of this hot trending content.",
-    image: fashionPost
+    title: "Blockchain Beyond Cryptocurrency",
+    category: "PODCAST",
+    date: "November 22, 2025",
+    image: fashionPost,
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 7
   }
 ];
 
 const TrendingBlock = () => {
   return (
     <section className="container-blog py-16 bg-muted/30">
-      <h2 id="trending-heading" className="section-title mb-8">Trending</h2>
+      <div className="mb-8">
+        <h2 id="trending-heading" className="section-title mb-2">Latest Podcast Episodes</h2>
+        <p className="text-muted-foreground">Listen to our mini podcast series. Login to track your listening progress and enjoy exclusive content.</p>
+      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {trendingPosts.map((post, index) => (
-          <BlogCard
+        {latestPodcastEpisodes.map((episode, index) => (
+          <AudioPlayer
             key={index}
-            title={post.title}
-            category={post.category}
-            date={post.date}
-            excerpt={index < 3 ? post.excerpt : undefined}
-            image={post.image}
-            isSmall={index >= 3}
+            title={episode.title}
+            category={episode.category}
+            date={episode.date}
+            image={episode.image}
+            audioUrl={episode.audioUrl}
+            episodeNumber={episode.episodeNumber}
           />
         ))}
       </div>

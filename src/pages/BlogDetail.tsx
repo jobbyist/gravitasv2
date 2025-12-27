@@ -9,6 +9,8 @@ import ReadingProgress from '@/components/ReadingProgress';
 import TableOfContents from '@/components/TableOfContents';
 import RelatedPosts from '@/components/RelatedPosts';
 import BackToTop from '@/components/BackToTop';
+import Rating from '@/components/Rating';
+import Comments from '@/components/Comments';
 import fashionPost from '@/assets/fashion-post.jpg';
 import techPost from '@/assets/tech-post.jpg';
 import businessPost from '@/assets/business-post.jpg';
@@ -371,6 +373,16 @@ const BlogDetail = () => {
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </article>
+
+            {/* Rating Section */}
+            <section className="mt-12 pt-8 border-t border-border">
+              <Rating contentId={slug || 'default'} contentType="blog" />
+            </section>
+
+            {/* Comments Section */}
+            <section className="mt-12 pt-8 border-t border-border">
+              <Comments contentId={slug || 'default'} contentType="blog" />
+            </section>
 
             {/* Related Posts */}
             <section className="mt-16 pt-8 border-t border-border">

@@ -1,18 +1,29 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Facebook, Twitter, Instagram, Menu, X } from 'lucide-react';
+import { Search, Facebook, Twitter, Instagram, Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '@/contexts/AuthContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { user, logout, isAuthenticated } = useAuth();
 
   const navItems = [
     { name: 'ALL POST', href: '/posts' },
     { name: 'BUSINESS', href: '/business' },
     { name: 'TECHNOLOGY', href: '/technology' },
     { name: 'PODCAST', href: '/podcast' },
+    { name: 'REQUEST QUOTE', href: '/quote-request' },
   ];
 
   const socialLinks = [
@@ -64,6 +75,34 @@ const Header = () => {
               <Search className="h-4 w-4" />
             </Button>
             <ThemeToggle />
+            
+            {isAuthenticated ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <User className="h-4 w-4 mr-2" />
+                    {user?.name}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={logout}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <>
+                <Button variant="outline" size="sm" onClick={() => navigate('/login')}>
+                  Login
+                </Button>
+                <Button size="sm" onClick={() => navigate('/signup')}>
+                  Sign Up
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,14 +145,37 @@ const Header = () => {
                 <ThemeToggle />
               </div>
               
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  aria-label="Search articles"
-                  onClick={() => navigate('/search')}
-                >
-                  <Search className="h-4 w-4" />
-                </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                aria-label="Search articles"
+                onClick={() => navigate('/search')}
+                className="w-full"
+              >
+                <Search className="h-4 w-4 mr-2" />
+                Search
+              </Button>
+              
+              {isAuthenticated ? (
+                <>
+                  <div className="text-sm text-muted-foreground px-2">
+                    Logged in as: {user?.name}
+                  </div>
+                  <Button variant="outline" size="sm" onClick={logout} className="w-full">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button variant="outline" size="sm" onClick={() => navigate('/login')} className="w-full">
+                    Login
+                  </Button>
+                  <Button size="sm" onClick={() => navigate('/signup')} className="w-full">
+                    Sign Up
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         )}
