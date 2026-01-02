@@ -3,9 +3,6 @@ import Footer from '@/components/Footer';
 import BlogCard from '@/components/BlogCard';
 import PageFilter, { Post } from '@/components/PageFilter';
 import { useState } from 'react';
-import lifestylePost from '@/assets/lifestyle-post.jpg';
-import fashionPost from '@/assets/fashion-post.jpg';
-import workLifestyle from '@/assets/work-lifestyle.jpg';
 
 const Podcast = () => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
@@ -17,7 +14,7 @@ const Podcast = () => {
       subcategory: "Digital Media",
       date: "September 20, 2025",
       excerpt: "Join us as we explore how digital platforms are reshaping the way we tell and consume stories.",
-      image: lifestylePost,
+      image: "/podcast/1.png",
       slug: "future-digital-storytelling",
       tags: ["Storytelling", "Content Creation", "Digital Media"]
     },
@@ -27,7 +24,7 @@ const Podcast = () => {
       subcategory: "Brand Strategy",
       date: "September 14, 2025",
       excerpt: "Industry experts discuss strategies for creating genuine connections with audiences online.",
-      image: fashionPost,
+      image: "/podcast/3.png",
       slug: "authentic-brands-social-media",
       tags: ["Brand Strategy", "Social Media", "Authenticity"]
     },
@@ -37,7 +34,7 @@ const Podcast = () => {
       subcategory: "Marketing Psychology",
       date: "September 7, 2025",
       excerpt: "Diving deep into the psychological principles that drive successful marketing campaigns.",
-      image: workLifestyle,
+      image: "/podcast/5.png",
       slug: "psychology-influence-marketing",
       tags: ["Psychology", "Marketing", "Influence"]
     },
@@ -47,7 +44,7 @@ const Podcast = () => {
       subcategory: "Tech Industry",
       date: "August 31, 2025",
       excerpt: "Inspiring conversations with female leaders who are transforming the technology landscape.",
-      image: lifestylePost,
+      image: "/podcast/2.png",
       slug: "women-in-tech",
       tags: ["Women in Tech", "Leadership", "Tech Industry"]
     },
@@ -57,7 +54,7 @@ const Podcast = () => {
       subcategory: "Personal Development",
       date: "August 24, 2025",
       excerpt: "Learn how to craft and communicate your unique story in today's competitive market.",
-      image: fashionPost,
+      image: "/podcast/4.png",
       slug: "art-personal-branding",
       tags: ["Personal Branding", "Career Development", "Self-Marketing"]
     },
@@ -67,7 +64,7 @@ const Podcast = () => {
       subcategory: "Sustainability",
       date: "August 17, 2025",
       excerpt: "Practical tips and insights for incorporating sustainability into your daily routine.",
-      image: workLifestyle,
+      image: "/podcast/6.png",
       slug: "sustainable-living-impact",
       tags: ["Sustainability", "Lifestyle", "Environmental Impact"]
     }

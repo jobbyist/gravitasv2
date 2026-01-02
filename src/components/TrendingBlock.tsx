@@ -1,10 +1,4 @@
 import AudioPlayer from './AudioPlayer';
-import lifestylePost from '@/assets/lifestyle-post.jpg';
-import fashionPost from '@/assets/fashion-post.jpg';
-import workLifestyle from '@/assets/work-lifestyle.jpg';
-import techPost from '@/assets/tech-post.jpg';
-import businessPost from '@/assets/business-post.jpg';
-import fashionLifestyle from '@/assets/fashion-lifestyle.jpg';
 
 // Mock audio files - in production, these would be real podcast audio URLs
 const MOCK_AUDIO_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
@@ -15,7 +9,7 @@ const latestPodcastEpisodes = [
     title: "The Future of AI in Content Creation",
     category: "PODCAST",
     date: "December 26, 2025",
-    image: techPost,
+    image: "/podcast/6.png",
     audioUrl: EPISODE_6_AUDIO_URL,
     episodeNumber: 6
   },
@@ -23,7 +17,7 @@ const latestPodcastEpisodes = [
     title: "Building Sustainable Businesses in 2025",
     category: "PODCAST", 
     date: "December 20, 2025",
-    image: businessPost,
+    image: "/podcast/3.png",
     audioUrl: MOCK_AUDIO_URL,
     episodeNumber: 11
   },
@@ -31,7 +25,7 @@ const latestPodcastEpisodes = [
     title: "The Psychology of User Experience Design",
     category: "PODCAST",
     date: "December 14, 2025",
-    image: fashionLifestyle,
+    image: "/podcast/5.png",
     audioUrl: MOCK_AUDIO_URL,
     episodeNumber: 10
   },
@@ -39,7 +33,7 @@ const latestPodcastEpisodes = [
     title: "Remote Work Revolution: What's Next?",
     category: "PODCAST",
     date: "December 7, 2025",
-    image: workLifestyle,
+    image: "/podcast/4.png",
     audioUrl: MOCK_AUDIO_URL,
     episodeNumber: 9
   },
@@ -47,7 +41,7 @@ const latestPodcastEpisodes = [
     title: "The Rise of Creator Economy",
     category: "PODCAST",
     date: "November 30, 2025",
-    image: lifestylePost,
+    image: "/podcast/2.png",
     audioUrl: MOCK_AUDIO_URL,
     episodeNumber: 8
   },
@@ -55,7 +49,7 @@ const latestPodcastEpisodes = [
     title: "Blockchain Beyond Cryptocurrency",
     category: "PODCAST",
     date: "November 22, 2025",
-    image: fashionPost,
+    image: "/podcast/1.png",
     audioUrl: MOCK_AUDIO_URL,
     episodeNumber: 7
   }
