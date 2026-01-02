@@ -8,7 +8,7 @@ import fashionLifestyle from '@/assets/fashion-lifestyle.jpg';
 
 // Mock audio files - in production, these would be real podcast audio URLs
 const MOCK_AUDIO_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
-const EPISODE_12_AUDIO_URL = 'https://limewire.com/d/COvZD#ecP70SVWFy';
+const EPISODE_6_AUDIO_URL = '/podcast/ep6.mp3';
 
 const latestPodcastEpisodes = [
   {
@@ -16,8 +16,8 @@ const latestPodcastEpisodes = [
     category: "PODCAST",
     date: "December 26, 2025",
     image: techPost,
-    audioUrl: EPISODE_12_AUDIO_URL,
-    episodeNumber: 12
+    audioUrl: EPISODE_6_AUDIO_URL,
+    episodeNumber: 6
   },
   {
     title: "Building Sustainable Businesses in 2025",
