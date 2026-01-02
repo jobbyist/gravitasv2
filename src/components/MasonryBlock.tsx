@@ -8,60 +8,67 @@ import fashionLifestyle from '@/assets/fashion-lifestyle.jpg';
 
 const masonryPosts = [
   {
-    title: "Featured Story — Main Content",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Featured excerpt — Description of the main story content.",
-    image: businessPost,
-    height: "tall"
-  },
-  {
-    title: "Story Title — Content Preview",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Story excerpt — Brief preview of the article content.",
+    title: "The Future of AI: Transforming Industries",
+    category: "AI",
+    date: "Jan 2024",
+    excerpt: "Explore how artificial intelligence is revolutionizing business operations and creating new opportunities.",
     image: techPost,
-    height: "medium"
+    height: "tall",
+    url: "https://stories.gravitas.uno"
   },
   {
-    title: "Post Title — Summary",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Post summary — Short description of the content.",
-    image: fashionPost,
-    height: "short"
-  },
-  {
-    title: "Article Title — Overview",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Article overview — Brief summary of the topic.",
-    image: lifestylePost,
-    height: "medium"
-  },
-  {
-    title: "Content Title — Description",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Content description — Summary of the article topic.",
-    image: workLifestyle,
-    height: "medium"
-  },
-  {
-    title: "Sample Title — Preview",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Sample preview — Brief content preview text.",
-    image: fashionLifestyle,
-    height: "short"
-  },
-  {
-    title: "Example Title — Summary",
-    category: "CATEGORY",
-    date: "DATE",
-    excerpt: "Example summary — Description of the sample content.",
+    title: "Building Modern Web Applications",
+    category: "WEB DEV",
+    date: "Jan 2024",
+    excerpt: "Best practices for developing scalable and performant web applications in 2024.",
     image: businessPost,
-    height: "medium"
+    height: "medium",
+    url: "https://stories.gravitas.uno"
+  },
+  {
+    title: "E-commerce Trends to Watch",
+    category: "ECOMMERCE",
+    date: "Jan 2024",
+    excerpt: "Discover the latest trends shaping the future of online retail and digital commerce.",
+    image: fashionPost,
+    height: "short",
+    url: "https://stories.gravitas.uno"
+  },
+  {
+    title: "Tech Stack Selection Guide",
+    category: "TECH",
+    date: "Jan 2024",
+    excerpt: "How to choose the right technology stack for your next project.",
+    image: lifestylePost,
+    height: "medium",
+    url: "https://stories.gravitas.uno"
+  },
+  {
+    title: "AI-Powered Customer Experience",
+    category: "AI",
+    date: "Jan 2024",
+    excerpt: "Leveraging machine learning to enhance customer engagement and satisfaction.",
+    image: workLifestyle,
+    height: "medium",
+    url: "https://stories.gravitas.uno"
+  },
+  {
+    title: "Headless Commerce Architecture",
+    category: "ECOMMERCE",
+    date: "Jan 2024",
+    excerpt: "Understanding the benefits of decoupled commerce platforms.",
+    image: fashionLifestyle,
+    height: "short",
+    url: "https://stories.gravitas.uno"
+  },
+  {
+    title: "Web Performance Optimization",
+    category: "WEB DEV",
+    date: "Jan 2024",
+    excerpt: "Proven techniques to improve your website's speed and user experience.",
+    image: businessPost,
+    height: "medium",
+    url: "https://stories.gravitas.uno"
   }
 ];
 
@@ -96,6 +103,7 @@ const MasonryBlock = () => {
             className={`group cursor-pointer ${getHeightClass(post.height)} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg`}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
+            onClick={() => window.open(post.url, '_blank', 'noopener,noreferrer')}
           >
             <div className="relative w-full h-full rounded-lg overflow-hidden bg-card border border-border">
               <img
