@@ -16,7 +16,7 @@ const Privacy = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">1. Information We Collect</h2>
               <p>
-                At Nexus Blog, we collect information you provide directly to us, such as when you subscribe to our newsletter, leave comments, or contact us. We also automatically collect certain information about your device when you use our website.
+                At Gravitas Industries, we collect information you provide directly to us, such as when you subscribe to our newsletter, leave comments, or contact us. We also automatically collect certain information about your device when you use our website.
               </p>
               <h3 className="text-xl font-medium text-foreground mt-6 mb-3">Information you provide to us:</h3>
               <ul className="list-disc pl-6 space-y-2">
@@ -101,7 +101,7 @@ const Privacy = () => {
             <section>
               <h2 className="text-2xl font-semibold text-foreground mb-4">9. Contact Us</h2>
               <p>
-                If you have any questions about this Privacy Policy or our privacy practices, please contact us at privacy@nexusblog.com or through our website contact form.
+                If you have any questions about this Privacy Policy or our privacy practices, please contact us at privacy@gravitasindustries.com or through our website contact form.
               </p>
             </section>
 
