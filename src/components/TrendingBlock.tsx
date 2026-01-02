@@ -15,7 +15,7 @@ const latestPodcastEpisodes = [
     category: "PODCAST",
     date: "December 26, 2025",
     image: techPost,
-    audioUrl: MOCK_AUDIO_URL,
+    audioUrl: 'https://limewire.com/d/COvZD#ecP70SVWFy',
     episodeNumber: 12
   },
   {
