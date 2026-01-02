@@ -6,19 +6,19 @@ const brandKits = [
     title: "HausOfAura",
     category: "BRAND KIT",
     description: "Premium brand identity kit featuring modern design elements and comprehensive guidelines.",
-    image: "/brandkits/hausofaura.svg"
+    image: "/brandkits/hausofaura.PNG"
   },
   {
     title: "Auntie Tini",
     category: "BRAND KIT",
     description: "Unique brand kit with vibrant personality and authentic storytelling elements.",
-    image: "/brandkits/auntietini.svg"
+    image: "/brandkits/auntietini.PNG"
   },
   {
     title: "LOUDPACK",
     category: "BRAND KIT",
     description: "Bold and energetic brand kit designed to make your business stand out.",
-    image: "/brandkits/loudpack.svg"
+    image: "/brandkits/loudpack.PNG"
   }
 ];
 
