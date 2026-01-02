@@ -13,10 +13,10 @@ const About = () => {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              About Nexus
+              About Gravitas Industries
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Exploring the intersection of fashion, technology, business, and lifestyle
+              Leveraging AI and multidisciplinary expertise to create innovative, sustainable solutions
             </p>
           </div>
 
@@ -35,63 +35,63 @@ const About = () => {
           {/* About Content */}
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-foreground">Our Story</h2>
+              <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Welcome to Nexus, where diverse worlds converge. Founded with a passion for exploring 
-                  the connections between fashion, technology, business, and lifestyle, we believe that 
-                  the most interesting insights happen at the intersections.
+                  Gravitas Industries is a multidisciplinary venture that serves as a catalyst for innovation. 
+                  We combine cutting-edge artificial intelligence with our own technical and creative expertise 
+                  to develop products and services that are both innovative and sustainable.
                 </p>
                 <p>
-                  Our mission is to provide thoughtful, well-researched content that helps you navigate 
-                  the complex landscape of modern life. Whether you're interested in the latest fashion 
-                  trends, emerging technologies, business strategies, or lifestyle optimization, we're 
-                  here to guide your journey.
+                  Our approach is rooted in understanding the diverse needs of consumers across multiple industries. 
+                  We design solutions that serve markets in various socio-economic backgrounds, ensuring that 
+                  innovation is accessible and impactful for all.
                 </p>
                 <p>
-                  We curate content that matters, diving deep into topics that shape our world while 
-                  maintaining an accessible, engaging approach that speaks to curious minds everywhere.
+                  By leveraging AI as a powerful tool alongside human ingenuity, we create sustainable products 
+                  and services that address real-world challenges while maintaining a commitment to environmental 
+                  and social responsibility.
                 </p>
               </div>
             </div>
 
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">What We Cover</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Our Approach</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-muted-foreground">Fashion trends and style insights</span>
+                    <span className="text-muted-foreground">AI-powered innovation and development</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-muted-foreground">Technology and innovation</span>
+                    <span className="text-muted-foreground">Multidisciplinary technical expertise</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-muted-foreground">Business strategy and entrepreneurship</span>
+                    <span className="text-muted-foreground">Sustainable and responsible design</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-muted-foreground">Lifestyle and personal development</span>
+                    <span className="text-muted-foreground">Solutions for diverse socio-economic markets</span>
                   </li>
                 </ul>
               </div>
 
               <div className="bg-muted p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-foreground mb-4">Quick Stats</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Industries We Serve</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Calendar className="h-5 w-5 text-primary" />
-                    <span className="text-muted-foreground">Publishing since 2023</span>
+                    <span className="text-muted-foreground">Technology & Innovation</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="h-5 w-5 text-primary" />
-                    <span className="text-muted-foreground">Based globally, thinking locally</span>
+                    <span className="text-muted-foreground">Consumer Products & Services</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="h-5 w-5 text-primary" />
-                    <span className="text-muted-foreground">Weekly newsletter subscribers</span>
+                    <span className="text-muted-foreground">Sustainable Solutions</span>
                   </div>
                 </div>
               </div>
@@ -101,18 +101,18 @@ const About = () => {
           {/* CTA Section */}
           <div className="text-center bg-muted p-8 rounded-lg">
             <h2 className="text-2xl font-bold text-foreground mb-4">
-              Ready to Join Our Community?
+              Partner With Us
             </h2>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Stay updated with our latest insights and discoveries. Connect with like-minded individuals 
-              who share your curiosity about the world around us.
+              Interested in collaborating on innovative solutions? We work with partners across industries 
+              to bring sustainable, AI-powered products and services to market.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg">
                 <Link to="/contact">Get in Touch</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/posts">Browse Articles</Link>
+                <Link to="/posts">Browse Insights</Link>
               </Button>
             </div>
           </div>

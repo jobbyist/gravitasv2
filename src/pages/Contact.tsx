@@ -146,7 +146,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground">Email</h3>
-                      <p className="text-muted-foreground">hello@nexusblog.com</p>
+                      <p className="text-muted-foreground">hello@gravitasindustries.com</p>
                       <p className="text-sm text-muted-foreground">
                         We typically respond within 24 hours
                       </p>
@@ -176,28 +176,28 @@ const Contact = () => {
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-medium text-foreground mb-2">
-                        Can I contribute to the blog?
+                        Can I collaborate with Gravitas Industries?
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        We welcome guest contributors! Please reach out with your ideas and writing samples.
+                        Yes! We welcome partnerships and collaborations. Please reach out with your ideas and how we can work together.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-medium text-foreground mb-2">
-                        How often do you publish new content?
+                        What industries do you serve?
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        We publish new articles several times a week across all our categories.
+                        We develop solutions across multiple industries, focusing on sustainable and innovative products for diverse markets.
                       </p>
                     </div>
                     
                     <div>
                       <h4 className="font-medium text-foreground mb-2">
-                        Do you offer partnerships or collaborations?
+                        How does AI fit into your development process?
                       </h4>
                       <p className="text-sm text-muted-foreground">
-                        Yes! We're open to partnerships with brands and creators that align with our values.
+                        We leverage AI as a catalyst alongside our technical and creative expertise to accelerate innovation and ensure our solutions are cutting-edge.
                       </p>
                     </div>
                   </div>
