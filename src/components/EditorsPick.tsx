@@ -2,9 +2,6 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useRef } from 'react';
-import businessPost from '@/assets/business-post.jpg';
-import techPost from '@/assets/tech-post.jpg';
-import fashionPost from '@/assets/fashion-post.jpg';
 import lifestylePost from '@/assets/lifestyle-post.jpg';
 
 interface ProjectItem {
@@ -28,7 +25,7 @@ const EditorsPick = () => {
       category: 'JOB PLATFORM',
       status: 'LIVE',
       excerpt: "Africa's Premier Job Discovery & Career Management Platform. Discover expertly curated job opportunities from verified companies across Africa.",
-      image: techPost,
+      image: '/jobbyist.PNG',
       url: 'https://jobbyist.africa',
       tech: ['React', 'TypeScript', 'Supabase'],
     },
@@ -38,18 +35,18 @@ const EditorsPick = () => {
       category: 'LEGALTECH',
       status: 'LIVE',
       excerpt: 'Unified digital asset management & AI-powered workflow automation for modern law firms. Manage assets and deploy robust automation systems.',
-      image: businessPost,
+      image: '/monogamy.PNG',
       url: 'https://monogamy.legal',
       tech: ['Next.js', 'AI/ML', 'Automation'],
     },
     {
       id: '3',
-      title: 'HausOfAura',
+      title: 'OUTSYD',
       category: 'E-COMMERCE',
       status: 'LIVE',
-      excerpt: 'Intentional Living. A premium lifestyle and home goods e-commerce platform featuring curated collections for modern living.',
-      image: fashionPost,
-      url: 'https://hausofaura.africa',
+      excerpt: 'African fashion and lifestyle marketplace connecting creators with global audiences. Discover unique styles and support local artisans.',
+      image: '/outsyd.PNG',
+      url: 'https://outsyd.africa',
       tech: ['Webflow', 'E-commerce', 'Payments'],
     },
     {
