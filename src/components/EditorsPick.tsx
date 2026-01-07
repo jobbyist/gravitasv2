@@ -2,7 +2,6 @@ import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useRef } from 'react';
-import lifestylePost from '@/assets/lifestyle-post.jpg';
 
 interface ProjectItem {
   id: string;
@@ -55,9 +54,29 @@ const EditorsPick = () => {
       category: 'ON-DEMAND',
       status: 'LIVE',
       excerpt: 'On-demand laundry and dry cleaning service platform. Schedule pickups, track orders, and manage your laundry needs effortlessly.',
-      image: lifestylePost,
+      image: '/laundri.PNG',
       url: 'https://app.laundri.co.za',
       tech: ['React Native', 'Node.js', 'Logistics'],
+    },
+    {
+      id: '5',
+      title: 'YUTE',
+      category: 'YOUTH PLATFORM',
+      status: 'LIVE',
+      excerpt: 'Empowering the next generation with opportunities, resources, and connections. Building the future of youth engagement in Africa.',
+      image: '/yute.png',
+      url: 'https://yute.co.za',
+      tech: ['React', 'Community', 'Education'],
+    },
+    {
+      id: '6',
+      title: 'Outlandr',
+      category: 'TRAVEL & ADVENTURE',
+      status: 'LIVE',
+      excerpt: 'Discover unique travel experiences and adventures across Africa. Connect with local guides and explore hidden gems.',
+      image: '/outlandr.png',
+      url: 'https://outlandr.co.za',
+      tech: ['Next.js', 'Maps', 'Booking'],
     },
   ];
 
