@@ -1,6 +1,8 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { DefaultFeaturedArticle } from '@/components/FeaturedArticle';
+import VideoHero from '@/components/VideoHero';
+import PartnerLogos from '@/components/PartnerLogos';
+import FAQ from '@/components/FAQ';
 import EditorsPick from '@/components/EditorsPick';
 import TrendingBlock from '@/components/TrendingBlock';
 import MasonryBlock from '@/components/MasonryBlock';
@@ -11,7 +13,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Header />
       <main id="main-content">
-        <DefaultFeaturedArticle />
+        <VideoHero />
+        <PartnerLogos />
+        <FAQ />
         <section aria-labelledby="editors-pick-heading">
           <EditorsPick />
         </section>

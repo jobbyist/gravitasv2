@@ -24,6 +24,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Login = lazy(() => import("./pages/Login"));
 const Signup = lazy(() => import("./pages/Signup"));
 const QuoteRequest = lazy(() => import("./pages/QuoteRequest"));
+const LeadGeneration = lazy(() => import("./pages/LeadGeneration"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => (
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/quote-request" element={<QuoteRequest />} />
+                  <Route path="/lead-generation" element={<LeadGeneration />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
