@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { Play, Pause } from 'lucide-react';
+import { config } from '@/lib/config';
 
 const VideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -44,7 +45,7 @@ const VideoHero = () => {
               aria-label="Play video"
             >
               <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Play className="w-10 h-10 text-primary-foreground ml-1" fill="currentColor" />
+                <Play className="w-10 h-10 text-primary-foreground" fill="currentColor" style={{ transform: 'translateX(2px)' }} />
               </div>
             </button>
           )}
@@ -64,7 +65,7 @@ const VideoHero = () => {
               className="uppercase tracking-wider"
               asChild
             >
-              <a href="#whitepaper" target="_blank" rel="noopener noreferrer">
+              <a href={config.whitepaper.url} target="_blank" rel="noopener noreferrer">
                 Read Our 2026 Whitepaper
                 <span className="ml-2" aria-hidden="true">→</span>
               </a>

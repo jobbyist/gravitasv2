@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Calendar, Clock, Users, Target } from 'lucide-react';
+import { config } from '@/lib/config';
 
 const LeadGeneration = () => {
   return (
@@ -87,7 +88,7 @@ const LeadGeneration = () => {
                 asChild
               >
                 <a 
-                  href="https://calendly.com/gravitas-discovery" 
+                  href={config.calendly.discoveryCallUrl}
                   target="_blank" 
                   rel="noopener noreferrer"
                 >

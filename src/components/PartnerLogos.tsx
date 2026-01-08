@@ -52,11 +52,6 @@ const PartnerLogos = () => {
                   alt={partner.name}
                   className="max-w-full max-h-full object-contain"
                 />
-                <div className="absolute inset-0 flex items-center justify-center text-center">
-                  <span className="text-sm font-semibold text-muted-foreground">
-                    {partner.name}
-                  </span>
-                </div>
               </div>
             </Card>
           ))}
