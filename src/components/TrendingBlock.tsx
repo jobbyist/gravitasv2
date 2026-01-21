@@ -3,8 +3,8 @@ import AudioPlayer from './AudioPlayer';
 // Mock audio files - in production, these would be real podcast audio URLs
 const MOCK_AUDIO_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 const EPISODE_6_AUDIO_URL = '/podcast/ep6.mp3';
-
 const EPISODE_1_AUDIO_URL = '/podcast/ep1.m4a';
+const EPISODE_2_AUDIO_URL = '/podcast/ep2.m4a';
 
 const latestPodcastEpisodes = [
   {
@@ -20,7 +20,7 @@ const latestPodcastEpisodes = [
     category: "PODCAST", 
     date: "January 14, 2026",
     image: "/podcast/2.png",
-    audioUrl: MOCK_AUDIO_URL,
+    audioUrl: EPISODE_2_AUDIO_URL,
     episodeNumber: 2
   },
   {
