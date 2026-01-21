@@ -25,6 +25,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Signup = lazy(() => import("./pages/Signup"));
 const QuoteRequest = lazy(() => import("./pages/QuoteRequest"));
 const LeadGeneration = lazy(() => import("./pages/LeadGeneration"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Article pages
@@ -64,6 +65,7 @@ const App = () => (
                   <Route path="/signup" element={<Signup />} />
                   <Route path="/quote-request" element={<QuoteRequest />} />
                   <Route path="/lead-generation" element={<LeadGeneration />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
                   {/* Article pages */}
                   <Route path="/articles/future-of-ai" element={<FutureOfAI />} />
