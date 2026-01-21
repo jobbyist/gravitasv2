@@ -4,14 +4,14 @@ import { Card } from '@/components/ui/card';
 const PartnerLogos = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Partner logos - using placeholders
+  // Partner logos
   const partners = [
-    { name: 'Partner 1', logo: '/placeholder.svg' },
-    { name: 'Partner 2', logo: '/placeholder.svg' },
-    { name: 'Partner 3', logo: '/placeholder.svg' },
-    { name: 'Partner 4', logo: '/placeholder.svg' },
-    { name: 'Partner 5', logo: '/placeholder.svg' },
-    { name: 'Partner 6', logo: '/placeholder.svg' },
+    { name: 'Google', logo: '/partners/google.png' },
+    { name: 'OpenAI', logo: '/partners/openai.png' },
+    { name: 'Snipcart', logo: '/partners/snipcart.png' },
+    { name: 'NotebookLM', logo: '/partners/notebooklm.png' },
+    { name: 'Twilio', logo: '/partners/twilio.png' },
+    { name: 'Shopify', logo: '/partners/shopify.png' },
   ];
 
   // Auto-rotate every 5 seconds
