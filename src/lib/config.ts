@@ -1,6 +1,6 @@
 export const config = {
   calendly: {
-    discoveryCallUrl: 'https://calendly.com/gravitas-discovery',
+    discoveryCallUrl: 'https://cal.com/gravitasindustries/15min',
   },
   whitepaper: {
     url: '/2026-whitepaper.pdf',

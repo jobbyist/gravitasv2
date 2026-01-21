@@ -19,11 +19,12 @@ const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
 
   const navItems = [
-    { name: 'ALL POST', href: '/posts' },
+    { name: 'ARTICLES', href: '/posts' },
     { name: 'BUSINESS', href: '/business' },
     { name: 'TECHNOLOGY', href: '/technology' },
     { name: 'PODCAST', href: '/podcast' },
-    { name: 'REQUEST QUOTE', href: '/quote-request' },
+    { name: 'PORTFOLIO', href: '/portfolio' },
+    { name: 'BOOKINGS', href: '/lead-generation' },
   ];
 
   const socialLinks = [
