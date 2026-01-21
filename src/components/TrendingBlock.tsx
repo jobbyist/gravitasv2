@@ -4,54 +4,40 @@ import AudioPlayer from './AudioPlayer';
 const MOCK_AUDIO_URL = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
 const EPISODE_6_AUDIO_URL = '/podcast/ep6.mp3';
 
+const EPISODE_1_AUDIO_URL = '/podcast/ep1.m4a';
+
 const latestPodcastEpisodes = [
+  {
+    title: "Introducing Gravitas: Creating The Blueprint For Multi-Sector Innovation",
+    category: "PODCAST",
+    date: "January 21, 2026",
+    image: "/podcast/1.png",
+    audioUrl: EPISODE_1_AUDIO_URL,
+    episodeNumber: 1
+  },
+  {
+    title: "AI Turbocharges Africa's Creative Economy Boom",
+    category: "PODCAST", 
+    date: "January 14, 2026",
+    image: "/podcast/2.png",
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 2
+  },
+  {
+    title: "YUTE: The Mzansi Money Manual [Case Study]",
+    category: "PODCAST",
+    date: "January 7, 2026",
+    image: "/podcast/3.png",
+    audioUrl: MOCK_AUDIO_URL,
+    episodeNumber: 3
+  },
   {
     title: "The Future of AI in Content Creation",
     category: "PODCAST",
     date: "December 26, 2025",
     image: "/podcast/6.png",
     audioUrl: EPISODE_6_AUDIO_URL,
-    episodeNumber: 6
-  },
-  {
-    title: "Building Sustainable Businesses in 2025",
-    category: "PODCAST", 
-    date: "December 20, 2025",
-    image: "/podcast/3.png",
-    audioUrl: MOCK_AUDIO_URL,
-    episodeNumber: 11
-  },
-  {
-    title: "The Psychology of User Experience Design",
-    category: "PODCAST",
-    date: "December 14, 2025",
-    image: "/podcast/5.png",
-    audioUrl: MOCK_AUDIO_URL,
-    episodeNumber: 10
-  },
-  {
-    title: "Remote Work Revolution: What's Next?",
-    category: "PODCAST",
-    date: "December 7, 2025",
-    image: "/podcast/4.png",
-    audioUrl: MOCK_AUDIO_URL,
-    episodeNumber: 9
-  },
-  {
-    title: "The Rise of Creator Economy",
-    category: "PODCAST",
-    date: "November 30, 2025",
-    image: "/podcast/2.png",
-    audioUrl: MOCK_AUDIO_URL,
-    episodeNumber: 8
-  },
-  {
-    title: "Blockchain Beyond Cryptocurrency",
-    category: "PODCAST",
-    date: "November 22, 2025",
-    image: "/podcast/1.png",
-    audioUrl: MOCK_AUDIO_URL,
-    episodeNumber: 7
+    episodeNumber: 4
   }
 ];
 
