@@ -27,6 +27,15 @@ const QuoteRequest = lazy(() => import("./pages/QuoteRequest"));
 const LeadGeneration = lazy(() => import("./pages/LeadGeneration"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// Article pages
+const FutureOfAI = lazy(() => import("./pages/articles/FutureOfAI"));
+const ModernWebApps = lazy(() => import("./pages/articles/ModernWebApps"));
+const EcommerceTrends = lazy(() => import("./pages/articles/EcommerceTrends"));
+const TechStackGuide = lazy(() => import("./pages/articles/TechStackGuide"));
+const AIPoweredCustomerExperience = lazy(() => import("./pages/articles/AIPoweredCustomerExperience"));
+const HeadlessCommerce = lazy(() => import("./pages/articles/HeadlessCommerce"));
+const WebPerformance = lazy(() => import("./pages/articles/WebPerformance"));
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -56,6 +65,15 @@ const App = () => (
                   <Route path="/quote-request" element={<QuoteRequest />} />
                   <Route path="/lead-generation" element={<LeadGeneration />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
+                  {/* Article pages */}
+                  <Route path="/articles/future-of-ai" element={<FutureOfAI />} />
+                  <Route path="/articles/modern-web-apps" element={<ModernWebApps />} />
+                  <Route path="/articles/ecommerce-trends" element={<EcommerceTrends />} />
+                  <Route path="/articles/tech-stack-guide" element={<TechStackGuide />} />
+                  <Route path="/articles/ai-customer-experience" element={<AIPoweredCustomerExperience />} />
+                  <Route path="/articles/headless-commerce" element={<HeadlessCommerce />} />
+                  <Route path="/articles/web-performance" element={<WebPerformance />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>

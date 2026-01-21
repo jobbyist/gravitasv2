@@ -10,65 +10,65 @@ const masonryPosts = [
   {
     title: "The Future of AI: Transforming Industries",
     category: "AI",
-    date: "Jan 2024",
+    date: "Oct 15, 2025",
     excerpt: "Explore how artificial intelligence is revolutionizing business operations and creating new opportunities.",
     image: techPost,
     height: "tall",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/future-of-ai"
   },
   {
     title: "Building Modern Web Applications",
     category: "WEB DEV",
-    date: "Jan 2024",
+    date: "Nov 3, 2025",
     excerpt: "Best practices for developing scalable and performant web applications in 2024.",
     image: businessPost,
     height: "medium",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/modern-web-apps"
   },
   {
     title: "E-commerce Trends to Watch",
     category: "ECOMMERCE",
-    date: "Jan 2024",
+    date: "Dec 8, 2025",
     excerpt: "Discover the latest trends shaping the future of online retail and digital commerce.",
     image: fashionPost,
     height: "short",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/ecommerce-trends"
   },
   {
     title: "Tech Stack Selection Guide",
     category: "TECH",
-    date: "Jan 2024",
+    date: "Oct 28, 2025",
     excerpt: "How to choose the right technology stack for your next project.",
     image: lifestylePost,
     height: "medium",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/tech-stack-guide"
   },
   {
     title: "AI-Powered Customer Experience",
     category: "AI",
-    date: "Jan 2024",
+    date: "Jan 12, 2026",
     excerpt: "Leveraging machine learning to enhance customer engagement and satisfaction.",
     image: workLifestyle,
     height: "medium",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/ai-customer-experience"
   },
   {
     title: "Headless Commerce Architecture",
     category: "ECOMMERCE",
-    date: "Jan 2024",
+    date: "Nov 22, 2025",
     excerpt: "Understanding the benefits of decoupled commerce platforms.",
     image: fashionLifestyle,
     height: "short",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/headless-commerce"
   },
   {
     title: "Web Performance Optimization",
     category: "WEB DEV",
-    date: "Jan 2024",
+    date: "Jan 5, 2026",
     excerpt: "Proven techniques to improve your website's speed and user experience.",
     image: businessPost,
     height: "medium",
-    url: "https://stories.gravitas.uno"
+    url: "/articles/web-performance"
   }
 ];
 
@@ -103,7 +103,7 @@ const MasonryBlock = () => {
             className={`group cursor-pointer ${getHeightClass(post.height)} transition-all duration-300 hover:scale-[1.02] hover:shadow-lg`}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            onClick={() => window.open(post.url, '_blank', 'noopener,noreferrer')}
+            onClick={() => window.location.href = post.url}
           >
             <div className="relative w-full h-full rounded-lg overflow-hidden bg-card border border-border">
               <img
