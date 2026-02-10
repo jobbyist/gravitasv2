@@ -78,7 +78,7 @@ export function QuoteModal({ open, onOpenChange }: QuoteModalProps) {
 
   const totalSteps = 4;
 
-  const updateField = (field: keyof FormData, value: any) => {
+  const updateField = (field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

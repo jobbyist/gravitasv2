@@ -78,7 +78,7 @@ export function AuditModal({ open, onOpenChange }: AuditModalProps) {
 
   const totalSteps = 4;
 
-  const updateField = (field: keyof FormData, value: any) => {
+  const updateField = (field: keyof FormData, value: string | string[]) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

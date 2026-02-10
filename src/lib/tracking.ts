@@ -18,7 +18,7 @@ export type TrackingEvent =
 
 export interface TrackingEventData {
   event: TrackingEvent;
-  properties?: Record<string, any>;
+  properties?: Record<string, string | number | boolean>;
   timestamp?: number;
 }
 
@@ -27,7 +27,7 @@ export interface TrackingEventData {
  * Currently logs to console and localStorage for development
  * Can be extended to send to GA4, Meta Pixel, or other analytics services
  */
-export function trackEvent(event: TrackingEvent, properties?: Record<string, any>): void {
+export function trackEvent(event: TrackingEvent, properties?: Record<string, string | number | boolean>): void {
   const eventData: TrackingEventData = {
     event,
     properties,
@@ -67,9 +67,9 @@ export function trackPageView(pageName: string, path: string): void {
 }
 
 /**
- * Hook for tracking events in React components
+ * Get tracking functions for use in React components
  */
-export function useTracking() {
+export function getTrackingFunctions() {
   return {
     trackEvent,
     trackPageView,
