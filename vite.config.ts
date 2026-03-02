@@ -20,28 +20,28 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
-            // Core React libraries
+            // Core React libraries - must be first to avoid circular dependencies
             if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
             }
-            // Router
+            // Router - depends on React
             if (id.includes('react-router')) {
               return 'vendor-router';
             }
-            // Radix UI components
+            // Radix UI components - depends on React
             if (id.includes('@radix-ui')) {
               return 'vendor-ui';
             }
-            // Charts
+            // Charts - depends on React
             if (id.includes('recharts')) {
               return 'vendor-charts';
             }
-            // Form libraries
+            // Form libraries - depends on React
             if (id.includes('react-hook-form') || id.includes('zod') || id.includes('@hookform')) {
               return 'vendor-forms';
             }
-            // Other vendor libraries
-            return 'vendor-misc';
+            // Don't create a catch-all vendor-misc to avoid circular dependencies
+            // Let Vite automatically handle other dependencies
           }
         },
       },
