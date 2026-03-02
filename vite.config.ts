@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
         manualChunks: (id) => {
           if (id.includes('node_modules')) {
             // Core React libraries - must be first to avoid circular dependencies
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react/')) {
+            if (id.includes('react') || id.includes('react-dom')) {
               return 'vendor-react';
             }
             // Router - depends on React
