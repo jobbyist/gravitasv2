@@ -2,7 +2,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Calendar, Heart } from 'lucide-react';
+import PartnerLogoSlider from '@/components/PartnerLogoSlider';
+import { Mail, MapPin, Calendar, Hammer, Globe, Package, ShoppingCart, Users } from 'lucide-react';
 
 const About = () => {
   return (
@@ -15,19 +16,126 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               About Gravitas Industries
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Leveraging AI and multidisciplinary expertise to create innovative, sustainable solutions
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A multidisciplinary innovation platform leveraging AI and cutting-edge technology to deliver 
+              comprehensive digital solutions—from custom websites and e-commerce platforms to brand identity, 
+              domain services, and white-label partnership opportunities
             </p>
           </div>
 
-          {/* Hero Section */}
+          {/* Partner Logos Slider */}
           <div className="mb-16">
-            <div className="aspect-video rounded-lg bg-muted mb-8 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <Heart className="h-12 w-12 text-primary-foreground" />
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Powered By Trusted Partners
+              </h2>
+              <p className="text-muted-foreground">
+                Built on world-class technology and trusted integrations
+              </p>
+            </div>
+            <PartnerLogoSlider />
+          </div>
+
+          {/* Platform Features */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
+              Our Platform & Services
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Auctions */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Hammer className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Auctions</h3>
+                  </div>
                 </div>
-                <p className="text-muted-foreground">Author Photo Placeholder</p>
+                <p className="text-muted-foreground">
+                  Explore our high-value digital asset portfolio and submit bids for equity ownership 
+                  in our ongoing development projects. Access exclusive opportunities in innovative ventures.
+                </p>
+              </div>
+
+              {/* Domains */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Globe className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Domains</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  Register your domain name with ease through Gravitas Domains and get started with your 
+                  next big project. Powered by our partnership with name.com for reliable domain services.
+                </p>
+              </div>
+
+              {/* Brand Kits */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Package className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Brand Kits</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  Professionally designed brand identity kits crafted to help your business stand out. 
+                  Get comprehensive brand guidelines with modern design elements tailored to your needs.
+                </p>
+              </div>
+
+              {/* Commerce */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <ShoppingCart className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Commerce</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  High-impact Shopify development delivering professional, custom-built Online Store 2.0 
+                  storefronts. One-time investment of $500 with unlimited pages, integrations, and revisions.
+                </p>
+              </div>
+
+              {/* White Label Partner Program */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">White Label Partner Program</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  Complete business-in-a-box solution with full-featured websites, brand identity design, 
+                  and marketing materials. Launch your own agency in 2-4 weeks with our streamlined process.
+                </p>
+              </div>
+
+              {/* Websites */}
+              <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3 bg-primary/10 rounded-lg">
+                    <Calendar className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-foreground mb-2">Websites & Solutions</h3>
+                  </div>
+                </div>
+                <p className="text-muted-foreground">
+                  Custom web development and digital solutions tailored to your business needs. From 
+                  portfolios to enterprise platforms, we build scalable, modern websites that perform.
+                </p>
               </div>
             </div>
           </div>
