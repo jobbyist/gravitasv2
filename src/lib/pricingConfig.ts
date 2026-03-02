@@ -21,8 +21,9 @@ export interface PricingConfig {
 }
 
 export const pricingConfig: PricingConfig = {
-  // Base website build price
+  // Base website build price  
   baseWebsiteBuild: 500,
+  // Original price (for savings calculation)
   originalPrice: 5990,
   
   // Monthly maintenance (optional)

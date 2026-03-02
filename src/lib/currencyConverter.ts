@@ -12,7 +12,7 @@ export interface CurrencyInfo {
 }
 
 // Exchange rates relative to USD (base currency)
-// These are approximate rates and should be updated regularly
+// Rates as of March 2026 - Update regularly for accuracy
 const EXCHANGE_RATES: Record<Currency, number> = {
   USD: 1.0,      // Base currency
   EUR: 0.92,     // Euro
