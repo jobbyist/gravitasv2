@@ -184,7 +184,7 @@ export function saveLocalData<T>(username: string, key: string, data: T): void {
 /**
  * Merge pre-provisioned and local data
  */
-function mergeData<T extends Record<string, any>>(preProvisioned: T | null, local: T | null): T | null {
+function mergeData<T extends Record<string, unknown>>(preProvisioned: T | null, local: T | null): T | null {
   if (!preProvisioned && !local) return null;
   if (!preProvisioned) return local;
   if (!local) return preProvisioned;
