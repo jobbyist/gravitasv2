@@ -6,16 +6,16 @@ const PartnerLogos = () => {
 
   // Partner logos
   const partners = [
-    { name: 'Google', logo: '/partners/google.svg' },
+    { name: 'Google', logo: '/partners/google.png' },
     { name: 'OpenAI', logo: '/partners/openai.png' },
     { name: 'Snipcart', logo: '/partners/snipcart.png' },
     { name: 'NotebookLM', logo: '/partners/notebooklm.png' },
     { name: 'Twilio', logo: '/partners/twilio.png' },
     { name: 'Shopify', logo: '/partners/shopify.png' },
-    { name: 'Supabase', logo: '/partners/supabase.svg' },
+    { name: 'Supabase', logo: '/partners/supabase.png' },
     { name: 'GitHub', logo: '/partners/github.png' },
-    { name: 'ElevenLabs', logo: '/partners/elevenlabs.svg' },
-    { name: 'Cal.com', logo: '/partners/calcom.svg' },
+    { name: 'Impact.com', logo: '/partners/impactcom.png' },
+    { name: 'Teachable', logo: '/partners/teachable.png' },
   ];
 
   // Auto-rotate every 5 seconds
