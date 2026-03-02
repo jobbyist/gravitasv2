@@ -60,7 +60,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link to="/" className="block">
-              <h1 className="text-2xl font-bold text-foreground tracking-tight uppercase">gravitas</h1>
+              <div className="text-2xl font-bold text-foreground tracking-tight uppercase">gravitas</div>
             </Link>
           </div>
 
