@@ -5,7 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SkipLink from "@/components/SkipLink";
-import { Suspense, lazy } from "react";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
+import CookieConsent from "@/components/CookieConsent";
+import { Suspense, lazy, useEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 
@@ -28,6 +30,7 @@ const LeadGeneration = lazy(() => import("./pages/LeadGeneration"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Websites = lazy(() => import("./pages/Websites"));
 const BrandKits = lazy(() => import("./pages/BrandKits"));
+const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Article pages
@@ -41,15 +44,34 @@ const WebPerformance = lazy(() => import("./pages/articles/WebPerformance"));
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <AuthProvider>
-        <TooltipProvider>
-          <SkipLink />
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+const App = () => {
+  useEffect(() => {
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <AuthProvider>
+          <TooltipProvider>
+            <SkipLink />
+            <Toaster />
+            <Sonner />
+            <PWAInstallPrompt />
+            <CookieConsent />
+            <BrowserRouter>
               <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
                 <Routes>
                   <Route path="/" element={<Index />} />
@@ -70,6 +92,7 @@ const App = () => (
                   <Route path="/portfolio" element={<Portfolio />} />
                   <Route path="/websites" element={<Websites />} />
                   <Route path="/brand-kits" element={<BrandKits />} />
+                  <Route path="/partner-program" element={<PartnerProgram />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
                   {/* Article pages */}
                   <Route path="/articles/future-of-ai" element={<FutureOfAI />} />
@@ -90,5 +113,6 @@ const App = () => (
     </ThemeProvider>
   </QueryClientProvider>
 );
+};
 
 export default App;
