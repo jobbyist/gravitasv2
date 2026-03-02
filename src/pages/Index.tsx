@@ -20,10 +20,19 @@ const Index = () => {
       />
       <Header />
       <main id="main-content">
+        {/* Hero section - immediate value proposition */}
         <VideoHero />
-        <AIWebsiteBuilder />
+        
+        {/* Social proof - build trust early */}
         <PartnerLogos />
+        
+        {/* Primary CTA - main conversion driver */}
+        <AIWebsiteBuilder />
+        
+        {/* FAQ - address objections and build confidence */}
         <FAQ />
+        
+        {/* Content sections - engagement and SEO */}
         <section aria-labelledby="editors-pick-heading">
           <EditorsPick />
         </section>
