@@ -191,3 +191,33 @@ All colors MUST be HSL.
     white-space: normal;
   }
 }
+
+/* Animated gradient border for CTA button */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Multicolored gradient border */
+.gradient-border-multicolor {
+  background: linear-gradient(
+    90deg,
+    #a855f7, /* purple-500 */
+    #ec4899, /* pink-500 */
+    #ef4444, /* red-500 */
+    #f97316, /* orange-500 */
+    #eab308, /* yellow-500 */
+    #22c55e, /* green-500 */
+    #3b82f6, /* blue-500 */
+    #a855f7  /* purple-500 */
+  );
+  background-size: 400% 100%;
+}
