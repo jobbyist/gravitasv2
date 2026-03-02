@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import VideoHero from '@/components/VideoHero';
+import { AIWebsiteBuilder } from '@/components/AIWebsiteBuilder';
 import PartnerLogos from '@/components/PartnerLogos';
 import FAQ from '@/components/FAQ';
 import EditorsPick from '@/components/EditorsPick';
@@ -14,6 +15,7 @@ const Index = () => {
       <Header />
       <main id="main-content">
         <VideoHero />
+        <AIWebsiteBuilder />
         <PartnerLogos />
         <FAQ />
         <section aria-labelledby="editors-pick-heading">
