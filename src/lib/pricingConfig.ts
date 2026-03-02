@@ -21,7 +21,7 @@ export interface PricingConfig {
 }
 
 export const pricingConfig: PricingConfig = {
-  // Base website build price - Special Offer
+  // Base website build price - Special Offer (97% off)
   baseWebsiteBuild: 199,
   originalPrice: 5990,
   
@@ -181,16 +181,15 @@ export const pricingConfig: PricingConfig = {
 
 // Base package details
 export const basePackageIncludes = [
-  'Basic 5-page website',
-  'Ideal for personal websites and small businesses',
+  'Basic 5-page website ideal for personal websites and small businesses',
   'Fully mobile responsive design',
   'Basic SEO setup (metadata + sitemap)',
   'Contact form with email notifications',
   '1 revision round',
   'Cross-browser compatibility',
   '30-day post-launch support',
-  'Standard hosting for $9.99 per month',
-  'Professional email for 5 users for $2.49 per month (billed annually)',
+  'Standard hosting for R9.99 per month',
+  'Professional email for 5 users at R2.49/month when billed annually',
   'Free domain name registration for the first year',
 ];
 

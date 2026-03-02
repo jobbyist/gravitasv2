@@ -534,7 +534,7 @@ export function WebsitesLandingPage() {
               Looking to upgrade your existing website?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Request a free comprehensive website audit report and find out how we can help you improve your online presence with a professional upgrade or send us a brief to request a free quote for your website needs
+              Request a free comprehensive website audit report and find out how we can help you improve your online presence with a professional upgrade. Or send us a brief to request a free quote for your website needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 

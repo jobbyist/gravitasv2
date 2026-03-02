@@ -30,7 +30,7 @@ const WebsitePayment = () => {
                 Limited Time Special Offer
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold">
-                Custom Website Special - $199
+                Custom Website Special - R199
               </h1>
               <p className="text-xl text-muted-foreground">
                 Basic 5-page website ideal for personal websites and small businesses
@@ -78,16 +78,16 @@ const WebsitePayment = () => {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-lg">Website Setup</span>
-                      <span className="text-2xl font-bold text-primary">$199</span>
+                      <span className="text-2xl font-bold text-primary">R199</span>
                     </div>
                     <div className="border-t pt-4 space-y-2">
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Standard Hosting</span>
-                        <span className="text-sm font-medium">$9.99/month</span>
+                        <span className="text-sm font-medium">R9.99/month</span>
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Professional Email (5 users)</span>
-                        <span className="text-sm font-medium">$2.49/month</span>
+                        <span className="text-sm font-medium">R2.49/month</span>
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Domain Registration (first year)</span>
@@ -97,7 +97,7 @@ const WebsitePayment = () => {
                     <div className="border-t pt-4">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Total Monthly</span>
-                        <span className="text-xl font-bold">$12.48/month</span>
+                        <span className="text-xl font-bold">R12.48/month</span>
                       </div>
                     </div>
                   </div>
