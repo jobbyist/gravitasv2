@@ -112,7 +112,7 @@ const About = () => {
                 <Link to="/contact">Get in Touch</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/posts">Browse Insights</Link>
+                <Link to="/partner-program">Learn More</Link>
               </Button>
             </div>
           </div>

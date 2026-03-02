@@ -15,6 +15,7 @@ const PartnerLogos = () => {
     { name: 'Upwork', logo: '/partners/upwork.png' },
     { name: 'GitHub', logo: '/partners/github.png' },
     { name: 'Name.com', logo: '/partners/namedotcom.png' },
+    { name: 'Cal.com', logo: '/partners/calcom.png' },
   ];
 
   // Auto-rotate every 5 seconds
