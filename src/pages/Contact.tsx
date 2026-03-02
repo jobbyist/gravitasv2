@@ -146,7 +146,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground">Email</h3>
-                      <p className="text-muted-foreground">hello@gravitasindustries.com</p>
+                      <p className="text-muted-foreground">hello@gravitas.uno</p>
                       <p className="text-sm text-muted-foreground">
                         We typically respond within 24 hours
                       </p>
@@ -159,9 +159,9 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground">Location</h3>
-                      <p className="text-muted-foreground">Global</p>
+                      <p className="text-muted-foreground">Global (South African HQ)</p>
                       <p className="text-sm text-muted-foreground">
-                        We're a distributed team working worldwide
+                        We serve clients globally and have a team of experts that work remotely from our head office in Johannesburg, South Africa
                       </p>
                     </div>
                   </div>
