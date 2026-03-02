@@ -24,6 +24,7 @@ import { PricingEstimator } from './PricingEstimator';
 import { AuditModal } from './AuditModal';
 import { QuoteModal } from './QuoteModal';
 import { StickyMobileCTA } from './StickyMobileCTA';
+import { AIWebsiteBuilder } from '@/components/AIWebsiteBuilder';
 
 export function WebsitesLandingPage() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
@@ -110,6 +111,9 @@ export function WebsitesLandingPage() {
           </div>
         </div>
       </section>
+
+      {/* AI Website Builder Section */}
+      <AIWebsiteBuilder />
 
       {/* Social Proof */}
       <section className="py-12 border-b bg-muted/30">
