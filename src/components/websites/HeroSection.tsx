@@ -1,9 +1,7 @@
-import { memo } from 'react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Sparkles, FileText, MessageSquare, Shield } from 'lucide-react';
-import { formatUSD } from '@/lib/pricingCalculator';
-import { pricingConfig } from '@/lib/pricingConfig';
+import { memo, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Clock, Users, Star, Shield, Headphones } from 'lucide-react';
+import { trackEvent } from '@/lib/tracking';
 
 interface HeroSectionProps {
   discountPercent: number;
@@ -11,69 +9,115 @@ interface HeroSectionProps {
   onBuildPackage: () => void;
 }
 
+const serviceHighlights = [
+  { icon: Clock, text: 'Rapid Turnaround (48-72hrs on avg.)' },
+  { icon: Users, text: '50+ Active Client Engagements' },
+  { icon: Star, text: '98% Client Satisfaction Rating' },
+  { icon: Shield, text: '30-Day Money Back Guarantee' },
+  { icon: Headphones, text: 'World-Class Support Team' },
+];
+
 export const HeroSection = memo(function HeroSection({
   discountPercent,
   onClaimOffer,
   onBuildPackage,
 }: HeroSectionProps) {
-  return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-accent to-background border-b">
-      <div className="container-blog py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Badge */}
-          <Badge variant="secondary" className="text-sm px-4 py-1.5">
-            <Sparkles className="h-4 w-4 mr-2" />
-            Limited Time Offer - {discountPercent}% Off
-          </Badge>
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const navigate = useNavigate();
 
+  const handleGetStartedWithAI = () => {
+    trackEvent('cta_click', { type: 'get_started_ai' });
+    window.open('https://origin.gravitas.uno', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleHireADeveloper = () => {
+    trackEvent('cta_click', { type: 'hire_developer' });
+    // Scroll to the build package section
+    const element = document.getElementById('build-package-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // After scrolling, wait a moment then redirect to lead generation
+      setTimeout(() => {
+        navigate('/lead-generation');
+      }, 1500);
+    } else {
+      // If section not found, just go directly to lead generation
+      navigate('/lead-generation');
+    }
+  };
+
+  return (
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden">
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          ref={videoRef}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/gravitasbanner.png"
+          onLoadedData={() => setIsVideoLoaded(true)}
+        >
+          <source src="/gravitasexplainer.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      {/* Content */}
+      <div className="container-blog relative z-10 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Basic Website Special:{' '}
-            <span className="text-primary">{formatUSD(pricingConfig.baseWebsiteBuild)}</span>{' '}
-            once-off
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+            The easiest way to build and manage your website.
           </h1>
 
-          {/* Subtext */}
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-            Basic 5-page website ideal for personal websites and small businesses
+          {/* Description */}
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+            Establish your online presence with ease using our powerful AI coding tool that turns your brief into a beautiful website in minutes, or build your own website development package and let one of our friendly web developers get you up and running in no time!
           </p>
-
-          {/* Price Anchor */}
-          <div className="flex items-center justify-center gap-4 text-lg">
-            <span className="text-muted-foreground line-through">
-              Was {formatUSD(pricingConfig.originalPrice)}
-            </span>
-            <span className="text-2xl font-bold text-primary">
-              → Now {formatUSD(pricingConfig.baseWebsiteBuild)}
-            </span>
-          </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <Button 
-              size="lg" 
-              className="text-lg px-8 gap-2 w-full sm:w-auto"
-              onClick={onClaimOffer}
+            {/* Primary CTA - Get Started with AI */}
+            <button
+              onClick={handleGetStartedWithAI}
+              className="group relative px-8 py-4 text-lg font-bold text-white bg-black rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
-              <FileText className="h-5 w-5" />
-              Claim This Special Offer
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="text-lg px-8 gap-2 w-full sm:w-auto"
-              onClick={onBuildPackage}
+              {/* Animated gradient border */}
+              <span className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-orange-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-[length:400%_100%] animate-gradient-x">
+                <span className="block h-full w-full rounded-[6px] bg-black" />
+              </span>
+              <span className="relative z-10">Get Started with AI</span>
+            </button>
+
+            {/* Secondary CTA - Hire A Developer */}
+            <button
+              onClick={handleHireADeveloper}
+              className="px-8 py-4 text-lg font-bold text-white bg-transparent border-2 border-white rounded-lg transition-all duration-300 hover:bg-white hover:text-black w-full sm:w-auto"
             >
-              <MessageSquare className="h-5 w-5" />
-              Build Your Custom Website Package
-            </Button>
+              Hire A Developer
+            </button>
           </div>
 
-          {/* Trust Microcopy */}
-          <p className="text-sm text-muted-foreground">
-            <Shield className="h-4 w-4 inline mr-1" />
-            No spam. WhatsApp-friendly. Response within 24 hours.
-          </p>
+          {/* Service Highlights */}
+          <div className="pt-8">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+              {serviceHighlights.map((highlight, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 text-sm md:text-base text-white/80 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+                >
+                  <highlight.icon className="h-4 w-4 text-white/90" />
+                  <span>{highlight.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
