@@ -37,10 +37,25 @@ export const HeroSection = memo(function HeroSection({
     const element = document.getElementById('build-package-section');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // After scrolling, wait a moment then redirect to lead generation
+      // Use IntersectionObserver to detect when scrolling completes
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            observer.disconnect();
+            // Small delay to let user see the section before redirecting
+            setTimeout(() => {
+              navigate('/lead-generation');
+            }, 800);
+          }
+        },
+        { threshold: 0.5 }
+      );
+      observer.observe(element);
+      // Fallback timeout in case IntersectionObserver doesn't trigger
       setTimeout(() => {
+        observer.disconnect();
         navigate('/lead-generation');
-      }, 1500);
+      }, 3000);
     } else {
       // If section not found, just go directly to lead generation
       navigate('/lead-generation');
@@ -89,7 +104,7 @@ export const HeroSection = memo(function HeroSection({
               className="group relative px-8 py-4 text-lg font-bold text-white bg-black rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 w-full sm:w-auto"
             >
               {/* Animated gradient border */}
-              <span className="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-r from-purple-500 via-pink-500 via-red-500 via-orange-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-[length:400%_100%] animate-gradient-x">
+              <span className="absolute inset-0 rounded-lg p-[2px] gradient-border-multicolor animate-gradient-x">
                 <span className="block h-full w-full rounded-[6px] bg-black" />
               </span>
               <span className="relative z-10">Get Started with AI</span>
