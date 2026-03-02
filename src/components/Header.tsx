@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Facebook, Twitter, Instagram, Menu, X, User, LogOut, Newspaper, Briefcase, Monitor, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe } from 'lucide-react';
+import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Briefcase, Monitor, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
@@ -46,9 +46,9 @@ const Header = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },  
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Globe, href: 'https://google.gravitas.uno', label: 'Google' },
+    { icon: Linkedin, href: 'https://linkedin.gravitas.uno', label: 'LinkedIn' },  
+    { icon: Mail, href: 'mailto:hello@gravitas.uno', label: 'Email' },
   ];
 
   return (
