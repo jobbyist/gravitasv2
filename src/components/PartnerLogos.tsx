@@ -6,15 +6,15 @@ const PartnerLogos = () => {
 
   // Partner logos
   const partners = [
-    { name: 'Google', logo: '/partners/google.png' },
+    { name: 'Google', logo: '/partners/google.svg' },
     { name: 'OpenAI', logo: '/partners/openai.png' },
     { name: 'Snipcart', logo: '/partners/snipcart.png' },
     { name: 'NotebookLM', logo: '/partners/notebooklm.png' },
     { name: 'Twilio', logo: '/partners/twilio.png' },
     { name: 'Shopify', logo: '/partners/shopify.png' },
-    { name: 'Upwork', logo: '/partners/upwork.png' },
+    { name: 'Supabase', logo: '/partners/supabase.svg' },
     { name: 'GitHub', logo: '/partners/github.png' },
-    { name: 'Name.com', logo: '/partners/namedotcom.png' },
+    { name: 'ElevenLabs', logo: '/partners/elevenlabs.svg' },
     { name: 'Cal.com', logo: '/partners/calcom.svg' },
   ];
 
@@ -32,10 +32,10 @@ const PartnerLogos = () => {
       <div className="space-y-8">
         <div className="text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-            Trusted By Industry Leaders
+            Powered By Trusted Industry Leaders & World-Class Technology Partners
           </h2>
           <p className="text-muted-foreground">
-            Partnering with innovative organizations worldwide
+            Our turnkey platform is built on a robust foundation of technology providers and powerful partner integrations to bring you the most sophisticated, secure and reliable service delivery infrastructure the internet has to offer
           </p>
         </div>
 
