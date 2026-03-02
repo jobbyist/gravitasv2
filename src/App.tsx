@@ -31,6 +31,7 @@ const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Websites = lazy(() => import("./pages/Websites"));
 const BrandKits = lazy(() => import("./pages/BrandKits"));
 const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
+const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Article pages
@@ -47,19 +48,19 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Register service worker for PWA
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/service-worker.js')
-          .then((registration) => {
-            console.log('Service Worker registered:', registration);
-          })
-          .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-          });
-      });
-    }
+    // PWA functionality temporarily disabled
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', () => {
+    //     navigator.serviceWorker
+    //       .register('/service-worker.js')
+    //       .then((registration) => {
+    //         console.log('Service Worker registered:', registration);
+    //       })
+    //       .catch((error) => {
+    //         console.error('Service Worker registration failed:', error);
+    //       });
+    //   });
+    // }
   }, []);
 
   return (
@@ -70,7 +71,8 @@ const App = () => {
             <SkipLink />
             <Toaster />
             <Sonner />
-            <PWAInstallPrompt />
+            {/* PWA Install Prompt temporarily disabled */}
+            {/* <PWAInstallPrompt /> */}
             <CookieConsent />
             <BrowserRouter>
               <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
@@ -94,6 +96,7 @@ const App = () => {
                   <Route path="/websites" element={<Websites />} />
                   <Route path="/brand-kits" element={<BrandKits />} />
                   <Route path="/partner-program" element={<PartnerProgram />} />
+                  <Route path="/coming-soon" element={<ComingSoon />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
                   {/* Article pages */}
                   <Route path="/articles/future-of-ai" element={<FutureOfAI />} />
