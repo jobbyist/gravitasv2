@@ -8,8 +8,8 @@ const PartnerLogos = () => {
   const partners = [
     { name: 'Google', logo: '/partners/google.png' },
     { name: 'OpenAI', logo: '/partners/openai.png' },
-    { name: 'Snipcart', logo: '/partners/snipcart.png' },
-    { name: 'NotebookLM', logo: '/partners/notebooklm.png' },
+    { name: 'Upwork', logo: '/partners/upwork.png' },
+    { name: 'Microsoft', logo: '/partners/microsoft.png' },
     { name: 'Twilio', logo: '/partners/twilio.png' },
     { name: 'Shopify', logo: '/partners/shopify.png' },
     { name: 'Supabase', logo: '/partners/supabase.png' },
