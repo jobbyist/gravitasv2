@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { RotateCcw } from 'lucide-react';
 import { pricingConfig } from '@/lib/pricingConfig';
 import { 
@@ -19,11 +21,17 @@ import { trackEvent } from '@/lib/tracking';
 import { UpsellCard } from './UpsellCard';
 import { CurrencySelector } from './CurrencySelector';
 
-export function PricingEstimator() {
+// Promo code configuration
+const PROMO_CODE = 'IWD2026';
+const PROMO_DISCOUNT_PERCENTAGE = 0.25; // 25% off
+
+export function PricingEstimator({ onTotalChange }: { onTotalChange?: (total: number) => void }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedUpsells, setSelectedUpsells] = useState<Map<string, string | boolean>>(new Map());
   const [maintenanceEnabled, setMaintenanceEnabled] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>('USD');
+  const [additionalNotes, setAdditionalNotes] = useState('');
+  const [promoCode, setPromoCode] = useState('');
 
   // Initialize from URL params
   useEffect(() => {
@@ -40,6 +48,19 @@ export function PricingEstimator() {
   }, [selectedUpsells, maintenanceEnabled, setSearchParams]);
 
   const breakdown = calculateTotal(selectedUpsells, maintenanceEnabled);
+  
+  // Apply promo code discount
+  const isPromoValid = promoCode === PROMO_CODE;
+  const discountMultiplier = isPromoValid ? (1 - PROMO_DISCOUNT_PERCENTAGE) : 1;
+  const finalTotal = breakdown.totalOnceOff * discountMultiplier;
+  const promoDiscount = breakdown.totalOnceOff - finalTotal;
+
+  // Notify parent of total changes
+  useEffect(() => {
+    if (onTotalChange) {
+      onTotalChange(finalTotal);
+    }
+  }, [finalTotal, onTotalChange]);
 
   const handleUpsellChange = (upsellId: string, value: string | boolean) => {
     const newSelections = new Map(selectedUpsells);
@@ -135,6 +156,47 @@ export function PricingEstimator() {
         </div>
       </div>
 
+      {/* Additional Notes and Promo Code */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card>
+          <CardHeader>
+            <CardTitle>Additional Notes</CardTitle>
+            <CardDescription>Any special requirements or requests?</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Textarea 
+              placeholder="Tell us about your specific needs, preferences, or questions..."
+              value={additionalNotes}
+              onChange={(e) => setAdditionalNotes(e.target.value)}
+              rows={4}
+              className="resize-none"
+            />
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Promo/Referral Code</CardTitle>
+            <CardDescription>International Women's Month Special - 25% off</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <Input 
+              placeholder="Enter promo code (e.g., IWD2026)"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+              className="font-mono"
+            />
+            {promoCode === PROMO_CODE && (
+              <div className="bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 p-3 rounded-md">
+                <p className="text-sm font-semibold text-green-700 dark:text-green-300">
+                  ✓ {Math.round(PROMO_DISCOUNT_PERCENTAGE * 100)}% discount applied! International Women's Month Special
+                </p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
       {/* Pricing Breakdown */}
       <Card className="border-primary">
         <CardHeader>
@@ -166,9 +228,28 @@ export function PricingEstimator() {
           {/* Total Once-off */}
           <Separator />
           <div className="flex justify-between items-center text-lg">
-            <span className="font-bold">Total Once-off</span>
-            <span className="font-bold text-primary">{formatPrice(breakdown.totalOnceOff)}</span>
+            <span className="font-bold">Subtotal</span>
+            <span className="font-bold">{formatPrice(breakdown.totalOnceOff)}</span>
           </div>
+
+          {/* Promo Discount */}
+          {isPromoValid && (
+            <div className="flex justify-between items-center text-lg text-green-600 dark:text-green-400">
+              <span className="font-bold">{PROMO_CODE} Discount ({Math.round(PROMO_DISCOUNT_PERCENTAGE * 100)}%)</span>
+              <span className="font-bold">-{formatPrice(promoDiscount)}</span>
+            </div>
+          )}
+
+          {/* Final Total */}
+          {isPromoValid && (
+            <>
+              <Separator />
+              <div className="flex justify-between items-center text-xl">
+                <span className="font-bold">Final Total</span>
+                <span className="font-bold text-primary">{formatPrice(finalTotal)}</span>
+              </div>
+            </>
+          )}
 
           {/* Monthly if maintenance */}
           {breakdown.maintenanceEnabled && (

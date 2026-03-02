@@ -22,9 +22,9 @@ export interface PricingConfig {
 
 export const pricingConfig: PricingConfig = {
   // Base website build price  
-  baseWebsiteBuild: 500,
+  baseWebsiteBuild: 199,
   // Original price (for savings calculation)
-  originalPrice: 5990,
+  originalPrice: 500,
   
   // Monthly maintenance (optional)
   maintenanceMonthly: 99,
@@ -49,17 +49,20 @@ export const pricingConfig: PricingConfig = {
       type: 'checkbox',
     },
     {
-      id: 'ecommerce',
-      name: 'E-Commerce + Payment Gateway Setup',
-      description: 'Full e-commerce functionality with payment integration',
-      tooltip: 'Complete e-commerce setup including Paystack, Payfast, Ozow, Stitch Express, or PayPal integration.',
-      price: 0, // Base price, depends on shipping option
-      type: 'select',
-      options: [
-        { label: 'None', value: 'none', price: 0 },
-        { label: 'Domestic Shipping (The Courier Guy, Aramex)', value: 'domestic', price: 199 },
-        { label: 'International Shipping (DHL, FedEx)', value: 'international', price: 349 },
-      ],
+      id: 'payment-gateway-setup',
+      name: 'Shipping + Payment Gateway Setup',
+      description: 'Online payment gateways',
+      tooltip: 'Set up online payment gateways (Mastercard, VISA, PayPal, Crypto etc)',
+      price: 75,
+      type: 'checkbox',
+    },
+    {
+      id: 'shipping-tracking',
+      name: 'Shipping + Order Tracking',
+      description: 'Domestic/international shipping + order tracking',
+      tooltip: 'Set up domestic and/or international shipping + order tracking',
+      price: 125,
+      type: 'checkbox',
     },
     
     // Additional upsells (8+ more)

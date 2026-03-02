@@ -11,21 +11,12 @@ const EPISODE_6_AUDIO_URL = '/podcast/episode6.mp3';
 
 const latestPodcastEpisodes = [
   {
-    title: "YUTE: The Mzansi Money Manual [Case Study]",
+    title: "The $250 Full-Service Agency Business-in-a-Box",
     category: "PODCAST",
-    date: "January 7, 2026",
-    image: "/podcast/3.png",
-    audioUrl: EPISODE_3_AUDIO_URL,
-    episodeNumber: 3,
-    visible: true
-  },
-  {
-    title: "The Future of AI in Content Creation",
-    category: "PODCAST",
-    date: "December 26, 2025",
-    image: "/podcast/4.png",
-    audioUrl: EPISODE_1_AUDIO_URL,
-    episodeNumber: 1,
+    date: "February 21, 2026",
+    image: "/podcast/6.png",
+    audioUrl: EPISODE_6_AUDIO_URL,
+    episodeNumber: 6,
     visible: true
   },
   {
@@ -38,22 +29,22 @@ const latestPodcastEpisodes = [
     visible: true
   },
   {
-    title: "The $250 Full-Service Agency Business-in-a-Box",
-    category: "PODCAST",
-    date: "February 21, 2026",
-    image: "/podcast/6.png",
-    audioUrl: EPISODE_6_AUDIO_URL,
-    episodeNumber: 6,
-    visible: true
-  },
-  // Hidden episodes
-  {
     title: "Introducing Gravitas: Creating The Blueprint For Multi-Sector Innovation",
     category: "PODCAST",
     date: "January 21, 2026",
     image: "/podcast/1.png",
     audioUrl: EPISODE_4_AUDIO_URL,
     episodeNumber: 4,
+    visible: true
+  },
+  // Hidden episodes
+  {
+    title: "YUTE: The Mzansi Money Manual [Case Study]",
+    category: "PODCAST",
+    date: "January 7, 2026",
+    image: "/podcast/3.png",
+    audioUrl: EPISODE_3_AUDIO_URL,
+    episodeNumber: 3,
     visible: false
   },
   {
@@ -63,6 +54,15 @@ const latestPodcastEpisodes = [
     image: "/podcast/2.png",
     audioUrl: EPISODE_2_AUDIO_URL,
     episodeNumber: 2,
+    visible: false
+  },
+  {
+    title: "The Future of AI in Content Creation",
+    category: "PODCAST",
+    date: "December 26, 2025",
+    image: "/podcast/4.png",
+    audioUrl: EPISODE_1_AUDIO_URL,
+    episodeNumber: 1,
     visible: false
   }
 ];

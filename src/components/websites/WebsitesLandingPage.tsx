@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Zap, MessageSquare, FileText, TrendingUp } from 'lucide-react';
+import { Zap, MessageSquare, FileText, TrendingUp, Lock } from 'lucide-react';
 import { getDiscountPercentage } from '@/lib/pricingCalculator';
 import { trackEvent, trackPageView } from '@/lib/tracking';
 import { PricingEstimator } from './PricingEstimator';
 import { AuditModal } from './AuditModal';
 import { QuoteModal } from './QuoteModal';
+import { PaymentProvidersModal } from './PaymentProvidersModal';
 import { StickyMobileCTA } from './StickyMobileCTA';
 import { AIWebsiteBuilder } from '@/components/AIWebsiteBuilder';
 import { HeroSection } from './HeroSection';
@@ -19,6 +20,8 @@ import { FAQSection } from './FAQSection';
 export function WebsitesLandingPage() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+  const [paymentModalOpen, setPaymentModalOpen] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(199); // Default base price
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +29,7 @@ export function WebsitesLandingPage() {
   }, []);
 
   const handleClaimOffer = () => {
-    navigate('/website-payment');
+    setPaymentModalOpen(true);
     trackEvent('cta_click', { type: 'claim_offer' });
   };
 
@@ -79,13 +82,13 @@ export function WebsitesLandingPage() {
                 <Zap className="h-4 w-4 mr-2" />
                 Interactive Pricing
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold">Build Your Perfect Package</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">Build Your Custom Website Package</h2>
               <p className="text-xl text-muted-foreground">
                 Customize your website with additional services and see real-time pricing
               </p>
             </div>
 
-            <PricingEstimator />
+            <PricingEstimator onTotalChange={setTotalAmount} />
 
             <div className="text-center mt-12 space-y-4">
               <p className="text-muted-foreground">
@@ -97,17 +100,17 @@ export function WebsitesLandingPage() {
                   onClick={handleClaimOffer}
                   className="gap-2"
                 >
-                  <FileText className="h-5 w-5" />
+                  <Lock className="h-5 w-5" />
                   Claim This Special Offer
                 </Button>
                 <Button 
                   size="lg"
                   variant="outline"
-                  onClick={handleAuditClick}
+                  onClick={() => navigate('/lead-generation')}
                   className="gap-2"
                 >
                   <MessageSquare className="h-5 w-5" />
-                  Request A Free Website Audit
+                  Not Sure? Book A Free Discovery Call
                 </Button>
               </div>
             </div>
@@ -161,9 +164,14 @@ export function WebsitesLandingPage() {
       {/* Modals */}
       <AuditModal open={auditModalOpen} onOpenChange={setAuditModalOpen} />
       <QuoteModal open={quoteModalOpen} onOpenChange={setQuoteModalOpen} />
+      <PaymentProvidersModal 
+        open={paymentModalOpen} 
+        onOpenChange={setPaymentModalOpen}
+        totalAmount={totalAmount}
+      />
       
       {/* Sticky Mobile CTA */}
-      <StickyMobileCTA onAuditClick={handleAuditClick} onQuoteClick={handleQuoteClick} />
+      <StickyMobileCTA />
     </div>
   );
 }

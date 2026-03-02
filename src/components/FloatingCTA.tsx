@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { UserPlus, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     // Show the button after a short delay when user scrolls down
@@ -20,6 +21,11 @@ const FloatingCTA = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isDismissed]);
+
+  // Hide on /websites page
+  if (location.pathname === '/websites') {
+    return null;
+  }
 
   if (isDismissed) return null;
 
