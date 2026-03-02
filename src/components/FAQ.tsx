@@ -9,34 +9,34 @@ import {
 const FAQ = memo(() => {
   const faqs = [
     {
-      question: 'What is Gravitas?',
+      question: 'How quickly can you deliver my project?',
       answer:
-        'Gravitas is a multidisciplinary venture that combines AI and technical expertise to develop innovative, sustainable products and services for diverse markets. We focus on creating solutions that make a meaningful impact across various industries.',
+        'Timeline varies by project scope. Our AI Website Builder can launch simple sites in minutes. Custom web development projects typically take 2-4 weeks. During your free discovery call, we\'ll provide a detailed timeline tailored to your specific needs and deadlines.',
     },
     {
-      question: 'What services do you offer?',
+      question: 'What makes Gravitas different from other agencies?',
       answer:
-        'We offer a comprehensive range of services including AI development, product design, technical consulting, market research, and end-to-end product development. Our team works closely with clients to bring innovative ideas to life.',
+        'We combine cutting-edge AI technology with human expertise to deliver superior results faster and more cost-effectively. Our team has deep experience across multiple industries, and we focus on measurable business outcomes - not just beautiful designs. Plus, our AI Website Builder gives you unprecedented speed and flexibility.',
     },
     {
-      question: 'How can I work with Gravitas?',
+      question: 'How much does a typical project cost?',
       answer:
-        'You can book a free 15-minute discovery call through our "Work With Us" button. During this call, we\'ll discuss your needs, explore potential collaboration opportunities, and determine how we can best support your project or business goals.',
+        'Our AI Website Builder starts at just $19.99/month. Custom web development projects start from $2,500. E-commerce solutions begin at $5,000. We offer flexible pricing including subscriptions and pay-as-you-go options. Book a free consultation to get a detailed quote for your specific requirements.',
     },
     {
-      question: 'What industries do you serve?',
+      question: 'Do you offer ongoing support after launch?',
       answer:
-        'We serve a diverse range of industries including technology, healthcare, consumer products, sustainability, and more. Our multidisciplinary approach allows us to adapt our expertise to various market needs and challenges.',
+        'Absolutely! We offer comprehensive maintenance packages, technical support, and continuous optimization services. Our client area portal gives you 24/7 access to submit tickets, track projects, and manage your services. We\'re committed to your long-term success.',
     },
     {
-      question: 'Where can I find the 2026 Whitepaper?',
+      question: 'Can I see examples of your work?',
       answer:
-        'Our 2026 Whitepaper provides insights into our vision, methodologies, and upcoming innovations. You can access it by clicking the "Read Our 2026 Whitepaper" button on our homepage.',
+        'Yes! Visit our Portfolio page to see case studies and examples of websites, e-commerce platforms, and digital solutions we\'ve built for clients across various industries. Each project includes details about the challenge, our solution, and the measurable results achieved.',
     },
     {
-      question: 'How long does a typical project take?',
+      question: 'What if I need changes after my website launches?',
       answer:
-        'Project timelines vary depending on scope and complexity. During our discovery call, we\'ll assess your specific needs and provide a realistic timeline. We pride ourselves on delivering quality work efficiently while maintaining our high standards.',
+        'With our AI Website Builder, you can make unlimited changes yourself through simple chat commands. For custom projects, we include a revision period and offer ongoing development services. Our goal is ensuring your digital presence evolves with your business needs.',
     },
   ];
 
@@ -45,10 +45,10 @@ const FAQ = memo(() => {
       <div className="max-w-3xl mx-auto space-y-8">
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Frequently Asked Questions
+            Your Questions Answered
           </h2>
           <p className="text-lg text-muted-foreground">
-            Find answers to common questions about Gravitas and our services
+            Everything you need to know about working with Gravitas
           </p>
         </div>
 

@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SkipLink from "@/components/SkipLink";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import CookieConsent from "@/components/CookieConsent";
+import FloatingCTA from "@/components/FloatingCTA";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Suspense, lazy, useEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -105,6 +106,7 @@ const App = () => {
               {/* <PWAInstallPrompt /> */}
               <CookieConsent />
               <BrowserRouter>
+                <FloatingCTA />
                 <Suspense fallback={<LoadingFallback />}>
                   <Routes>
                     <Route path="/" element={<Index />} />
