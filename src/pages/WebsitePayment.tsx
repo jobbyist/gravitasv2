@@ -27,13 +27,13 @@ const WebsitePayment = () => {
             <div className="text-center space-y-4 mb-12">
               <Badge variant="secondary" className="text-sm px-4 py-1.5">
                 <Sparkles className="h-4 w-4 mr-2" />
-                Limited Time Special Offer
+               International Women's Month Special
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold">
-                Basic Website Special - R199
+                Basic Website Starter Pack - $199 once off
               </h1>
               <p className="text-xl text-muted-foreground">
-                Basic 5-page website ideal for personal websites and small businesses
+                Basic 5-page website ideal for personal websites, portfolios and small business websites
               </p>
             </div>
 
@@ -83,11 +83,11 @@ const WebsitePayment = () => {
                     <div className="border-t pt-4 space-y-2">
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Standard Hosting</span>
-                        <span className="text-sm font-medium">R9.99/month</span>
+                        <span className="text-sm font-medium">$10/month</span>
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Professional Email (5 users)</span>
-                        <span className="text-sm font-medium">R2.49/month*</span>
+                        <span className="text-sm font-medium">$1.99/month*</span>
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Domain Registration (first year)</span>
@@ -97,7 +97,7 @@ const WebsitePayment = () => {
                     <div className="border-t pt-4">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Total Monthly</span>
-                        <span className="text-xl font-bold">R12.48/month</span>
+                        <span className="text-xl font-bold">$11.99/month</span>
                       </div>
                     </div>
                   </div>
@@ -108,7 +108,7 @@ const WebsitePayment = () => {
                       30-day money-back guarantee. No long-term contracts.
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      *Email pricing is when billed annually (R29.88/year)
+                      *Email pricing is billed annually ($23.88/year)
                     </p>
                   </div>
                 </CardContent>
