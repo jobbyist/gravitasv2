@@ -9,7 +9,7 @@ import { RotateCcw } from 'lucide-react';
 import { pricingConfig } from '@/lib/pricingConfig';
 import { 
   calculateTotal, 
-  formatZAR, 
+  formatUSD, 
   parsePricingFromURL, 
   pricingToURLParams 
 } from '@/lib/pricingCalculator';
@@ -81,7 +81,7 @@ export function PricingEstimator() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-lg font-bold">{formatZAR(pricingConfig.maintenanceMonthly)}/mo</span>
+              <span className="text-lg font-bold">{formatUSD(pricingConfig.maintenanceMonthly)}/mo</span>
               <Switch 
                 id="maintenance"
                 checked={maintenanceEnabled}
@@ -129,7 +129,7 @@ export function PricingEstimator() {
           {/* Base Price */}
           <div className="flex justify-between items-center">
             <span className="font-medium">Base Website Build</span>
-            <span className="font-semibold">{formatZAR(breakdown.basePrice)}</span>
+            <span className="font-semibold">{formatUSD(breakdown.basePrice)}</span>
           </div>
 
           {/* Upsells */}
@@ -140,7 +140,7 @@ export function PricingEstimator() {
                 {breakdown.upsells.map((upsell) => (
                   <div key={upsell.id} className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">{upsell.name}</span>
-                    <span>{formatZAR(upsell.price)}</span>
+                    <span>{formatUSD(upsell.price)}</span>
                   </div>
                 ))}
               </div>
@@ -151,7 +151,7 @@ export function PricingEstimator() {
           <Separator />
           <div className="flex justify-between items-center text-lg">
             <span className="font-bold">Total Once-off</span>
-            <span className="font-bold text-primary">{formatZAR(breakdown.totalOnceOff)}</span>
+            <span className="font-bold text-primary">{formatUSD(breakdown.totalOnceOff)}</span>
           </div>
 
           {/* Monthly if maintenance */}
@@ -160,7 +160,7 @@ export function PricingEstimator() {
               <Separator />
               <div className="flex justify-between items-center text-lg">
                 <span className="font-bold">Monthly Maintenance</span>
-                <span className="font-bold text-primary">{formatZAR(breakdown.totalMonthly)}/mo</span>
+                <span className="font-bold text-primary">{formatUSD(breakdown.totalMonthly)}/mo</span>
               </div>
             </>
           )}
@@ -168,7 +168,7 @@ export function PricingEstimator() {
           {/* Savings Display */}
           <div className="bg-accent p-3 rounded-lg">
             <p className="text-sm text-center">
-              <span className="font-semibold text-primary">You're saving {formatZAR(breakdown.savings)}</span>
+              <span className="font-semibold text-primary">You're saving {formatUSD(breakdown.savings)}</span>
               <span className="text-muted-foreground"> on the base website build!</span>
             </p>
           </div>

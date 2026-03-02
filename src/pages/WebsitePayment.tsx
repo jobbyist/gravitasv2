@@ -78,7 +78,7 @@ const WebsitePayment = () => {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-lg">Website Setup</span>
-                      <span className="text-2xl font-bold text-primary">R199</span>
+                      <span className="text-2xl font-bold text-primary">$199</span>
                     </div>
                     <div className="border-t pt-4 space-y-2">
                       <div className="flex justify-between items-start">

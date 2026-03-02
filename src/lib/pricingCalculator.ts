@@ -67,10 +67,10 @@ export function calculateTotal(
 }
 
 /**
- * Format ZAR currency
+ * Format USD currency
  */
-export function formatZAR(amount: number): string {
-  return `R${amount.toLocaleString('en-ZA')}`;
+export function formatUSD(amount: number): string {
+  return `$${amount.toLocaleString('en-US')}`;
 }
 
 /**

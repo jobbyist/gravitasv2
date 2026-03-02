@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Info } from 'lucide-react';
 import { UpsellOption } from '@/lib/pricingConfig';
-import { formatZAR } from '@/lib/pricingCalculator';
+import { formatUSD } from '@/lib/pricingCalculator';
 
 interface UpsellCardProps {
   upsell: UpsellOption;
@@ -20,13 +20,13 @@ export function UpsellCard({ upsell, value, onChange }: UpsellCardProps) {
   // Get the display price for select-type upsells
   const getDisplayPrice = () => {
     if (isCheckbox) {
-      return formatZAR(upsell.price);
+      return formatUSD(upsell.price);
     }
     
     if (upsell.options) {
       const maxPrice = Math.max(...upsell.options.filter(opt => opt.price > 0).map(opt => opt.price));
       if (maxPrice > 0) {
-        return `from ${formatZAR(upsell.options.find(opt => opt.price > 0)?.price || 0)}`;
+        return `from ${formatUSD(upsell.options.find(opt => opt.price > 0)?.price || 0)}`;
       }
     }
     return 'Select option';
@@ -77,7 +77,7 @@ export function UpsellCard({ upsell, value, onChange }: UpsellCardProps) {
                 <SelectContent>
                   {upsell.options?.map((option) => (
                     <SelectItem key={option.value} value={option.value}>
-                      {option.label} {option.price > 0 ? `(+${formatZAR(option.price)})` : ''}
+                      {option.label} {option.price > 0 ? `(+${formatUSD(option.price)})` : ''}
                     </SelectItem>
                   ))}
                 </SelectContent>

@@ -54,10 +54,10 @@ const timelines = [
 ];
 
 const budgetRanges = [
-  'R5,000 - R10,000',
-  'R10,000 - R20,000',
-  'R20,000 - R50,000',
-  'R50,000+',
+  '$5,000 - $10,000',
+  '$10,000 - $20,000',
+  '$20,000 - $50,000',
+  '$50,000+',
 ];
 
 export function QuoteModal({ open, onOpenChange }: QuoteModalProps) {
