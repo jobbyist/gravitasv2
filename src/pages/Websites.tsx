@@ -1,9 +1,33 @@
+import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { WebsitesLandingPage } from '@/components/websites/WebsitesLandingPage';
+import { PromoModal } from '@/components/websites/PromoModal';
 import SEO from '@/components/SEO';
 
+const PROMO_MODAL_STORAGE_KEY = 'womens_month_promo_shown_2026';
+const PROMO_DELAY_MS = 30000; // 30 seconds
+
 const Websites = () => {
+  const [promoModalOpen, setPromoModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Check if the promo has already been shown in this session
+    const hasShownPromo = sessionStorage.getItem(PROMO_MODAL_STORAGE_KEY);
+    
+    if (!hasShownPromo) {
+      // Set a timer to show the modal after 30 seconds
+      const timer = setTimeout(() => {
+        setPromoModalOpen(true);
+        // Mark as shown for this session
+        sessionStorage.setItem(PROMO_MODAL_STORAGE_KEY, 'true');
+      }, PROMO_DELAY_MS);
+
+      // Cleanup timer on unmount
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 
@@ -16,6 +40,9 @@ const Websites = () => {
         <WebsitesLandingPage />
       </main>
       <Footer />
+      
+      {/* Women's Month Promotional Modal */}
+      <PromoModal open={promoModalOpen} onOpenChange={setPromoModalOpen} />
     </div>
   );
 };
