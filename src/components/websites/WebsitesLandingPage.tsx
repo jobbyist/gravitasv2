@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Zap, MessageSquare, FileText, TrendingUp } from 'lucide-react';
+import { Zap, MessageSquare, FileText, TrendingUp, Lock } from 'lucide-react';
 import { getDiscountPercentage } from '@/lib/pricingCalculator';
 import { trackEvent, trackPageView } from '@/lib/tracking';
 import { PricingEstimator } from './PricingEstimator';
@@ -97,7 +97,7 @@ export function WebsitesLandingPage() {
                   onClick={handleClaimOffer}
                   className="gap-2"
                 >
-                  <FileText className="h-5 w-5" />
+                  <Lock className="h-5 w-5" />
                   Claim This Special Offer
                 </Button>
                 <Button 

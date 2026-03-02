@@ -10,7 +10,8 @@ import {
   MessageSquare,
   Bot,
   CreditCard,
-  Check
+  Check,
+  Lock
 } from 'lucide-react';
 import { AIWebsiteBuilderModal } from '@/components/websites/AIWebsiteBuilderModal';
 import { trackEvent } from '@/lib/tracking';
@@ -200,7 +201,7 @@ export const AIWebsiteBuilder = memo(() => {
               className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all"
               onClick={handleGetEarlyAccess}
             >
-              <Sparkles className="h-5 w-5" />
+              <Lock className="h-5 w-5" />
               Claim Your Early Access Spot
             </Button>
             <div>

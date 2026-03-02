@@ -5,15 +5,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-black hover:text-white border border-black",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-black hover:text-white border border-black",
-        outline: "border border-black bg-background hover:bg-black hover:text-white",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-black hover:text-white border border-black",
-        ghost: "hover:bg-black hover:text-white border border-black",
+        default: "bg-primary text-primary-foreground hover:bg-black hover:text-white border border-black dark:shadow-[0_0_0_2px_transparent] dark:before:content-[''] dark:before:absolute dark:before:inset-[-2px] dark:before:rounded-[inherit] dark:before:bg-gradient-to-r dark:before:from-purple-500 dark:before:via-pink-500 dark:before:to-blue-500 dark:before:bg-[length:400%_100%] dark:before:animate-gradient-x dark:before:-z-10",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-black hover:text-white border border-black dark:shadow-[0_0_0_2px_transparent] dark:before:content-[''] dark:before:absolute dark:before:inset-[-2px] dark:before:rounded-[inherit] dark:before:bg-gradient-to-r dark:before:from-purple-500 dark:before:via-pink-500 dark:before:to-blue-500 dark:before:bg-[length:400%_100%] dark:before:animate-gradient-x dark:before:-z-10",
+        outline: "border border-black bg-background hover:bg-black hover:text-white dark:shadow-[0_0_0_2px_transparent] dark:before:content-[''] dark:before:absolute dark:before:inset-[-2px] dark:before:rounded-[inherit] dark:before:bg-gradient-to-r dark:before:from-purple-500 dark:before:via-pink-500 dark:before:to-blue-500 dark:before:bg-[length:400%_100%] dark:before:animate-gradient-x dark:before:-z-10",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-black hover:text-white border border-black dark:shadow-[0_0_0_2px_transparent] dark:before:content-[''] dark:before:absolute dark:before:inset-[-2px] dark:before:rounded-[inherit] dark:before:bg-gradient-to-r dark:before:from-purple-500 dark:before:via-pink-500 dark:before:to-blue-500 dark:before:bg-[length:400%_100%] dark:before:animate-gradient-x dark:before:-z-10",
+        ghost: "hover:bg-black hover:text-white border border-black dark:shadow-[0_0_0_2px_transparent] dark:before:content-[''] dark:before:absolute dark:before:inset-[-2px] dark:before:rounded-[inherit] dark:before:bg-gradient-to-r dark:before:from-purple-500 dark:before:via-pink-500 dark:before:to-blue-500 dark:before:bg-[length:400%_100%] dark:before:animate-gradient-x dark:before:-z-10",
         link: "text-primary underline-offset-4 hover:underline hover:bg-black hover:text-white border border-black",
       },
       size: {
