@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ProductModal from './ProductModal';
+import { productData } from '@/lib/productData';
 
 const Footer = () => {
   const [auctionsModalOpen, setAuctionsModalOpen] = useState(false);
@@ -82,28 +83,28 @@ const Footer = () => {
       <ProductModal
         open={auctionsModalOpen}
         onOpenChange={setAuctionsModalOpen}
-        title="Gravitas Auctions"
-        description="Explore our high value digital asset portfolio and submit bids for equity ownership in our ongoing development projects"
-        ctaText="Learn More"
-        ctaUrl="https://auctions.gravitas.uno"
+        title={productData.auctions.title}
+        description={productData.auctions.description}
+        ctaText={productData.auctions.ctaText}
+        ctaUrl={productData.auctions.ctaUrl}
       />
       
       <ProductModal
         open={commerceModalOpen}
         onOpenChange={setCommerceModalOpen}
-        title="Gravitas Commerce"
-        description="Gravitas Commerce is a high-impact Shopify development service delivering professional, custom-built Online Store 2.0 storefronts for a one-time investment of $500. You get unlimited pages, unlimited app integrations, and unlimited revisions within the agreed build window"
-        ctaText="Learn More"
-        ctaUrl="https://commerce.gravitas.uno"
+        title={productData.commerce.title}
+        description={productData.commerce.description}
+        ctaText={productData.commerce.ctaText}
+        ctaUrl={productData.commerce.ctaUrl}
       />
       
       <ProductModal
         open={domainsModalOpen}
         onOpenChange={setDomainsModalOpen}
-        title="Gravitas Domains"
-        description="Register your domain name with ease with Gravitas Domains and get started with your next big project. In partnership with name.com"
-        ctaText="Learn More"
-        ctaUrl="https://domains.gravitas.uno"
+        title={productData.domains.title}
+        description={productData.domains.description}
+        ctaText={productData.domains.ctaText}
+        ctaUrl={productData.domains.ctaUrl}
       />
     </footer>
   );
