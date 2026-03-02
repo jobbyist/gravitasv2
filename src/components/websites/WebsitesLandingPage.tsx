@@ -11,7 +11,6 @@ import { QuoteModal } from './QuoteModal';
 import { StickyMobileCTA } from './StickyMobileCTA';
 import { AIWebsiteBuilder } from '@/components/AIWebsiteBuilder';
 import { HeroSection } from './HeroSection';
-import { SocialProofSection } from './SocialProofSection';
 import { FeaturesSection } from './FeaturesSection';
 import { UpsellsSection } from './UpsellsSection';
 import { ProcessSection } from './ProcessSection';
@@ -64,9 +63,6 @@ export function WebsitesLandingPage() {
 
       {/* AI Website Builder Section */}
       <AIWebsiteBuilder />
-
-      {/* Social Proof */}
-      <SocialProofSection />
 
       {/* What's Included */}
       <FeaturesSection />
