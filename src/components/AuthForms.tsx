@@ -88,7 +88,7 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
           <div className="text-center text-sm text-muted-foreground pt-2">
             Don't have an account?{' '}
             <a href="/signup" className="text-primary hover:underline">
-              Click here to sign up for frer
+              Click here to sign up for free
             </a>
           </div>
         </form>
