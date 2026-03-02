@@ -48,6 +48,7 @@ const Header = () => {
   ];
 
   const socialLinks = [
+    { icon: Globe, href: 'https://google.gravitas.uno', label: 'Google' },
     { icon: Linkedin, href: 'https://linkedin.gravitas.uno', label: 'LinkedIn' },  
     { icon: Mail, href: 'mailto:hello@gravitas.uno', label: 'Email' },
   ];
@@ -152,7 +153,7 @@ const Header = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              aria-label="What are you looking for?"
+              aria-label="Search articles"
               onClick={() => navigate('/search')}
             >
               <Search className="h-4 w-4" />
@@ -279,7 +280,7 @@ const Header = () => {
               <Button 
                 variant="outline" 
                 size="sm" 
-                aria-label="What are you looking for?"
+                aria-label="Search articles"
                 onClick={() => navigate('/search')}
                 className="w-full"
               >

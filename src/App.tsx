@@ -41,7 +41,6 @@ const TechStackGuide = lazy(() => import("./pages/articles/TechStackGuide"));
 const AIPoweredCustomerExperience = lazy(() => import("./pages/articles/AIPoweredCustomerExperience"));
 const HeadlessCommerce = lazy(() => import("./pages/articles/HeadlessCommerce"));
 const WebPerformance = lazy(() => import("./pages/articles/WebPerformance"));
-const GravitasFebruary2026Updates = lazy(() => import("./pages/articles/GravitasFebruary2026Updates"));
 
 const queryClient = new QueryClient();
 
@@ -103,7 +102,6 @@ const App = () => {
                   <Route path="/articles/ai-customer-experience" element={<AIPoweredCustomerExperience />} />
                   <Route path="/articles/headless-commerce" element={<HeadlessCommerce />} />
                   <Route path="/articles/web-performance" element={<WebPerformance />} />
-                  <Route path="/articles/gravitas-february-2026-updates" element={<GravitasFebruary2026Updates />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />

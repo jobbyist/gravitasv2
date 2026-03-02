@@ -12,8 +12,6 @@ export interface Post {
   image: string;
   slug: string;
   tags?: string[];
-  audioUrl?: string;
-  episodeNumber?: number;
 }
 
 interface PageFilterProps {

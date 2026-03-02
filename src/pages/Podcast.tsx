@@ -1,6 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AudioPlayer from '@/components/AudioPlayer';
+import BlogCard from '@/components/BlogCard';
 import PageFilter, { Post } from '@/components/PageFilter';
 import { useState } from 'react';
 
@@ -9,76 +9,64 @@ const Podcast = () => {
 
   const podcastEpisodes: Post[] = [
     {
-      title: "The Future of AI in Content Creation",
+      title: "The Future of Digital Storytelling: A Conversation with Content Creators",
       category: "PODCAST",
       subcategory: "Digital Media",
-      date: "December 26, 2025",
-      excerpt: "Exploring how AI is revolutionizing content creation across industries.",
-      image: "/podcast/4.png",
-      slug: "future-ai-content-creation",
-      tags: ["AI", "Content Creation", "Digital Media"],
-      audioUrl: "/podcast/ep6.mp3",
-      episodeNumber: 1
+      date: "September 20, 2025",
+      excerpt: "Join us as we explore how digital platforms are reshaping the way we tell and consume stories.",
+      image: "/podcast/1.png",
+      slug: "future-digital-storytelling",
+      tags: ["Storytelling", "Content Creation", "Digital Media"]
     },
     {
-      title: "AI Turbocharges Africa's Creative Economy Boom",
+      title: "Building Authentic Brands in the Social Media Age",
       category: "PODCAST",
       subcategory: "Brand Strategy",
-      date: "January 14, 2026",
+      date: "September 14, 2025",
       excerpt: "Industry experts discuss strategies for creating genuine connections with audiences online.",
-      image: "/podcast/2.png",
+      image: "/podcast/3.png",
       slug: "authentic-brands-social-media",
-      tags: ["Brand Strategy", "Social Media", "Authenticity"],
-      audioUrl: "/podcast/ep2.m4a",
-      episodeNumber: 2
+      tags: ["Brand Strategy", "Social Media", "Authenticity"]
     },
     {
-      title: "YUTE: The Mzansi Money Manual [Case Study]",
+      title: "The Psychology of Influence: Understanding Modern Marketing",
       category: "PODCAST",
       subcategory: "Marketing Psychology",
-      date: "January 7, 2026",
+      date: "September 7, 2025",
       excerpt: "Diving deep into the psychological principles that drive successful marketing campaigns.",
-      image: "/podcast/3.png",
+      image: "/podcast/5.png",
       slug: "psychology-influence-marketing",
-      tags: ["Psychology", "Marketing", "Influence"],
-      audioUrl: "/podcast/ep3.m4a",
-      episodeNumber: 3
+      tags: ["Psychology", "Marketing", "Influence"]
     },
     {
-      title: "Introducing Gravitas: Creating The Blueprint For Multi-Sector Innovation",
+      title: "Women in Tech: Breaking Barriers and Shaping the Future",
       category: "PODCAST",
       subcategory: "Tech Industry",
-      date: "January 21, 2026",
+      date: "August 31, 2025",
       excerpt: "Inspiring conversations with female leaders who are transforming the technology landscape.",
-      image: "/podcast/1.png",
+      image: "/podcast/2.png",
       slug: "women-in-tech",
-      tags: ["Women in Tech", "Leadership", "Tech Industry"],
-      audioUrl: "/podcast/ep1.m4a",
-      episodeNumber: 4
+      tags: ["Women in Tech", "Leadership", "Tech Industry"]
     },
     {
-      title: "Introducing Gravitas Commerce: High-Tech to $500",
+      title: "The Art of Personal Branding: From Vision to Execution",
       category: "PODCAST",
-      subcategory: "Commerce",
-      date: "February 14, 2026",
-      excerpt: "Learn how to launch a high-tech e-commerce solution for just $500.",
-      image: "/podcast/5.png",
-      slug: "gravitas-commerce-hightech",
-      tags: ["Commerce", "Business", "Technology"],
-      audioUrl: "/podcast/ep5.mp3",
-      episodeNumber: 5
+      subcategory: "Personal Development",
+      date: "August 24, 2025",
+      excerpt: "Learn how to craft and communicate your unique story in today's competitive market.",
+      image: "/podcast/4.png",
+      slug: "art-personal-branding",
+      tags: ["Personal Branding", "Career Development", "Self-Marketing"]
     },
     {
-      title: "The $250 Full-Service Agency Business-in-a-Box",
+      title: "Sustainable Living: Small Changes, Big Impact",
       category: "PODCAST",
-      subcategory: "Business",
-      date: "February 21, 2026",
-      excerpt: "Discover how to start your own full-service agency with minimal investment.",
+      subcategory: "Sustainability",
+      date: "August 17, 2025",
+      excerpt: "Practical tips and insights for incorporating sustainability into your daily routine.",
       image: "/podcast/6.png",
-      slug: "agency-business-in-a-box",
-      tags: ["Business", "Agency", "Entrepreneurship"],
-      audioUrl: "/podcast/episode6.mp3",
-      episodeNumber: 6
+      slug: "sustainable-living-impact",
+      tags: ["Sustainability", "Lifestyle", "Environmental Impact"]
     }
   ];
 
@@ -105,14 +93,15 @@ const Podcast = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {postsToShow.map((episode) => (
-            <AudioPlayer
+            <BlogCard
               key={episode.slug}
               title={episode.title}
               category={episode.category}
               date={episode.date}
+              excerpt={episode.excerpt}
               image={episode.image}
-              audioUrl={episode.audioUrl || ''}
-              episodeNumber={episode.episodeNumber || 1}
+              href={`/blog/${episode.slug}`}
+              isSmall={false}
             />
           ))}
         </div>
