@@ -49,8 +49,14 @@ export const subscribeToPushNotifications = async (): Promise<PushSubscription |
     
     if (!subscription) {
       // Subscribe to push notifications
-      // Note: In production, you would use your own VAPID public key
-      const vapidPublicKey = 'YOUR_VAPID_PUBLIC_KEY_HERE';
+      // Note: You need to replace this with your actual VAPID public key
+      // Generate one using: npx web-push generate-vapid-keys
+      const vapidPublicKey = import.meta.env.VITE_VAPID_PUBLIC_KEY;
+      
+      if (!vapidPublicKey) {
+        console.error('VAPID public key not configured. Set VITE_VAPID_PUBLIC_KEY in environment variables.');
+        return null;
+      }
       
       subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,

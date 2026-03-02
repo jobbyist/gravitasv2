@@ -376,7 +376,7 @@ const PartnerProgram = () => {
                 Get detailed information about our partner program and services
               </p>
               <Button asChild size="lg">
-                <a href="/src/assets/gravitas-partner-program.pdf" download>
+                <a href="/gravitas-partner-program.pdf" download>
                   <Download className="h-4 w-4 mr-2" />
                   Download PDF Brochure
                 </a>

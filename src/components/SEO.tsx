@@ -21,7 +21,7 @@ const SEO = ({
   schema
 }: SEOProps) => {
   const location = useLocation();
-  const baseUrl = 'https://nexus.lovable.app';
+  const baseUrl = import.meta.env.VITE_BASE_URL || 'https://nexus.lovable.app';
   const fullUrl = canonicalUrl || `${baseUrl}${location.pathname}`;
 
   useEffect(() => {
