@@ -8,31 +8,16 @@ import EditorsPick from '@/components/EditorsPick';
 import TrendingBlock from '@/components/TrendingBlock';
 import MasonryBlock from '@/components/MasonryBlock';
 import BlogGrid from '@/components/BlogGrid';
-import SEO from '@/components/SEO';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SEO 
-        title="AI-Powered Digital Agency | Website Design, Shopify Development & Marketing | GRAVITAS"
-        description="Leading digital agency specializing in AI services, web design, Shopify development, digital marketing, delivering enterprise-grade solutions worldwide."
-        keywords="website design agency, digital marketing agency, AI agency, Shopify development, Shopify partners, domain registration, web development, e-commerce development"
-      />
       <Header />
       <main id="main-content">
-        {/* Hero section - immediate value proposition */}
         <VideoHero />
-        
-        {/* Social proof - build trust early */}
-        <PartnerLogos />
-        
-        {/* Primary CTA - main conversion driver */}
         <AIWebsiteBuilder />
-        
-        {/* FAQ - address objections and build confidence */}
+        <PartnerLogos />
         <FAQ />
-        
-        {/* Content sections - engagement and SEO */}
         <section aria-labelledby="editors-pick-heading">
           <EditorsPick />
         </section>

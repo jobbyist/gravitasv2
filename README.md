@@ -62,44 +62,12 @@ This project is built with:
 
 ## How can I deploy this project?
 
-This project is configured to automatically deploy to GitHub Pages with a custom domain.
+Simply open [Lovable](https://lovable.dev/projects/65c2f9ed-16cc-427a-af29-7a59108fd09a) and click on Share -> Publish.
 
-### Automatic Deployment
+## Can I connect a custom domain to my Lovable project?
 
-The project uses GitHub Actions for automatic deployment:
+Yes, you can!
 
-- **Trigger**: Pushes to the `main` branch automatically trigger a deployment
-- **Manual Deploy**: You can also trigger a deployment manually from the Actions tab
-- **Custom Domain**: The site is deployed to [https://gravitas.uno](https://gravitas.uno)
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-### Deployment Configuration
-
-The deployment is configured using:
-
-- `.github/workflows/deploy.yml` - GitHub Actions workflow for building and deploying
-- `public/CNAME` - Custom domain configuration (gravitas.uno)
-- `.env.production` - Production environment variables
-- `public/.nojekyll` - Prevents Jekyll processing on GitHub Pages
-
-### GitHub Pages Setup
-
-To enable GitHub Pages for this repository:
-
-1. Go to repository Settings → Pages
-2. Under "Build and deployment", select "Source: GitHub Actions"
-3. The workflow will automatically deploy on pushes to main
-
-### Custom Domain Setup
-
-The custom domain `gravitas.uno` is already configured. To set up DNS:
-
-1. Add an A record pointing to GitHub Pages IPs:
-   - 185.199.108.153
-   - 185.199.109.153
-   - 185.199.110.153
-   - 185.199.111.153
-2. Or add a CNAME record pointing to: `jobbyist.github.io`
-
-### Manual Deployment via Lovable
-
-You can also deploy via [Lovable](https://lovable.dev/projects/65c2f9ed-16cc-427a-af29-7a59108fd09a) by clicking Share → Publish.
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)

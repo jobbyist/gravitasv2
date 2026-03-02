@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { useRef, useState, memo } from 'react';
+import { useRef, useState } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { config } from '@/lib/config';
 
-const VideoHero = memo(() => {
+const VideoHero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -53,44 +53,38 @@ const VideoHero = memo(() => {
 
         {/* Description */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
-            Transform Your Digital Presence with AI-Powered Solutions
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            We leverage cutting-edge AI and technical expertise to build innovative websites, 
-            e-commerce platforms, and digital solutions that drive real business results. 
-            From concept to launch, we're your partner in digital success.
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            A multidisciplinary venture leveraging AI and technical expertise to develop innovative, 
+            sustainable products and services for diverse markets.
           </p>
 
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <Button 
               size="lg" 
-              className="uppercase tracking-wider text-base px-8"
+              className="uppercase tracking-wider"
               asChild
             >
-              <Link to="/lead-generation">
-                Start Your Project Today
+              <a href={config.whitepaper.url} target="_blank" rel="noopener noreferrer">
+                Read Our 2026 Whitepaper
                 <span className="ml-2" aria-hidden="true">→</span>
-              </Link>
+              </a>
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="uppercase tracking-wider text-base px-8"
+              className="uppercase tracking-wider"
               asChild
             >
-              <a href={config.whitepaper.url} target="_blank" rel="noopener noreferrer">
-                View Our 2026 Whitepaper
-              </a>
+              <Link to="/lead-generation">
+                Work With Us
+              </Link>
             </Button>
           </div>
         </div>
       </div>
     </section>
   );
-});
-
-VideoHero.displayName = 'VideoHero';
+};
 
 export default VideoHero;

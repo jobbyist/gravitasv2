@@ -27,7 +27,7 @@ export function PricingEstimator() {
       parsePricingFromURL(searchParams);
     setSelectedUpsells(urlUpsells);
     setMaintenanceEnabled(urlMaintenance);
-  }, [searchParams]);
+  }, []);
 
   // Update URL when selections change
   useEffect(() => {

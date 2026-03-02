@@ -18,37 +18,11 @@ export default defineConfig(({ mode }) => ({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            // Core React libraries
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor-react';
-            }
-            // Router
-            if (id.includes('react-router')) {
-              return 'vendor-router';
-            }
-            // Radix UI components
-            if (id.includes('@radix-ui')) {
-              return 'vendor-ui';
-            }
-            // Charts
-            if (id.includes('recharts')) {
-              return 'vendor-charts';
-            }
-            // Form libraries
-            if (id.includes('react-hook-form') || id.includes('zod') || id.includes('@hookform')) {
-              return 'vendor-forms';
-            }
-            // Other vendor libraries
-            return 'vendor-misc';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
         },
       },
     },
-    // Enable minification with esbuild (faster than terser)
-    minify: 'esbuild',
-    // Optimize chunk size
-    chunkSizeWarningLimit: 1000,
   },
 }));
