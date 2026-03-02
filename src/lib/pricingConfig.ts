@@ -1,6 +1,6 @@
 /**
  * Pricing configuration for the websites landing page
- * All prices in ZAR (South African Rand)
+ * All prices in USD (US Dollars)
  */
 
 export interface UpsellOption {
@@ -188,8 +188,8 @@ export const basePackageIncludes = [
   '1 revision round',
   'Cross-browser compatibility',
   '30-day post-launch support',
-  'Standard hosting for R9.99 per month',
-  'Professional email for 5 users at R2.49/month when billed annually',
+  'Standard hosting for $9.99 per month',
+  'Professional email for 5 users at $2.49/month when billed annually',
   'Free domain name registration for the first year',
 ];
 

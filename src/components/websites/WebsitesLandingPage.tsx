@@ -19,7 +19,7 @@ import {
   Target
 } from 'lucide-react';
 import { pricingConfig, basePackageIncludes, basePackageExclusions } from '@/lib/pricingConfig';
-import { formatZAR, getDiscountPercentage } from '@/lib/pricingCalculator';
+import { formatUSD, getDiscountPercentage } from '@/lib/pricingCalculator';
 import { trackEvent, trackPageView } from '@/lib/tracking';
 import { PricingEstimator } from './PricingEstimator';
 import { AuditModal } from './AuditModal';
@@ -78,7 +78,7 @@ export function WebsitesLandingPage() {
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
               Basic Website Special:{' '}
-              <span className="text-primary">{formatZAR(pricingConfig.baseWebsiteBuild)}</span>{' '}
+              <span className="text-primary">{formatUSD(pricingConfig.baseWebsiteBuild)}</span>{' '}
               once-off
             </h1>
 
@@ -90,10 +90,10 @@ export function WebsitesLandingPage() {
             {/* Price Anchor */}
             <div className="flex items-center justify-center gap-4 text-lg">
               <span className="text-muted-foreground line-through">
-                Was {formatZAR(pricingConfig.originalPrice)}
+                Was {formatUSD(pricingConfig.originalPrice)}
               </span>
               <span className="text-2xl font-bold text-primary">
-                → Now {formatZAR(pricingConfig.baseWebsiteBuild)}
+                → Now {formatUSD(pricingConfig.baseWebsiteBuild)}
               </span>
             </div>
 
@@ -490,7 +490,7 @@ export function WebsitesLandingPage() {
               <AccordionItem value="maintenance">
                 <AccordionTrigger>What does the maintenance plan include?</AccordionTrigger>
                 <AccordionContent>
-                  Our {formatZAR(pricingConfig.maintenanceMonthly)}/month maintenance plan includes: regular software updates, daily backups, security monitoring, uptime monitoring, minor content updates (up to 2 hours/month), and priority support. It's optional but highly recommended for peace of mind.
+                  Our {formatUSD(pricingConfig.maintenanceMonthly)}/month maintenance plan includes: regular software updates, daily backups, security monitoring, uptime monitoring, minor content updates (up to 2 hours/month), and priority support. It's optional but highly recommended for peace of mind.
                 </AccordionContent>
               </AccordionItem>
 
@@ -518,7 +518,7 @@ export function WebsitesLandingPage() {
               <AccordionItem value="payment">
                 <AccordionTrigger>What are the payment terms?</AccordionTrigger>
                 <AccordionContent>
-                  We require a 50% deposit to start the project, with the remaining 50% due upon completion before launch. For larger projects over R50,000, we can arrange milestone-based payments.
+                  We require a 50% deposit to start the project, with the remaining 50% due upon completion before launch. For larger projects over $50,000, we can arrange milestone-based payments.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
