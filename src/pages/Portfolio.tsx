@@ -33,6 +33,13 @@ const Portfolio = () => {
       fullUrl: "https://www.skinlabs.co.za",
       description: "Advanced skincare solutions combining science and nature for healthy, radiant skin.",
       category: "Healthcare & Beauty"
+    },
+    {
+      name: "The Mannuh Project",
+      url: "app.mannuh.space",
+      fullUrl: "https://app.mannuh.space",
+      description: "An innovative platform delivering comprehensive solutions with modern design and functionality.",
+      category: "Technology"
     }
   ];
 
@@ -102,7 +109,7 @@ const Portfolio = () => {
             </p>
             <div className="flex gap-4 justify-center">
               <Button size="lg" asChild>
-                <a href="/lead-generation">Request a Quote</a>
+                <a href="/lead-generation">Get Started</a>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a href="/contact">Contact Us</a>

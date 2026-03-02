@@ -249,17 +249,20 @@ const SearchResults = () => {
                     Try adjusting your search terms or browse our categories:
                   </p>
                   <div className="flex flex-wrap justify-center gap-4">
-                    <Button variant="outline" onClick={() => navigate('/business')}>
-                      Business
+                    <Button variant="outline" asChild>
+                      <a href="https://auctions.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                        Auctions
+                      </a>
                     </Button>
-                    <Button variant="outline" onClick={() => navigate('/technology')}>
-                      Technology
+                    <Button variant="outline" asChild>
+                      <a href="https://commerce.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                        Commerce
+                      </a>
                     </Button>
-                    <Button variant="outline" onClick={() => navigate('/podcast')}>
-                      Podcast
-                    </Button>
-                    <Button variant="outline" onClick={() => navigate('/posts')}>
-                      All Posts
+                    <Button variant="outline" asChild>
+                      <a href="https://domains.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                        Domains
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -274,17 +277,20 @@ const SearchResults = () => {
                 Enter a search term above to find articles, or browse our latest content:
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button variant="outline" onClick={() => navigate('/posts')}>
-                  All Posts
+                <Button variant="outline" asChild>
+                  <a href="https://auctions.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                    Auctions
+                  </a>
                 </Button>
-                <Button variant="outline" onClick={() => navigate('/business')}>
-                  Business
+                <Button variant="outline" asChild>
+                  <a href="https://commerce.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                    Commerce
+                  </a>
                 </Button>
-                <Button variant="outline" onClick={() => navigate('/technology')}>
-                  Technology
-                </Button>
-                <Button variant="outline" onClick={() => navigate('/podcast')}>
-                  Podcast
+                <Button variant="outline" asChild>
+                  <a href="https://domains.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                    Domains
+                  </a>
                 </Button>
               </div>
             </div>

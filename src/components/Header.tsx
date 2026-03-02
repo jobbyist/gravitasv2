@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Facebook, Twitter, Instagram, Menu, X, User, LogOut } from 'lucide-react';
+import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Briefcase, Monitor, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
+import ProductModal from './ProductModal';
+import { productData } from '@/lib/productData';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,25 +14,41 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [auctionsModalOpen, setAuctionsModalOpen] = useState(false);
+  const [commerceModalOpen, setCommerceModalOpen] = useState(false);
+  const [domainsModalOpen, setDomainsModalOpen] = useState(false);
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuth();
 
-  const navItems = [
-    { name: 'ARTICLES', href: '/posts' },
-    { name: 'BUSINESS', href: '/business' },
-    { name: 'TECHNOLOGY', href: '/technology' },
-    { name: 'PODCAST', href: '/podcast' },
-    { name: 'PORTFOLIO', href: '/portfolio' },
-    { name: 'BOOKINGS', href: '/lead-generation' },
+  const exploreItems = [
+    { name: 'Bookings', href: '/lead-generation', icon: Calendar },
+    { name: 'Portfolio', href: '/portfolio', icon: Folder },
+    { name: 'Articles', href: '/posts', icon: Newspaper },
+    { name: 'Podcast', href: '/podcast', icon: Mic },
+  ];
+
+  const productItems = [
+    { name: 'Auctions', action: () => setAuctionsModalOpen(true), icon: Hammer },
+    { name: 'Brand Kits', href: '/brand-kits', icon: Package },
+    { name: 'Commerce', action: () => setCommerceModalOpen(true), icon: ShoppingCart },
+    { name: 'Domains', action: () => setDomainsModalOpen(true), icon: Globe },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },  
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Globe, href: 'https://google.gravitas.uno', label: 'Google' },
+    { icon: Linkedin, href: 'https://linkedin.gravitas.uno', label: 'LinkedIn' },  
+    { icon: Mail, href: 'mailto:hello@gravitas.uno', label: 'Email' },
   ];
 
   return (
@@ -46,15 +64,78 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                className="nav-link"
-              >
-                {item.name}
-              </Link>
-            ))}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link to="/business" className="nav-link flex items-center gap-2">
+                    <Briefcase className="h-4 w-4" />
+                    BUSINESS
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link to="/technology" className="nav-link flex items-center gap-2">
+                    <Monitor className="h-4 w-4" />
+                    TECHNOLOGY
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="nav-link">EXPLORE</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-3 p-4">
+                      {exploreItems.map((item) => (
+                        <li key={item.name}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              to={item.href}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="flex items-center gap-2 text-sm font-medium leading-none">
+                                <item.icon className="h-4 w-4" />
+                                {item.name}
+                              </div>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="nav-link">PRODUCTS</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[200px] gap-3 p-4">
+                      {productItems.map((item) => (
+                        <li key={item.name}>
+                          <NavigationMenuLink asChild={!!item.href}>
+                            {item.href ? (
+                              <Link
+                                to={item.href}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="flex items-center gap-2 text-sm font-medium leading-none">
+                                  <item.icon className="h-4 w-4" />
+                                  {item.name}
+                                </div>
+                              </Link>
+                            ) : (
+                              <button
+                                onClick={item.action}
+                                className="w-full text-left block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="flex items-center gap-2 text-sm font-medium leading-none">
+                                  <item.icon className="h-4 w-4" />
+                                  {item.name}
+                                </div>
+                              </button>
+                            )}
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </nav>
 
           {/* Social Links & Search */}
@@ -121,16 +202,62 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-border py-4">
             <nav className="flex flex-col space-y-4" role="navigation" aria-label="Mobile navigation">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="nav-link"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              <Link to="/business" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                <Briefcase className="h-4 w-4" />
+                BUSINESS
+              </Link>
+              <Link to="/technology" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                <Monitor className="h-4 w-4" />
+                TECHNOLOGY
+              </Link>
+              
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-foreground">EXPLORE</div>
+                <div className="pl-4 space-y-2">
+                  {exploreItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className="nav-link flex items-center gap-2 text-sm"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <item.icon className="h-4 w-4" />
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="space-y-2">
+                <div className="text-sm font-medium text-foreground">PRODUCTS</div>
+                <div className="pl-4 space-y-2">
+                  {productItems.map((item) => (
+                    item.href ? (
+                      <Link
+                        key={item.name}
+                        to={item.href}
+                        className="nav-link flex items-center gap-2 text-sm"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        <item.icon className="h-4 w-4" />
+                        {item.name}
+                      </Link>
+                    ) : (
+                      <button
+                        key={item.name}
+                        onClick={() => {
+                          item.action?.();
+                          setIsMenuOpen(false);
+                        }}
+                        className="nav-link flex items-center gap-2 text-sm w-full text-left"
+                      >
+                        <item.icon className="h-4 w-4" />
+                        {item.name}
+                      </button>
+                    )
+                  ))}
+                </div>
+              </div>
             </nav>
             
             <div className="mt-6 space-y-4">
@@ -181,6 +308,33 @@ const Header = () => {
           </div>
         )}
       </div>
+      
+      <ProductModal
+        open={auctionsModalOpen}
+        onOpenChange={setAuctionsModalOpen}
+        title={productData.auctions.title}
+        description={productData.auctions.description}
+        ctaText={productData.auctions.ctaText}
+        ctaUrl={productData.auctions.ctaUrl}
+      />
+      
+      <ProductModal
+        open={commerceModalOpen}
+        onOpenChange={setCommerceModalOpen}
+        title={productData.commerce.title}
+        description={productData.commerce.description}
+        ctaText={productData.commerce.ctaText}
+        ctaUrl={productData.commerce.ctaUrl}
+      />
+      
+      <ProductModal
+        open={domainsModalOpen}
+        onOpenChange={setDomainsModalOpen}
+        title={productData.domains.title}
+        description={productData.domains.description}
+        ctaText={productData.domains.ctaText}
+        ctaUrl={productData.domains.ctaUrl}
+      />
     </header>
   );
 };
