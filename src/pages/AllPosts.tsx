@@ -30,7 +30,7 @@ const AllPosts = () => {
       category: "WEB DEV", 
       subcategory: "Web Development",
       date: "Nov 3, 2025",
-      excerpt: "Best practices for developing scalable and performant web applications in 2024.",
+      excerpt: "Best practices for developing scalable and performant web applications in 2025.",
       image: businessPost,
       slug: "modern-web-apps",
       tags: ["Web Development", "Best Practices", "Performance"]

@@ -14,7 +14,7 @@ const Podcast = () => {
       subcategory: "Digital Media",
       date: "December 26, 2025",
       excerpt: "Exploring how AI is revolutionizing content creation across industries.",
-      image: "/podcast/6.png",
+      image: "/podcast/4.png",
       slug: "future-ai-content-creation",
       tags: ["AI", "Content Creation", "Digital Media"],
       audioUrl: "/podcast/ep6.mp3",

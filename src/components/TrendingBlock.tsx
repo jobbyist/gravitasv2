@@ -23,7 +23,7 @@ const latestPodcastEpisodes = [
     title: "The Future of AI in Content Creation",
     category: "PODCAST",
     date: "December 26, 2025",
-    image: "/podcast/6.png",
+    image: "/podcast/4.png",
     audioUrl: EPISODE_1_AUDIO_URL,
     episodeNumber: 1,
     visible: true
