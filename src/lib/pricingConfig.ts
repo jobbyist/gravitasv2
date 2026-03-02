@@ -21,12 +21,12 @@ export interface PricingConfig {
 }
 
 export const pricingConfig: PricingConfig = {
-  // Base website build price - Special Offer (97% off)
-  baseWebsiteBuild: 199,
+  // Base website build price
+  baseWebsiteBuild: 500,
   originalPrice: 5990,
   
   // Monthly maintenance (optional)
-  maintenanceMonthly: 249,
+  maintenanceMonthly: 99,
   
   // All available upsells
   upsells: [
@@ -36,7 +36,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Add PWA Functionality',
       description: 'Progressive Web App features',
       tooltip: 'Installable app-like experience, offline support; push notifications optional.',
-      price: 799,
+      price: 299,
       type: 'checkbox',
     },
     {
@@ -44,7 +44,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Google Play Store Support',
       description: 'Publish to Google Play Store',
       tooltip: 'Get your PWA listed on Google Play Store for wider distribution.',
-      price: 599,
+      price: 199,
       type: 'checkbox',
     },
     {
@@ -56,8 +56,8 @@ export const pricingConfig: PricingConfig = {
       type: 'select',
       options: [
         { label: 'None', value: 'none', price: 0 },
-        { label: 'Domestic Shipping (The Courier Guy, Aramex)', value: 'domestic', price: 495 },
-        { label: 'International Shipping (DHL, FedEx)', value: 'international', price: 899 },
+        { label: 'Domestic Shipping (The Courier Guy, Aramex)', value: 'domestic', price: 199 },
+        { label: 'International Shipping (DHL, FedEx)', value: 'international', price: 349 },
       ],
     },
     
@@ -71,9 +71,9 @@ export const pricingConfig: PricingConfig = {
       type: 'select',
       options: [
         { label: 'None', value: '0', price: 0 },
-        { label: '5 Pages', value: '5', price: 1495 },
-        { label: '10 Pages', value: '10', price: 2795 },
-        { label: '15 Pages', value: '15', price: 3995 },
+        { label: '5 Pages', value: '5', price: 299 },
+        { label: '10 Pages', value: '10', price: 549 },
+        { label: '15 Pages', value: '15', price: 749 },
       ],
     },
     {
@@ -85,9 +85,9 @@ export const pricingConfig: PricingConfig = {
       type: 'select',
       options: [
         { label: 'None', value: '0', price: 0 },
-        { label: 'Per Page (up to 500 words)', value: '1', price: 395 },
-        { label: '3 Pages Package', value: '3', price: 995 },
-        { label: '5 Pages Package', value: '5', price: 1595 },
+        { label: 'Per Page (up to 500 words)', value: '1', price: 79 },
+        { label: '3 Pages Package', value: '3', price: 199 },
+        { label: '5 Pages Package', value: '5', price: 299 },
       ],
     },
     {
@@ -95,7 +95,7 @@ export const pricingConfig: PricingConfig = {
       name: 'SEO Starter Setup',
       description: 'Advanced SEO configuration',
       tooltip: 'Comprehensive SEO setup including keyword research, meta tags optimization, XML sitemap, robots.txt, and Google Search Console integration.',
-      price: 795,
+      price: 199,
       type: 'checkbox',
     },
     {
@@ -103,7 +103,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Analytics + Conversion Tracking',
       description: 'GA4, Meta Pixel, Google Ads tag',
       tooltip: 'Complete analytics setup including Google Analytics 4, Meta Pixel, Google Ads conversion tracking, and custom event tracking.',
-      price: 495,
+      price: 99,
       type: 'checkbox',
     },
     {
@@ -111,7 +111,7 @@ export const pricingConfig: PricingConfig = {
       name: 'WhatsApp Chat Integration',
       description: 'Live WhatsApp business chat widget',
       tooltip: 'Add a WhatsApp chat button to your website for instant customer communication.',
-      price: 295,
+      price: 49,
       type: 'checkbox',
     },
     {
@@ -119,7 +119,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Booking System Integration',
       description: 'Online appointment scheduling',
       tooltip: 'Integrate a booking system for appointments, reservations, or service scheduling with calendar sync.',
-      price: 1295,
+      price: 399,
       type: 'checkbox',
     },
     {
@@ -127,7 +127,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Professional Email Setup',
       description: 'SPF/DKIM/DMARC configuration',
       tooltip: 'Professional email setup with SPF, DKIM, and DMARC records for better email deliverability and security.',
-      price: 395,
+      price: 79,
       type: 'checkbox',
     },
     {
@@ -135,7 +135,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Speed Optimization',
       description: 'Performance tuning and optimization',
       tooltip: 'Comprehensive speed optimization including image compression, lazy loading, code minification, and CDN setup.',
-      price: 695,
+      price: 149,
       type: 'checkbox',
     },
     {
@@ -143,7 +143,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Accessibility Pass (WCAG 2.1)',
       description: 'Web accessibility audit and fixes',
       tooltip: 'Ensure your website meets WCAG 2.1 Level AA accessibility standards for better user experience and legal compliance.',
-      price: 895,
+      price: 249,
       type: 'checkbox',
     },
     {
@@ -151,7 +151,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Blog Setup',
       description: 'Full blog/news section with CMS',
       tooltip: 'Complete blog setup with content management system, categories, tags, and RSS feed.',
-      price: 1095,
+      price: 299,
       type: 'checkbox',
     },
     {
@@ -159,7 +159,7 @@ export const pricingConfig: PricingConfig = {
       name: 'Security Hardening + Backups',
       description: 'Enhanced security and automated backups',
       tooltip: 'SSL certificate, security headers, firewall configuration, malware scanning, and automated daily backups.',
-      price: 595,
+      price: 149,
       type: 'checkbox',
     },
     {
@@ -171,9 +171,9 @@ export const pricingConfig: PricingConfig = {
       type: 'select',
       options: [
         { label: 'None', value: '0', price: 0 },
-        { label: '1 Additional Language', value: '1', price: 1295 },
-        { label: '2 Additional Languages', value: '2', price: 2295 },
-        { label: '3 Additional Languages', value: '3', price: 3095 },
+        { label: '1 Additional Language', value: '1', price: 349 },
+        { label: '2 Additional Languages', value: '2', price: 599 },
+        { label: '3 Additional Languages', value: '3', price: 799 },
       ],
     },
   ],

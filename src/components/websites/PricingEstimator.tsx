@@ -10,16 +10,20 @@ import { pricingConfig } from '@/lib/pricingConfig';
 import { 
   calculateTotal, 
   formatUSD, 
+  formatCurrency,
   parsePricingFromURL, 
   pricingToURLParams 
 } from '@/lib/pricingCalculator';
+import { Currency } from '@/lib/currencyConverter';
 import { trackEvent } from '@/lib/tracking';
 import { UpsellCard } from './UpsellCard';
+import { CurrencySelector } from './CurrencySelector';
 
 export function PricingEstimator() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedUpsells, setSelectedUpsells] = useState<Map<string, string | boolean>>(new Map());
   const [maintenanceEnabled, setMaintenanceEnabled] = useState(false);
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>('USD');
 
   // Initialize from URL params
   useEffect(() => {
@@ -62,6 +66,14 @@ export function PricingEstimator() {
     trackEvent('pricing_reset');
   };
 
+  const handleCurrencyChange = (currency: Currency) => {
+    setSelectedCurrency(currency);
+    trackEvent('currency_changed', { currency });
+  };
+
+  // Helper function to format prices in selected currency
+  const formatPrice = (amount: number) => formatCurrency(amount, selectedCurrency);
+
   return (
     <div className="space-y-8">
       {/* Maintenance Toggle */}
@@ -81,7 +93,7 @@ export function PricingEstimator() {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-lg font-bold">{formatUSD(pricingConfig.maintenanceMonthly)}/mo</span>
+              <span className="text-lg font-bold">{formatPrice(pricingConfig.maintenanceMonthly)}/mo</span>
               <Switch 
                 id="maintenance"
                 checked={maintenanceEnabled}
@@ -96,15 +108,18 @@ export function PricingEstimator() {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold">Value-Added Services</h3>
-          <Button 
-            variant="outline" 
-            size="sm" 
-            onClick={handleReset}
-            className="gap-2"
-          >
-            <RotateCcw className="h-4 w-4" />
-            Reset
-          </Button>
+          <div className="flex items-center gap-4">
+            <CurrencySelector value={selectedCurrency} onChange={handleCurrencyChange} />
+            <Button 
+              variant="outline" 
+              size="sm" 
+              onClick={handleReset}
+              className="gap-2"
+            >
+              <RotateCcw className="h-4 w-4" />
+              Reset
+            </Button>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -114,6 +129,7 @@ export function PricingEstimator() {
               upsell={upsell}
               value={selectedUpsells.get(upsell.id)}
               onChange={(value) => handleUpsellChange(upsell.id, value)}
+              currency={selectedCurrency}
             />
           ))}
         </div>
@@ -129,7 +145,7 @@ export function PricingEstimator() {
           {/* Base Price */}
           <div className="flex justify-between items-center">
             <span className="font-medium">Base Website Build</span>
-            <span className="font-semibold">{formatUSD(breakdown.basePrice)}</span>
+            <span className="font-semibold">{formatPrice(breakdown.basePrice)}</span>
           </div>
 
           {/* Upsells */}
@@ -140,7 +156,7 @@ export function PricingEstimator() {
                 {breakdown.upsells.map((upsell) => (
                   <div key={upsell.id} className="flex justify-between items-center text-sm">
                     <span className="text-muted-foreground">{upsell.name}</span>
-                    <span>{formatUSD(upsell.price)}</span>
+                    <span>{formatPrice(upsell.price)}</span>
                   </div>
                 ))}
               </div>
@@ -151,7 +167,7 @@ export function PricingEstimator() {
           <Separator />
           <div className="flex justify-between items-center text-lg">
             <span className="font-bold">Total Once-off</span>
-            <span className="font-bold text-primary">{formatUSD(breakdown.totalOnceOff)}</span>
+            <span className="font-bold text-primary">{formatPrice(breakdown.totalOnceOff)}</span>
           </div>
 
           {/* Monthly if maintenance */}
@@ -160,7 +176,7 @@ export function PricingEstimator() {
               <Separator />
               <div className="flex justify-between items-center text-lg">
                 <span className="font-bold">Monthly Maintenance</span>
-                <span className="font-bold text-primary">{formatUSD(breakdown.totalMonthly)}/mo</span>
+                <span className="font-bold text-primary">{formatPrice(breakdown.totalMonthly)}/mo</span>
               </div>
             </>
           )}
@@ -168,7 +184,7 @@ export function PricingEstimator() {
           {/* Savings Display */}
           <div className="bg-accent p-3 rounded-lg">
             <p className="text-sm text-center">
-              <span className="font-semibold text-primary">You're saving {formatUSD(breakdown.savings)}</span>
+              <span className="font-semibold text-primary">You're saving {formatPrice(breakdown.savings)}</span>
               <span className="text-muted-foreground"> on the base website build!</span>
             </p>
           </div>

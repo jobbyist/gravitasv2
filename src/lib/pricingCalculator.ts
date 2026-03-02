@@ -3,6 +3,7 @@
  */
 
 import { pricingConfig, UpsellOption } from './pricingConfig';
+import { Currency, formatCurrency as formatCurrencyUtil } from './currencyConverter';
 
 export interface SelectedUpsell {
   id: string;
@@ -71,6 +72,13 @@ export function calculateTotal(
  */
 export function formatUSD(amount: number): string {
   return `$${amount.toLocaleString('en-US')}`;
+}
+
+/**
+ * Format currency with specified currency code
+ */
+export function formatCurrency(amount: number, currency: Currency = 'USD'): string {
+  return formatCurrencyUtil(amount, currency);
 }
 
 /**
