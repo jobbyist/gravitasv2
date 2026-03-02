@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import PartnerLogoSlider from '@/components/PartnerLogoSlider';
-import { Mail, MapPin, Calendar, Hammer, Globe, Package, ShoppingCart, Users } from 'lucide-react';
+import { Mail, MapPin, Calendar, Hammer, Globe, Package, ShoppingCart, Users, Monitor } from 'lucide-react';
 
 const About = () => {
   return (
@@ -126,7 +126,7 @@ const About = () => {
               <div className="bg-muted/30 p-6 rounded-lg border border-border hover:border-primary transition-colors">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="p-3 bg-primary/10 rounded-lg">
-                    <Calendar className="h-6 w-6 text-primary" />
+                    <Monitor className="h-6 w-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-foreground mb-2">Websites & Solutions</h3>

@@ -32,8 +32,8 @@ const PartnerLogoSlider = () => {
         className="w-full"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
-          {partners.map((partner, index) => (
-            <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+          {partners.map((partner) => (
+            <CarouselItem key={partner.name} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
               <Card className="p-6 flex items-center justify-center h-32">
                 <div className="relative w-full h-20 flex items-center justify-center">
                   <img
