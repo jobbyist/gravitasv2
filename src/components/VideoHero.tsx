@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useRef, useState, memo } from 'react';
 import { Play, Pause } from 'lucide-react';
 import { config } from '@/lib/config';
 
-const VideoHero = () => {
+const VideoHero = memo(() => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -85,6 +85,8 @@ const VideoHero = () => {
       </div>
     </section>
   );
-};
+});
+
+VideoHero.displayName = 'VideoHero';
 
 export default VideoHero;

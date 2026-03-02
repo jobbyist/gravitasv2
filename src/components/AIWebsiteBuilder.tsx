@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,7 +15,7 @@ import {
 import { AIWebsiteBuilderModal } from '@/components/websites/AIWebsiteBuilderModal';
 import { trackEvent } from '@/lib/tracking';
 
-export function AIWebsiteBuilder() {
+export const AIWebsiteBuilder = memo(() => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleGetEarlyAccess = () => {
@@ -208,4 +208,6 @@ export function AIWebsiteBuilder() {
       <AIWebsiteBuilderModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
   );
-}
+});
+
+AIWebsiteBuilder.displayName = 'AIWebsiteBuilder';
