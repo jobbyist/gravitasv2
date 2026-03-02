@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Briefcase, Monitor, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe } from 'lucide-react';
+import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Info, Users, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe, Smartphone, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
 import ProductModal from './ProductModal';
+import AppDownloadModal from './AppDownloadModal';
 import { productData } from '@/lib/productData';
 import {
   DropdownMenu,
@@ -28,6 +29,7 @@ const Header = () => {
   const [auctionsModalOpen, setAuctionsModalOpen] = useState(false);
   const [commerceModalOpen, setCommerceModalOpen] = useState(false);
   const [domainsModalOpen, setDomainsModalOpen] = useState(false);
+  const [appDownloadModalOpen, setAppDownloadModalOpen] = useState(false);
   const navigate = useNavigate();
   const { user, logout, isAuthenticated } = useAuth();
 
@@ -67,15 +69,15 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <Link to="/business" className="nav-link flex items-center gap-2">
-                    <Briefcase className="h-4 w-4" />
-                    BUSINESS
+                  <Link to="/about" className="nav-link flex items-center gap-2">
+                    <Info className="h-4 w-4" />
+                    ABOUT
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link to="/technology" className="nav-link flex items-center gap-2">
-                    <Monitor className="h-4 w-4" />
-                    TECHNOLOGY
+                  <Link to="/partner-program" className="nav-link flex items-center gap-2">
+                    <Users className="h-4 w-4" />
+                    PARTNERS
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -177,11 +179,13 @@ const Header = () => {
               </DropdownMenu>
             ) : (
               <>
-                <Button variant="outline" size="sm" onClick={() => navigate('/login')}>
-                  Login
+                <Button variant="outline" size="sm" onClick={() => navigate('/contact')}>
+                  <MessageCircle className="h-4 w-4 mr-2" />
+                  Contact Support
                 </Button>
-                <Button size="sm" onClick={() => navigate('/signup')}>
-                  Sign Up
+                <Button size="sm" onClick={() => setAppDownloadModalOpen(true)}>
+                  <Smartphone className="h-4 w-4 mr-2" />
+                  Download The App
                 </Button>
               </>
             )}
@@ -202,13 +206,13 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden border-t border-border py-4">
             <nav className="flex flex-col space-y-4" role="navigation" aria-label="Mobile navigation">
-              <Link to="/business" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                <Briefcase className="h-4 w-4" />
-                BUSINESS
+              <Link to="/about" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                <Info className="h-4 w-4" />
+                ABOUT
               </Link>
-              <Link to="/technology" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                <Monitor className="h-4 w-4" />
-                TECHNOLOGY
+              <Link to="/partner-program" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
+                <Users className="h-4 w-4" />
+                PARTNERS
               </Link>
               
               <div className="space-y-2">
@@ -296,11 +300,13 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <Button variant="outline" size="sm" onClick={() => navigate('/login')} className="w-full">
-                    Login
+                  <Button variant="outline" size="sm" onClick={() => navigate('/contact')} className="w-full">
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Contact Support
                   </Button>
-                  <Button size="sm" onClick={() => navigate('/signup')} className="w-full">
-                    Sign Up
+                  <Button size="sm" onClick={() => setAppDownloadModalOpen(true)} className="w-full">
+                    <Smartphone className="h-4 w-4 mr-2" />
+                    Download The App
                   </Button>
                 </>
               )}
@@ -334,6 +340,11 @@ const Header = () => {
         description={productData.domains.description}
         ctaText={productData.domains.ctaText}
         ctaUrl={productData.domains.ctaUrl}
+      />
+      
+      <AppDownloadModal
+        open={appDownloadModalOpen}
+        onOpenChange={setAppDownloadModalOpen}
       />
     </header>
   );

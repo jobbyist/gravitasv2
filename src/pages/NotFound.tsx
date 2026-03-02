@@ -62,6 +62,15 @@ const NotFound = () => {
               <Link to="/business" className="text-foreground hover:text-primary transition-colors">
                 Business Articles
               </Link>
+              <Link to="/brand-kits" className="text-foreground hover:text-primary transition-colors">
+                Brand Kits
+              </Link>
+              <Link to="/partner-program" className="text-foreground hover:text-primary transition-colors">
+                Partner Program
+              </Link>
+              <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>

@@ -12,6 +12,9 @@ const PartnerLogos = () => {
     { name: 'NotebookLM', logo: '/partners/notebooklm.png' },
     { name: 'Twilio', logo: '/partners/twilio.png' },
     { name: 'Shopify', logo: '/partners/shopify.png' },
+    { name: 'Upwork', logo: '/partners/upwork.png' },
+    { name: 'GitHub', logo: '/partners/github.png' },
+    { name: 'Name.com', logo: '/partners/namedotcom.png' },
   ];
 
   // Auto-rotate every 5 seconds
