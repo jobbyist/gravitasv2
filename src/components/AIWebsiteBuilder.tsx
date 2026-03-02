@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -15,7 +15,7 @@ import {
 import { AIWebsiteBuilderModal } from '@/components/websites/AIWebsiteBuilderModal';
 import { trackEvent } from '@/lib/tracking';
 
-export function AIWebsiteBuilder() {
+export const AIWebsiteBuilder = memo(() => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleGetEarlyAccess = () => {
@@ -31,13 +31,14 @@ export function AIWebsiteBuilder() {
           <div className="text-center space-y-4 mb-12">
             <Badge variant="secondary" className="text-sm px-4 py-2 gap-2">
               <Sparkles className="h-4 w-4" />
-              Get Early Access
+              Limited Early Access Available
             </Badge>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              AI Website Builder
+              Launch Your Website in Minutes, Not Months
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              The next generation, conversational and agentic AI-powered website building service
+              Our revolutionary AI Website Builder transforms your ideas into professional, 
+              live websites through simple conversation. No coding. No complexity. Just results.
             </p>
           </div>
 
@@ -50,10 +51,11 @@ export function AIWebsiteBuilder() {
                 </div>
                 <div className="flex-1">
                   <CardTitle className="text-2xl mb-2">
-                    Create & Publish Websites in Minutes
+                    From Concept to Live Website in Minutes
                   </CardTitle>
                   <CardDescription className="text-base">
-                    A feature-packed, highly intuitive website building tool designed to help anyone create and publish a professional website with simple instructions.
+                    Simply describe your business, goals, and preferences. Our AI handles design, 
+                    development, content, and publishing - delivering a professional website ready to attract customers.
                   </CardDescription>
                 </div>
               </div>
@@ -64,9 +66,13 @@ export function AIWebsiteBuilder() {
                 <div className="flex items-start gap-3">
                   <MessageSquare className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-muted-foreground mb-1">Example instruction:</p>
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Real example:</p>
                     <p className="italic">
-                      "Build a simple one page website for clients to request quotes for my gardening & home maintenance service business"
+                      "Create a modern website for my boutique coffee shop with online ordering, 
+                      location finder, and customer reviews"
+                    </p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      ✓ Result: Professional website live in under 10 minutes
                     </p>
                   </div>
                 </div>
@@ -77,36 +83,36 @@ export function AIWebsiteBuilder() {
                 <div className="flex items-start gap-3">
                   <Bot className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold mb-1">Conversational & Agentic</h4>
+                    <h4 className="font-semibold mb-1">Intelligent & Conversational</h4>
                     <p className="text-sm text-muted-foreground">
-                      Natural language interface powered by advanced AI agents
+                      Chat naturally with AI - refine designs, add features, make changes instantly
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Zap className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold mb-1">Lightning Fast</h4>
+                    <h4 className="font-semibold mb-1">Launch in Minutes</h4>
                     <p className="text-sm text-muted-foreground">
-                      Go from idea to published website in minutes, not days
+                      From first message to live website in under 10 minutes - guaranteed
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Globe className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold mb-1">No Coding Required</h4>
+                    <h4 className="font-semibold mb-1">Zero Technical Skills Needed</h4>
                     <p className="text-sm text-muted-foreground">
-                      Perfect for businesses, freelancers, and personal projects
+                      Perfect for entrepreneurs, small businesses, and anyone with an idea
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Sparkles className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold mb-1">Feature-Packed</h4>
+                    <h4 className="font-semibold mb-1">Enterprise-Grade Quality</h4>
                     <p className="text-sm text-muted-foreground">
-                      Professional designs, responsive layouts, and modern features
+                      Professional designs, mobile-responsive, SEO-optimized, and blazing fast
                     </p>
                   </div>
                 </div>
@@ -192,14 +198,14 @@ export function AIWebsiteBuilder() {
           <div className="text-center">
             <Button 
               size="lg" 
-              className="text-lg px-8 gap-2"
+              className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all"
               onClick={handleGetEarlyAccess}
             >
               <Sparkles className="h-5 w-5" />
-              Get Early Access
+              Claim Your Early Access Spot
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              Join the waitlist and be among the first to experience the future of website building
+              Join 500+ businesses already using our AI Website Builder
             </p>
           </div>
         </div>
@@ -208,4 +214,6 @@ export function AIWebsiteBuilder() {
       <AIWebsiteBuilderModal open={modalOpen} onOpenChange={setModalOpen} />
     </>
   );
-}
+});
+
+AIWebsiteBuilder.displayName = 'AIWebsiteBuilder';

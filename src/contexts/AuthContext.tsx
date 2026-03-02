@@ -24,6 +24,13 @@ export const useAuth = () => {
   return context;
 };
 
+interface StoredUser {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+}
+
 interface AuthProviderProps {
   children: ReactNode;
 }
@@ -47,9 +54,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = async (email: string, password: string): Promise<boolean> => {
     // Mock authentication - in production, this would call an API
     const storedUsers = localStorage.getItem('gravitas_users');
-    const users = storedUsers ? JSON.parse(storedUsers) : [];
+    const users: StoredUser[] = storedUsers ? JSON.parse(storedUsers) : [];
     
-    const foundUser = users.find((u: any) => u.email === email && u.password === password);
+    const foundUser = users.find((u: StoredUser) => u.email === email && u.password === password);
     
     if (foundUser) {
       const userData = { id: foundUser.id, email: foundUser.email, name: foundUser.name };
@@ -64,14 +71,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const signup = async (email: string, password: string, name: string): Promise<boolean> => {
     // Mock signup - in production, this would call an API
     const storedUsers = localStorage.getItem('gravitas_users');
-    const users = storedUsers ? JSON.parse(storedUsers) : [];
+    const users: StoredUser[] = storedUsers ? JSON.parse(storedUsers) : [];
     
     // Check if user already exists
-    if (users.find((u: any) => u.email === email)) {
+    if (users.find((u: StoredUser) => u.email === email)) {
       return false;
     }
     
-    const newUser = {
+    const newUser: StoredUser = {
       id: Date.now().toString(),
       email,
       password, // WARNING: In production, passwords must be hashed on the server side
