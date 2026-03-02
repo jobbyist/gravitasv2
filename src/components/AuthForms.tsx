@@ -12,7 +12,7 @@ interface AuthFormProps {
 }
 
 export const LoginForm = ({ onClose }: AuthFormProps) => {
-  const [email, setEmail] = useState('');
+  const [emailOrUsername, setEmailOrUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
@@ -24,18 +24,22 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
     setIsLoading(true);
 
     try {
-      const success = await login(email, password);
+      // Get returnTo from URL params
+      const params = new URLSearchParams(window.location.search);
+      const returnTo = params.get('returnTo') || undefined;
+      
+      const success = await login(emailOrUsername, password, returnTo);
       if (success) {
         toast({
           title: 'Welcome back!',
           description: 'You have successfully logged in.',
         });
         if (onClose) onClose();
-        navigate('/');
+        // Navigation handled in AuthContext
       } else {
         toast({
           title: 'Login failed',
-          description: 'Invalid email or password. Please try again.',
+          description: 'Invalid email/username or password. Please try again.',
           variant: 'destructive',
         });
       }
@@ -59,13 +63,13 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="emailOrUsername">Email or Username</Label>
             <Input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="emailOrUsername"
+              type="text"
+              placeholder="your@email.com or username"
+              value={emailOrUsername}
+              onChange={(e) => setEmailOrUsername(e.target.value)}
               required
               disabled={isLoading}
             />
@@ -100,6 +104,7 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
 export const SignupForm = ({ onClose }: AuthFormProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -128,28 +133,38 @@ export const SignupForm = ({ onClose }: AuthFormProps) => {
       return;
     }
 
+    // Validate username format
+    const usernameRegex = /^[a-z0-9]{3,24}$/;
+    if (!usernameRegex.test(username)) {
+      toast({
+        title: 'Invalid username',
+        description: 'Username must be 3-24 characters, lowercase letters and numbers only.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const success = await signup(email, password, name);
+      // Get returnTo from URL params
+      const params = new URLSearchParams(window.location.search);
+      const returnTo = params.get('returnTo') || undefined;
+      
+      const success = await signup(email, password, name, username, returnTo);
       if (success) {
         toast({
           title: 'Account created!',
           description: 'Your account has been successfully created.',
         });
         if (onClose) onClose();
-        navigate('/');
-      } else {
-        toast({
-          title: 'Signup failed',
-          description: 'An account with this email already exists.',
-          variant: 'destructive',
-        });
+        // Navigation handled in AuthContext
       }
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An error occurred during signup. Please try again.';
       toast({
-        title: 'Error',
-        description: 'An error occurred during signup. Please try again.',
+        title: 'Signup failed',
+        description: errorMessage,
         variant: 'destructive',
       });
     } finally {
@@ -188,6 +203,22 @@ export const SignupForm = ({ onClose }: AuthFormProps) => {
               required
               disabled={isLoading}
             />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="signup-username">Username</Label>
+            <Input
+              id="signup-username"
+              type="text"
+              placeholder="username123"
+              value={username}
+              onChange={(e) => setUsername(e.target.value.toLowerCase())}
+              required
+              disabled={isLoading}
+              pattern="[a-z0-9]{3,24}"
+              minLength={3}
+              maxLength={24}
+            />
+            <p className="text-xs text-muted-foreground">3-24 characters, lowercase letters and numbers only</p>
           </div>
           <div className="space-y-2">
             <Label htmlFor="signup-password">Password</Label>
