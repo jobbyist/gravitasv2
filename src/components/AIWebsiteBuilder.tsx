@@ -31,14 +31,13 @@ export const AIWebsiteBuilder = memo(() => {
           <div className="text-center space-y-4 mb-12">
             <Badge variant="secondary" className="text-sm px-4 py-2 gap-2">
               <Sparkles className="h-4 w-4" />
-              Limited Early Access Available
+              Now available in private beta
             </Badge>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Launch Your Website in Minutes, Not Months
+              Origin by Gravitas
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              Our revolutionary AI Website Builder transforms your ideas into professional, 
-              live websites through simple conversation. No coding. No complexity. Just results.
+              The Agentic AI coding tool that turns natural language into fully-functional, mobile-friendly websites in minutes.
             </p>
           </div>
 
@@ -195,7 +194,7 @@ export const AIWebsiteBuilder = memo(() => {
           </div>
 
           {/* CTA */}
-          <div className="text-center">
+          <div className="text-center space-y-4">
             <Button 
               size="lg" 
               className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all"
@@ -204,8 +203,21 @@ export const AIWebsiteBuilder = memo(() => {
               <Sparkles className="h-5 w-5" />
               Claim Your Early Access Spot
             </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              Join 500+ businesses already using our AI Website Builder
+            <div>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all"
+                asChild
+              >
+                <a href="https://origin.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                  <Sparkles className="h-5 w-5" />
+                  Preview Origin
+                </a>
+              </Button>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Join 500+ businesses already using Origin by Gravitas
             </p>
           </div>
         </div>

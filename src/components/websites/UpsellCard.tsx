@@ -4,15 +4,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Info } from 'lucide-react';
 import { UpsellOption } from '@/lib/pricingConfig';
-import { formatUSD } from '@/lib/pricingCalculator';
+import { formatCurrency } from '@/lib/pricingCalculator';
+import { Currency } from '@/lib/currencyConverter';
 
 interface UpsellCardProps {
   upsell: UpsellOption;
   value: string | boolean | undefined;
   onChange: (value: string | boolean) => void;
+  currency?: Currency;
 }
 
-export function UpsellCard({ upsell, value, onChange }: UpsellCardProps) {
+export function UpsellCard({ upsell, value, onChange, currency = 'USD' }: UpsellCardProps) {
   const isCheckbox = upsell.type === 'checkbox';
   const isChecked = isCheckbox && value === true;
   const selectedValue = !isCheckbox && typeof value === 'string' ? value : 'none';
@@ -20,13 +22,13 @@ export function UpsellCard({ upsell, value, onChange }: UpsellCardProps) {
   // Get the display price for select-type upsells
   const getDisplayPrice = () => {
     if (isCheckbox) {
-      return formatUSD(upsell.price);
+      return formatCurrency(upsell.price, currency);
     }
     
     if (upsell.options) {
       const maxPrice = Math.max(...upsell.options.filter(opt => opt.price > 0).map(opt => opt.price));
       if (maxPrice > 0) {
-        return `from ${formatUSD(upsell.options.find(opt => opt.price > 0)?.price || 0)}`;
+        return `from ${formatCurrency(upsell.options.find(opt => opt.price > 0)?.price || 0, currency)}`;
       }
     }
     return 'Select option';
@@ -77,7 +79,7 @@ export function UpsellCard({ upsell, value, onChange }: UpsellCardProps) {
                 <SelectContent>
                   {upsell.options?.map((option) => (
                     <SelectItem key={option.value} value={option.value}>
-                      {option.label} {option.price > 0 ? `(+${formatUSD(option.price)})` : ''}
+                      {option.label} {option.price > 0 ? `(+${formatCurrency(option.price, currency)})` : ''}
                     </SelectItem>
                   ))}
                 </SelectContent>
