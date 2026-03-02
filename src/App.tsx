@@ -29,6 +29,7 @@ const QuoteRequest = lazy(() => import("./pages/QuoteRequest"));
 const LeadGeneration = lazy(() => import("./pages/LeadGeneration"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Websites = lazy(() => import("./pages/Websites"));
+const WebsitePayment = lazy(() => import("./pages/WebsitePayment"));
 const BrandKits = lazy(() => import("./pages/BrandKits"));
 const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
@@ -94,6 +95,7 @@ const App = () => {
                   <Route path="/lead-generation" element={<LeadGeneration />} />
                   <Route path="/portfolio" element={<Portfolio />} />
                   <Route path="/websites" element={<Websites />} />
+                  <Route path="/website-payment" element={<WebsitePayment />} />
                   <Route path="/brand-kits" element={<BrandKits />} />
                   <Route path="/partner-program" element={<PartnerProgram />} />
                   <Route path="/coming-soon" element={<ComingSoon />} />

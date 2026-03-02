@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,10 +30,24 @@ import { AIWebsiteBuilder } from '@/components/AIWebsiteBuilder';
 export function WebsitesLandingPage() {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     trackPageView('Websites Landing', '/websites');
   }, []);
+
+  const handleClaimOffer = () => {
+    navigate('/website-payment');
+    trackEvent('cta_click', { type: 'claim_offer' });
+  };
+
+  const handleBuildPackageClick = () => {
+    const element = document.getElementById('build-package-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    trackEvent('cta_click', { type: 'build_package' });
+  };
 
   const handleAuditClick = () => {
     setAuditModalOpen(true);
@@ -62,14 +77,14 @@ export function WebsitesLandingPage() {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Custom Website Special:{' '}
+              Basic Website Special:{' '}
               <span className="text-primary">{formatZAR(pricingConfig.baseWebsiteBuild)}</span>{' '}
               once-off
             </h1>
 
             {/* Subtext */}
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Custom website development + optional maintenance
+              Basic 5-page website ideal for personal websites and small businesses
             </p>
 
             {/* Price Anchor */}
@@ -87,19 +102,19 @@ export function WebsitesLandingPage() {
               <Button 
                 size="lg" 
                 className="text-lg px-8 gap-2 w-full sm:w-auto"
-                onClick={handleAuditClick}
+                onClick={handleClaimOffer}
               >
                 <FileText className="h-5 w-5" />
-                Request A Free Website Audit
+                Claim This Special Offer
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
                 className="text-lg px-8 gap-2 w-full sm:w-auto"
-                onClick={handleQuoteClick}
+                onClick={handleBuildPackageClick}
               >
                 <MessageSquare className="h-5 w-5" />
-                Get A Free Quote In 10 Minutes
+                Build Your Custom Website Package
               </Button>
             </div>
 
@@ -326,7 +341,7 @@ export function WebsitesLandingPage() {
       </section>
 
       {/* Pricing Estimator */}
-      <section className="py-16 md:py-24 bg-muted/30 border-y">
+      <section id="build-package-section" className="py-16 md:py-24 bg-muted/30 border-y">
         <div className="container-blog">
           <div className="max-w-5xl mx-auto">
             <div className="text-center space-y-4 mb-12">
@@ -349,20 +364,20 @@ export function WebsitesLandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button 
                   size="lg"
-                  onClick={handleAuditClick}
+                  onClick={handleClaimOffer}
                   className="gap-2"
                 >
                   <FileText className="h-5 w-5" />
-                  Request A Free Website Audit
+                  Claim This Special Offer
                 </Button>
                 <Button 
                   size="lg"
                   variant="outline"
-                  onClick={handleQuoteClick}
+                  onClick={handleAuditClick}
                   className="gap-2"
                 >
                   <MessageSquare className="h-5 w-5" />
-                  Get A Free Quote
+                  Request A Free Website Audit
                 </Button>
               </div>
             </div>
@@ -516,10 +531,10 @@ export function WebsitesLandingPage() {
         <div className="container-blog">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-3xl md:text-5xl font-bold">
-              Ready to Launch Your Website?
+              Looking to upgrade your existing website?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Get started today with our special {discountPercent}% off pricing. Limited time offer!
+              Request a free comprehensive website audit report and find out how we can help you improve your online presence with a professional upgrade. Or send us a brief to request a free quote for your website needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -537,7 +552,7 @@ export function WebsitesLandingPage() {
                 className="text-lg px-8 gap-2"
               >
                 <MessageSquare className="h-5 w-5" />
-                Get A Free Quote In 10 Minutes
+                Get A Free Quote
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
