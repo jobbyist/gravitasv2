@@ -1,0 +1,35 @@
+{
+  "services": [
+    {
+      "id": "svc_001",
+      "name": "Website Hosting",
+      "description": "Premium managed hosting for lunaluxhair.com",
+      "status": "active",
+      "plan": "Business Plus",
+      "price": "$49.99/month",
+      "next_billing_date": "2026-04-01",
+      "features": [
+        "99.9% uptime guarantee",
+        "SSL certificate included",
+        "Daily backups",
+        "24/7 support"
+      ]
+    },
+    {
+      "id": "svc_002",
+      "name": "Online Booking System",
+      "description": "Integrated appointment scheduling system",
+      "status": "active",
+      "plan": "Professional",
+      "price": "$29.99/month",
+      "next_billing_date": "2026-04-01",
+      "features": [
+        "Unlimited bookings",
+        "Calendar sync",
+        "SMS reminders",
+        "Customer portal"
+      ]
+    }
+  ],
+  "service_requests": []
+}
