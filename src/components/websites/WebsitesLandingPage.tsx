@@ -77,7 +77,7 @@ export function WebsitesLandingPage() {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Custom Website Special:{' '}
+              Basic Website Special:{' '}
               <span className="text-primary">{formatZAR(pricingConfig.baseWebsiteBuild)}</span>{' '}
               once-off
             </h1>

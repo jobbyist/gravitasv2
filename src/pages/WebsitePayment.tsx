@@ -30,7 +30,7 @@ const WebsitePayment = () => {
                 Limited Time Special Offer
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold">
-                Custom Website Special - R199
+                Basic Website Special - R199
               </h1>
               <p className="text-xl text-muted-foreground">
                 Basic 5-page website ideal for personal websites and small businesses
@@ -87,7 +87,7 @@ const WebsitePayment = () => {
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Professional Email (5 users)</span>
-                        <span className="text-sm font-medium">R2.49/month</span>
+                        <span className="text-sm font-medium">R2.49/month*</span>
                       </div>
                       <div className="flex justify-between items-start">
                         <span className="text-sm text-muted-foreground">Domain Registration (first year)</span>
@@ -102,10 +102,13 @@ const WebsitePayment = () => {
                     </div>
                   </div>
 
-                  <div className="bg-muted p-4 rounded-lg">
+                  <div className="bg-muted p-4 rounded-lg space-y-2">
                     <p className="text-sm text-muted-foreground">
                       <Shield className="h-4 w-4 inline mr-1" />
                       30-day money-back guarantee. No long-term contracts.
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      *Email pricing is when billed annually (R29.88/year)
                     </p>
                   </div>
                 </CardContent>
