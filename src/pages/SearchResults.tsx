@@ -187,16 +187,16 @@ const SearchResults = () => {
           {/* Search Form */}
           <form onSubmit={handleSearch} className="mb-8">
             <div className="relative max-w-md">
-              <label htmlFor="search-input" className="sr-only">Search articles</label>
+              <label htmlFor="search-input" className="sr-only">What are you looking for?</label>
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <Input
                 id="search-input"
                 type="text"
-                placeholder="Search articles..."
+                placeholder="What are you looking for?"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 pr-12 py-3"
-                aria-label="Search articles"
+                aria-label="What are you looking for?"
               />
               {searchQuery && (
                 <Button
