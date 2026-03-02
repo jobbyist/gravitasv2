@@ -69,6 +69,15 @@ const masonryPosts = [
     image: businessPost,
     height: "medium",
     url: "/articles/web-performance"
+  },
+  {
+    title: "What's New at Gravitas in February 2026",
+    category: "UPDATES",
+    date: "Feb 28, 2026",
+    excerpt: "Discover the latest platform updates including Gravitas Auctions, White Label Partner Program, Commerce, and upcoming features.",
+    image: techPost,
+    height: "medium",
+    url: "/articles/gravitas-february-2026-updates"
   }
 ];
 

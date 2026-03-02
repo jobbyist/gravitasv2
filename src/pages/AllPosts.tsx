@@ -13,96 +13,87 @@ import workLifestyle from '@/assets/work-lifestyle.jpg';
 const AllPosts = () => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
+  // Articles from Featured Stories section on homepage
   const blogPosts: Post[] = [
     {
-      title: "The Rise of Fashion Blogging: The Role of Influencers in the Industry",
-      category: "FASHION",
-      subcategory: "Digital Fashion", 
-      date: "September 20, 2025",
-      excerpt: "Explore how fashion bloggers and influencers have transformed the industry landscape.",
+      title: "The Future of AI: Transforming Industries",
+      category: "AI",
+      subcategory: "Artificial Intelligence", 
+      date: "Oct 15, 2025",
+      excerpt: "Explore how artificial intelligence is revolutionizing business operations and creating new opportunities.",
+      image: techPost,
+      slug: "future-of-ai",
+      tags: ["AI", "Innovation", "Business Transformation"]
+    },
+    {
+      title: "Building Modern Web Applications",
+      category: "WEB DEV", 
+      subcategory: "Web Development",
+      date: "Nov 3, 2025",
+      excerpt: "Best practices for developing scalable and performant web applications in 2024.",
+      image: businessPost,
+      slug: "modern-web-apps",
+      tags: ["Web Development", "Best Practices", "Performance"]
+    },
+    {
+      title: "E-commerce Trends to Watch",
+      category: "ECOMMERCE",
+      subcategory: "Digital Commerce",
+      date: "Dec 8, 2025", 
+      excerpt: "Discover the latest trends shaping the future of online retail and digital commerce.",
       image: fashionPost,
-      slug: "rise-of-fashion-blogging",
-      tags: ["Influencers", "Social Media", "Fashion Industry"]
+      slug: "ecommerce-trends",
+      tags: ["E-commerce", "Trends", "Retail"]
     },
     {
-      title: "AI and Machine Learning: Transforming Business Operations",
-      category: "TECHNOLOGY", 
-      subcategory: "Artificial Intelligence",
-      date: "September 18, 2025",
-      excerpt: "Discover how artificial intelligence is revolutionizing the way businesses operate.",
-      image: techPost,
-      slug: "ai-machine-learning-business",
-      tags: ["AI", "Machine Learning", "Business Automation"]
-    },
-    {
-      title: "Sustainable Business Practices for Modern Entrepreneurs",
-      category: "BUSINESS",
-      subcategory: "Sustainability",
-      date: "September 15, 2025", 
-      excerpt: "Learn how to build a sustainable business that benefits both profit and planet.",
-      image: businessPost,
-      slug: "sustainable-business-practices",
-      tags: ["Sustainability", "Green Business", "Entrepreneurship"]
-    },
-    {
-      title: "Mindful Living: Creating Balance in a Busy World",
-      category: "LIFESTYLE",
-      subcategory: "Wellness",
-      date: "September 12, 2025",
-      excerpt: "Practical tips for incorporating mindfulness into your daily routine.",
+      title: "Tech Stack Selection Guide",
+      category: "TECH",
+      subcategory: "Technology",
+      date: "Oct 28, 2025",
+      excerpt: "How to choose the right technology stack for your next project.",
       image: lifestylePost,
-      slug: "mindful-living-balance",
-      tags: ["Mindfulness", "Wellness", "Work-Life Balance"]
+      slug: "tech-stack-guide",
+      tags: ["Technology", "Development", "Stack Selection"]
     },
     {
-      title: "The Future of Remote Work: Trends and Predictions",
-      category: "BUSINESS",
-      subcategory: "Future of Work",
-      date: "September 10, 2025",
-      excerpt: "Analyzing the evolution of remote work and what lies ahead.",
+      title: "AI-Powered Customer Experience",
+      category: "AI",
+      subcategory: "Customer Experience",
+      date: "Jan 12, 2026",
+      excerpt: "Leveraging machine learning to enhance customer engagement and satisfaction.",
       image: workLifestyle,
-      slug: "future-remote-work",
-      tags: ["Remote Work", "Future Trends", "Digital Workplace"]
+      slug: "ai-customer-experience",
+      tags: ["AI", "Customer Experience", "Machine Learning"]
     },
     {
-      title: "Fashion Week Highlights: Trends That Define the Season",
-      category: "FASHION",
-      subcategory: "Fashion Events",
-      date: "September 8, 2025",
-      excerpt: "A comprehensive look at the standout moments from this season's fashion weeks.",
+      title: "Headless Commerce Architecture",
+      category: "ECOMMERCE",
+      subcategory: "Commerce Architecture",
+      date: "Nov 22, 2025",
+      excerpt: "Understanding the benefits of decoupled commerce platforms.",
       image: fashionLifestyle,
-      slug: "fashion-week-highlights",
-      tags: ["Fashion Week", "Trends", "Runway"]
+      slug: "headless-commerce",
+      tags: ["Commerce", "Architecture", "Headless"]
     },
     {
-      title: "Blockchain Technology: Beyond Cryptocurrency",
-      category: "TECHNOLOGY",
-      subcategory: "Blockchain",
-      date: "September 5, 2025",
-      excerpt: "Exploring innovative applications of blockchain in various industries.",
-      image: techPost,
-      slug: "blockchain-beyond-crypto",
-      tags: ["Blockchain", "Cryptocurrency", "Innovation"]
-    },
-    {
-      title: "Building a Personal Brand in the Digital Age",
-      category: "BUSINESS",
-      subcategory: "Personal Branding",
-      date: "September 3, 2025",
-      excerpt: "Essential strategies for creating and maintaining your online presence.",
+      title: "Web Performance Optimization",
+      category: "WEB DEV",
+      subcategory: "Performance",
+      date: "Jan 5, 2026",
+      excerpt: "Proven techniques to improve your website's speed and user experience.",
       image: businessPost,
-      slug: "personal-brand-digital-age",
-      tags: ["Personal Branding", "Digital Marketing", "Online Presence"]
+      slug: "web-performance",
+      tags: ["Performance", "Optimization", "Web Development"]
     },
     {
-      title: "Wellness Trends: What's Actually Worth Your Time",
-      category: "LIFESTYLE",
-      subcategory: "Health Trends",
-      date: "September 1, 2025",
-      excerpt: "Separating wellness fads from genuinely beneficial practices.",
-      image: lifestylePost,
-      slug: "wellness-trends-worth-time",
-      tags: ["Health", "Wellness Trends", "Self-Care"]
+      title: "What's New at Gravitas in February 2026",
+      category: "UPDATES",
+      subcategory: "Platform Updates",
+      date: "Feb 28, 2026",
+      excerpt: "Discover the latest platform updates including Gravitas Auctions, White Label Partner Program, Commerce, and upcoming features.",
+      image: techPost,
+      slug: "gravitas-february-2026-updates",
+      tags: ["Updates", "Platform", "New Features"]
     }
   ];
 
@@ -125,7 +116,7 @@ const AllPosts = () => {
         <PageFilter
           posts={blogPosts}
           onFilteredPostsChange={setFilteredPosts}
-          availableCategories={["FASHION", "TECHNOLOGY", "BUSINESS", "LIFESTYLE"]}
+          availableCategories={["AI", "WEB DEV", "ECOMMERCE", "TECH", "UPDATES"]}
           showCategoryFilter={true}
         />
 
