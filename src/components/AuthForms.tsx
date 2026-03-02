@@ -85,6 +85,12 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
           <Button type="submit" className="w-full" disabled={isLoading}>
             {isLoading ? 'Logging in...' : 'Login'}
           </Button>
+          <div className="text-center text-sm text-muted-foreground pt-2">
+            Don't have an account?{' '}
+            <a href="/signup" className="text-primary hover:underline">
+              Click here to sign up for frer
+            </a>
+          </div>
         </form>
       </CardContent>
     </Card>

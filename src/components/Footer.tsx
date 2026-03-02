@@ -1,17 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import ProductModal from './ProductModal';
+import FeedbackModal from './FeedbackModal';
 import { productData } from '@/lib/productData';
 
 const Footer = () => {
   const [auctionsModalOpen, setAuctionsModalOpen] = useState(false);
   const [commerceModalOpen, setCommerceModalOpen] = useState(false);
   const [domainsModalOpen, setDomainsModalOpen] = useState(false);
+  const [feedbackModalOpen, setFeedbackModalOpen] = useState(false);
 
   return (
     <footer className="bg-muted border-t border-border" role="contentinfo">
       <div className="container-blog py-12">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-5 gap-8">
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground">GRAVITAS</h2>
             <p className="text-sm text-muted-foreground">
@@ -57,6 +59,7 @@ const Footer = () => {
                   Domains
                 </button>
               </li>
+              <li><Link to="/websites" className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">Websites</Link></li>
             </ul>
           </div>
           
@@ -67,6 +70,50 @@ const Footer = () => {
                 <li><Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">Contact</Link></li>
                 <li><Link to="/privacy" className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">Privacy</Link></li>
                 <li><Link to="/terms" className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded">Terms</Link></li>
+              </ul>
+            </div>
+          
+            <div className="space-y-4">
+              <h3 className="font-medium text-foreground">Connect</h3>
+              <ul className="space-y-2 text-sm">
+                <li>
+                  <a 
+                    href="https://www.upwork.com/agencies/2028336932014045762/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  >
+                    Upwork
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://gravitas.medium.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  >
+                    Medium
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="https://linkedin.gravitas.uno" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => setFeedbackModalOpen(true)}
+                    className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                  >
+                    Feedback
+                  </button>
+                </li>
               </ul>
             </div>
           
@@ -105,6 +152,11 @@ const Footer = () => {
         description={productData.domains.description}
         ctaText={productData.domains.ctaText}
         ctaUrl={productData.domains.ctaUrl}
+      />
+      
+      <FeedbackModal
+        open={feedbackModalOpen}
+        onOpenChange={setFeedbackModalOpen}
       />
     </footer>
   );

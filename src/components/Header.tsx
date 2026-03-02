@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Info, Users, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe, Smartphone, MessageCircle } from 'lucide-react';
+import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Info, Users, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe, Smartphone, MessageCircle, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
@@ -45,6 +45,7 @@ const Header = () => {
     { name: 'Brand Kits', href: '/brand-kits', icon: Package },
     { name: 'Commerce', action: () => setCommerceModalOpen(true), icon: ShoppingCart },
     { name: 'Domains', action: () => setDomainsModalOpen(true), icon: Globe },
+    { name: 'Websites', href: '/websites', icon: Monitor },
   ];
 
   const socialLinks = [
