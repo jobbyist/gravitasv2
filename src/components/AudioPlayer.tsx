@@ -3,8 +3,6 @@ import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { useAuth } from '@/contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { useToast } from '@/hooks/use-toast';
 
 interface AudioPlayerProps {
   title: string;
@@ -24,8 +22,6 @@ const AudioPlayer = ({
   episodeNumber
 }: AudioPlayerProps) => {
   const { isAuthenticated, user } = useAuth();
-  const navigate = useNavigate();
-  const { toast } = useToast();
   const audioRef = useRef<HTMLAudioElement>(null);
   
   const [isPlaying, setIsPlaying] = useState(false);
@@ -94,16 +90,6 @@ const AudioPlayer = ({
   };
 
   const togglePlay = () => {
-    if (!isAuthenticated) {
-      toast({
-        title: 'Login required',
-        description: 'Please login to listen to podcast episodes.',
-        variant: 'destructive',
-      });
-      navigate('/login');
-      return;
-    }
-
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -118,8 +104,6 @@ const AudioPlayer = ({
   };
 
   const handleProgressChange = (value: number[]) => {
-    if (!isAuthenticated) return;
-    
     const audio = audioRef.current;
     if (!audio) return;
     
@@ -174,20 +158,6 @@ const AudioPlayer = ({
             Episode {episodeNumber}
           </div>
         )}
-        {!isAuthenticated && (
-          <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-            <div className="text-white text-center">
-              <p className="text-lg font-semibold mb-2">Login to Listen</p>
-              <Button 
-                variant="secondary" 
-                size="sm"
-                onClick={() => navigate('/login')}
-              >
-                Login
-              </Button>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="p-6 space-y-4">
@@ -212,7 +182,6 @@ const AudioPlayer = ({
               max={duration || 100}
               step={0.1}
               onValueChange={handleProgressChange}
-              disabled={!isAuthenticated}
               className="w-full"
             />
             <div className="flex justify-between text-xs text-muted-foreground">
@@ -226,9 +195,8 @@ const AudioPlayer = ({
             <div className="flex items-center space-x-2">
               <Button
                 size="sm"
-                variant={isAuthenticated ? "default" : "outline"}
+                variant="default"
                 onClick={togglePlay}
-                disabled={!isAuthenticated}
               >
                 {isPlaying ? (
                   <Pause className="h-4 w-4" />
@@ -245,7 +213,6 @@ const AudioPlayer = ({
                 size="sm"
                 variant="ghost"
                 onClick={toggleMute}
-                disabled={!isAuthenticated}
               >
                 {isMuted ? (
                   <VolumeX className="h-4 w-4" />
@@ -258,7 +225,6 @@ const AudioPlayer = ({
                 max={1}
                 step={0.01}
                 onValueChange={handleVolumeChange}
-                disabled={!isAuthenticated}
                 className="w-20"
               />
             </div>
