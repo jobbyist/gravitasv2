@@ -76,7 +76,7 @@ export const HeroSection = memo(function HeroSection({
           poster="/gravitasbanner.png"
           onLoadedData={() => setIsVideoLoaded(true)}
         >
-          <source src="/gravitasexplainer.mp4" type="video/mp4" />
+          <source src="/origin.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay for better text readability */}
