@@ -37,7 +37,7 @@ export const AIWebsiteBuilder = memo(() => {
               Origin by Gravitas
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              The Agentic AI coding tool that turns natural language into fully-functional, mobile friendly websites in minutes.
+              The Agentic AI coding tool that turns natural language into fully-functional, mobile-friendly websites in minutes.
             </p>
           </div>
 
@@ -208,10 +208,12 @@ export const AIWebsiteBuilder = memo(() => {
                 size="lg" 
                 variant="outline"
                 className="text-lg px-8 py-6 gap-2 shadow-lg hover:shadow-xl transition-all"
-                onClick={() => window.open('https://origin.gravitas.uno', '_blank')}
+                asChild
               >
-                <Sparkles className="h-5 w-5" />
-                Preview Origin
+                <a href="https://origin.gravitas.uno" target="_blank" rel="noopener noreferrer">
+                  <Sparkles className="h-5 w-5" />
+                  Preview Origin
+                </a>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">

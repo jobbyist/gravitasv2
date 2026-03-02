@@ -14,7 +14,7 @@ export const UpsellsSection = memo(function UpsellsSection({ onQuoteClick }: Ups
       <div className="container-blog">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">Additional Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Value-Added Services</h2>
             <p className="text-xl text-muted-foreground">
               Enhance your website with premium hosting and professional email
             </p>

@@ -9,7 +9,7 @@ export const FeaturesSection = memo(function FeaturesSection() {
       <div className="container-blog">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold">What's Included in the Base Package</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Get Started With Our Basic Website Starter Package</h2>
             <p className="text-xl text-muted-foreground">
               Everything you need to launch a professional online presence
             </p>

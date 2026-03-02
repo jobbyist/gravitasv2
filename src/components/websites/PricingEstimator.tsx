@@ -95,7 +95,7 @@ export function PricingEstimator() {
       {/* Upsells Grid */}
       <div>
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold">Additional Services</h3>
+          <h3 className="text-xl font-bold">Value-Added Services</h3>
           <Button 
             variant="outline" 
             size="sm" 
