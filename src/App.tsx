@@ -11,7 +11,6 @@ import FloatingCTA from "@/components/FloatingCTA";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Suspense, lazy, useEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { RequireAuth, RequireClientMatch } from "@/components/RouteGuards";
 import { usePerformanceMonitoring } from "@/hooks/usePerformanceMonitoring";
 import Index from "./pages/Index";
 
@@ -48,18 +47,6 @@ const BrandKits = lazy(() => import("./pages/BrandKits"));
 const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-// Client portal pages
-const ClientDashboard = lazy(() => import("./pages/ClientDashboard"));
-const PublicClientPortal = lazy(() => import("./pages/PublicClientPortal"));
-const Overview = lazy(() => import("./pages/client-manage/Overview"));
-const Profile = lazy(() => import("./pages/client-manage/Profile"));
-const Services = lazy(() => import("./pages/client-manage/Services"));
-const SupportTickets = lazy(() => import("./pages/client-manage/SupportTickets"));
-const Billing = lazy(() => import("./pages/client-manage/Billing"));
-const AccountManager = lazy(() => import("./pages/client-manage/AccountManager"));
-const Settings = lazy(() => import("./pages/client-manage/Settings"));
-const Account = lazy(() => import("./pages/client-manage/Account"));
 
 // Article pages
 const FutureOfAI = lazy(() => import("./pages/articles/FutureOfAI"));
@@ -140,67 +127,6 @@ const App = () => {
                     <Route path="/articles/headless-commerce" element={<HeadlessCommerce />} />
                     <Route path="/articles/web-performance" element={<WebPerformance />} />
                     <Route path="/articles/gravitas-february-2026-updates" element={<GravitasFebruary2026Updates />} />
-                    
-                    {/* Client Portal Routes */}
-                    <Route path="/client-dashboard" element={<ClientDashboard />} />
-                    <Route path="/client-area/:username" element={<PublicClientPortal />} />
-                    <Route path="/client-area/:username/manage/overview" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Overview />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/profile" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Profile />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/services" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Services />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/support" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <SupportTickets />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/billing" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Billing />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/account-manager" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <AccountManager />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/settings" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Settings />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    <Route path="/client-area/:username/manage/account" element={
-                      <RequireAuth>
-                        <RequireClientMatch>
-                          <Account />
-                        </RequireClientMatch>
-                      </RequireAuth>
-                    } />
-                    
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                     <Route path="*" element={<NotFound />} />
