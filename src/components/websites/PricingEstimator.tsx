@@ -21,6 +21,10 @@ import { trackEvent } from '@/lib/tracking';
 import { UpsellCard } from './UpsellCard';
 import { CurrencySelector } from './CurrencySelector';
 
+// Promo code configuration
+const PROMO_CODE = 'IWD2026';
+const PROMO_DISCOUNT_PERCENTAGE = 0.25; // 25% off
+
 export function PricingEstimator({ onTotalChange }: { onTotalChange?: (total: number) => void }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedUpsells, setSelectedUpsells] = useState<Map<string, string | boolean>>(new Map());
@@ -46,8 +50,8 @@ export function PricingEstimator({ onTotalChange }: { onTotalChange?: (total: nu
   const breakdown = calculateTotal(selectedUpsells, maintenanceEnabled);
   
   // Apply promo code discount
-  const isPromoValid = promoCode === 'IWD2026';
-  const discountMultiplier = isPromoValid ? 0.75 : 1; // 25% off = 0.75
+  const isPromoValid = promoCode === PROMO_CODE;
+  const discountMultiplier = isPromoValid ? (1 - PROMO_DISCOUNT_PERCENTAGE) : 1;
   const finalTotal = breakdown.totalOnceOff * discountMultiplier;
   const promoDiscount = breakdown.totalOnceOff - finalTotal;
 
@@ -182,10 +186,10 @@ export function PricingEstimator({ onTotalChange }: { onTotalChange?: (total: nu
               onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
               className="font-mono"
             />
-            {promoCode === 'IWD2026' && (
+            {promoCode === PROMO_CODE && (
               <div className="bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 p-3 rounded-md">
                 <p className="text-sm font-semibold text-green-700 dark:text-green-300">
-                  ✓ 25% discount applied! International Women's Month Special
+                  ✓ {Math.round(PROMO_DISCOUNT_PERCENTAGE * 100)}% discount applied! International Women's Month Special
                 </p>
               </div>
             )}
@@ -231,7 +235,7 @@ export function PricingEstimator({ onTotalChange }: { onTotalChange?: (total: nu
           {/* Promo Discount */}
           {isPromoValid && (
             <div className="flex justify-between items-center text-lg text-green-600 dark:text-green-400">
-              <span className="font-bold">IWD2026 Discount (25%)</span>
+              <span className="font-bold">{PROMO_CODE} Discount ({Math.round(PROMO_DISCOUNT_PERCENTAGE * 100)}%)</span>
               <span className="font-bold">-{formatPrice(promoDiscount)}</span>
             </div>
           )}

@@ -49,7 +49,7 @@ export const pricingConfig: PricingConfig = {
       type: 'checkbox',
     },
     {
-      id: 'payment-gateway',
+      id: 'payment-gateway-setup',
       name: 'Shipping + Payment Gateway Setup',
       description: 'Online payment gateways',
       tooltip: 'Set up online payment gateways (Mastercard, VISA, PayPal, Crypto etc)',

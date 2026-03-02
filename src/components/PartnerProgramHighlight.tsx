@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +8,7 @@ import { ProductDemoModal } from '@/components/ProductDemoModal';
 
 const PartnerProgramHighlight = () => {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -71,7 +73,7 @@ const PartnerProgramHighlight = () => {
             <Button 
               size="lg" 
               className="text-lg px-8 py-6"
-              onClick={() => window.location.href = '/partner-program'}
+              onClick={() => navigate('/partner-program')}
             >
               <Rocket className="h-5 w-5 mr-2" />
               Find Out More
