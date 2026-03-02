@@ -21,8 +21,8 @@ export interface PricingConfig {
 }
 
 export const pricingConfig: PricingConfig = {
-  // Base website build price (50% off special)
-  baseWebsiteBuild: 2995,
+  // Base website build price - Special Offer
+  baseWebsiteBuild: 199,
   originalPrice: 5990,
   
   // Monthly maintenance (optional)
@@ -181,19 +181,23 @@ export const pricingConfig: PricingConfig = {
 
 // Base package details
 export const basePackageIncludes = [
-  'Up to 5 pages',
+  'Basic 5-page website',
+  'Ideal for personal websites and small businesses',
   'Fully mobile responsive design',
   'Basic SEO setup (metadata + sitemap)',
   'Contact form with email notifications',
   '1 revision round',
   'Cross-browser compatibility',
   '30-day post-launch support',
+  'Standard hosting for $9.99 per month',
+  'Professional email for 5 users for $2.49 per month (billed annually)',
+  'Free domain name registration for the first year',
 ];
 
 // What's NOT included (clarifications)
 export const basePackageExclusions = [
-  'Domain registration (client provides)',
-  'Hosting (client provides or we can recommend)',
   'Premium stock photos (we use free stock or client provides)',
   'Ongoing content updates (maintenance plan available)',
+  'Additional pages beyond 5 pages',
+  'Custom integrations or complex functionality',
 ];
