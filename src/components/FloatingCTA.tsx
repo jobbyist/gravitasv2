@@ -8,11 +8,6 @@ const FloatingCTA = () => {
   const [isDismissed, setIsDismissed] = useState(false);
   const location = useLocation();
 
-  // Hide on /websites page
-  if (location.pathname === '/websites') {
-    return null;
-  }
-
   useEffect(() => {
     // Show the button after a short delay when user scrolls down
     const handleScroll = () => {
@@ -26,6 +21,11 @@ const FloatingCTA = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isDismissed]);
+
+  // Hide on /websites page
+  if (location.pathname === '/websites') {
+    return null;
+  }
 
   if (isDismissed) return null;
 

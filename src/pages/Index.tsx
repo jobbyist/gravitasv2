@@ -6,7 +6,7 @@ import PartnerLogos from '@/components/PartnerLogos';
 import FAQ from '@/components/FAQ';
 import EditorsPick from '@/components/EditorsPick';
 import TrendingBlock from '@/components/TrendingBlock';
-import MasonryBlock from '@/components/MasonryBlock';
+import PartnerProgramHighlight from '@/components/PartnerProgramHighlight';
 import BlogGrid from '@/components/BlogGrid';
 import SEO from '@/components/SEO';
 
@@ -39,8 +39,8 @@ const Index = () => {
         <section aria-labelledby="trending-heading">
           <TrendingBlock />
         </section>
-        <section aria-labelledby="masonry-heading">
-          <MasonryBlock />
+        <section aria-labelledby="partner-program-heading">
+          <PartnerProgramHighlight />
         </section>
         <section aria-labelledby="all-posts-heading">
           <BlogGrid />
