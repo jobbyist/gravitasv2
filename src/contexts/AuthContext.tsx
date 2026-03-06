@@ -12,6 +12,8 @@ interface AuthContextType {
   signup: (email: string, password: string, name: string) => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
+  isNewUser: boolean;
+  completeOnboarding: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -37,6 +39,7 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isNewUser, setIsNewUser] = useState(false);
 
   useEffect(() => {
     // Load user from localStorage on mount
@@ -91,12 +94,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const userData = { id: newUser.id, email: newUser.email, name: newUser.name };
     setUser(userData);
     localStorage.setItem('gravitas_user', JSON.stringify(userData));
+    setIsNewUser(true);
     
     return true;
   };
 
+  const completeOnboarding = () => {
+    setIsNewUser(false);
+    if (user) {
+      localStorage.setItem(`gravitas_onboarding_${user.id}`, 'complete');
+    }
+  };
+
   const logout = () => {
     setUser(null);
+    setIsNewUser(false);
     localStorage.removeItem('gravitas_user');
   };
 
@@ -106,6 +118,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     signup,
     logout,
     isAuthenticated: !!user,
+    isNewUser,
+    completeOnboarding,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
