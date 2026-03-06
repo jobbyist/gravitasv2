@@ -31,7 +31,7 @@ export const LoginForm = ({ onClose }: AuthFormProps) => {
           description: 'You have successfully logged in.',
         });
         if (onClose) onClose();
-        navigate('/');
+        navigate('/dashboard');
       } else {
         toast({
           title: 'Login failed',
@@ -138,7 +138,7 @@ export const SignupForm = ({ onClose }: AuthFormProps) => {
           description: 'Your account has been successfully created.',
         });
         if (onClose) onClose();
-        navigate('/');
+        navigate('/onboarding');
       } else {
         toast({
           title: 'Signup failed',

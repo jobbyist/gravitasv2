@@ -1,0 +1,234 @@
+/**
+ * PayFast payment gateway integration utility.
+ * Supports once-off payments and recurring subscriptions.
+ *
+ * PayFast sandbox credentials (for testing):
+ *   Merchant ID:  10000100
+ *   Merchant Key: 46f0cd694581a
+ *
+ * Set VITE_PAYFAST_SANDBOX=false and provide live credentials via
+ * VITE_PAYFAST_MERCHANT_ID / VITE_PAYFAST_MERCHANT_KEY for production.
+ */
+
+export const PAYFAST_PROCESS_URL = {
+  sandbox: 'https://sandbox.payfast.co.za/eng/process',
+  live: 'https://www.payfast.co.za/eng/process',
+};
+
+const isSandbox = import.meta.env.VITE_PAYFAST_SANDBOX !== 'false';
+
+export const PAYFAST_URL = isSandbox
+  ? PAYFAST_PROCESS_URL.sandbox
+  : PAYFAST_PROCESS_URL.live;
+
+export interface PayfastOnceOffParams {
+  amount: number;
+  itemName: string;
+  itemDescription?: string;
+  emailAddress?: string;
+  nameFirst?: string;
+  nameLast?: string;
+  /** Custom string echoed back in the ITN */
+  customStr1?: string;
+}
+
+export interface PayfastSubscriptionParams extends PayfastOnceOffParams {
+  /** Recurring amount (may differ from initial amount) */
+  recurringAmount: number;
+  /** Day of month billing starts (YYYY-MM-DD) */
+  billingDate: string;
+  /**
+   * Billing frequency:
+   *  1 = Daily, 2 = Weekly, 3 = Monthly, 4 = Quarterly,
+   *  5 = Biannually, 6 = Annual
+   */
+  frequency?: 1 | 2 | 3 | 4 | 5 | 6;
+  /** Number of billing cycles (0 = indefinite) */
+  cycles?: number;
+}
+
+/** Minimal MD5 implementation (RFC 1321) for PayFast signature generation.
+ *
+ * Note: Web Crypto API (SubtleCrypto) does not support MD5, and PayFast requires
+ * MD5 for its request signatures. This implementation is derived from the
+ * well-known Paul Johnston / Andrew Kepert md5.js (MIT licence) which underpins
+ * widely-deployed packages such as spark-md5 and blueimp-md5. It is used only
+ * for generating PayFast payment signatures and never for security-critical
+ * key derivation or password hashing.
+ *
+ * TODO: When a server-side component is added, move signature generation there
+ * to keep merchant credentials and passphrase off the client entirely.
+ */
+function md5(str: string): string {
+  function safeAdd(x: number, y: number): number {
+    const lsw = (x & 0xffff) + (y & 0xffff);
+    const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return (msw << 16) | (lsw & 0xffff);
+  }
+  function bitRotateLeft(num: number, cnt: number): number {
+    return (num << cnt) | (num >>> (32 - cnt));
+  }
+  function md5cmn(q: number, a: number, b: number, x: number, s: number, t: number): number {
+    return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
+  }
+  function md5ff(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+    return md5cmn((b & c) | (~b & d), a, b, x, s, t);
+  }
+  function md5gg(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+    return md5cmn((b & d) | (c & ~d), a, b, x, s, t);
+  }
+  function md5hh(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+    return md5cmn(b ^ c ^ d, a, b, x, s, t);
+  }
+  function md5ii(a: number, b: number, c: number, d: number, x: number, s: number, t: number): number {
+    return md5cmn(c ^ (b | ~d), a, b, x, s, t);
+  }
+
+  const M = str2binl(str);
+  const n = str.length * 8;
+  M[n >> 5] |= 0x80 << n % 32;
+  M[(((n + 64) >>> 9) << 4) + 14] = n;
+
+  let a = 1732584193;
+  let b = -271733879;
+  let c = -1732584194;
+  let d = 271733878;
+
+  for (let i = 0; i < M.length; i += 16) {
+    const olda = a, oldb = b, oldc = c, oldd = d;
+    a = md5ff(a,b,c,d,M[i],7,-680876936); d=md5ff(d,a,b,c,M[i+1],12,-389564586); c=md5ff(c,d,a,b,M[i+2],17,606105819); b=md5ff(b,c,d,a,M[i+3],22,-1044525330);
+    a = md5ff(a,b,c,d,M[i+4],7,-176418897); d=md5ff(d,a,b,c,M[i+5],12,1200080426); c=md5ff(c,d,a,b,M[i+6],17,-1473231341); b=md5ff(b,c,d,a,M[i+7],22,-45705983);
+    a = md5ff(a,b,c,d,M[i+8],7,1770035416); d=md5ff(d,a,b,c,M[i+9],12,-1958414417); c=md5ff(c,d,a,b,M[i+10],17,-42063); b=md5ff(b,c,d,a,M[i+11],22,-1990404162);
+    a = md5ff(a,b,c,d,M[i+12],7,1804603682); d=md5ff(d,a,b,c,M[i+13],12,-40341101); c=md5ff(c,d,a,b,M[i+14],17,-1502002290); b=md5ff(b,c,d,a,M[i+15],22,1236535329);
+    a = md5gg(a,b,c,d,M[i+1],5,-165796510); d=md5gg(d,a,b,c,M[i+6],9,-1069501632); c=md5gg(c,d,a,b,M[i+11],14,643717713); b=md5gg(b,c,d,a,M[i],20,-373897302);
+    a = md5gg(a,b,c,d,M[i+5],5,-701558691); d=md5gg(d,a,b,c,M[i+10],9,38016083); c=md5gg(c,d,a,b,M[i+15],14,-660478335); b=md5gg(b,c,d,a,M[i+4],20,-405537848);
+    a = md5gg(a,b,c,d,M[i+9],5,568446438); d=md5gg(d,a,b,c,M[i+14],9,-1019803690); c=md5gg(c,d,a,b,M[i+3],14,-187363961); b=md5gg(b,c,d,a,M[i+8],20,1163531501);
+    a = md5gg(a,b,c,d,M[i+13],5,-1444681467); d=md5gg(d,a,b,c,M[i+2],9,-51403784); c=md5gg(c,d,a,b,M[i+7],14,1735328473); b=md5gg(b,c,d,a,M[i+12],20,-1926607734);
+    a = md5hh(a,b,c,d,M[i+5],4,-378558); d=md5hh(d,a,b,c,M[i+8],11,-2022574463); c=md5hh(c,d,a,b,M[i+11],16,1839030562); b=md5hh(b,c,d,a,M[i+14],23,-35309556);
+    a = md5hh(a,b,c,d,M[i+1],4,-1530992060); d=md5hh(d,a,b,c,M[i+4],11,1272893353); c=md5hh(c,d,a,b,M[i+7],16,-155497632); b=md5hh(b,c,d,a,M[i+10],23,-1094730640);
+    a = md5hh(a,b,c,d,M[i+13],4,681279174); d=md5hh(d,a,b,c,M[i],11,-358537222); c=md5hh(c,d,a,b,M[i+3],16,-722521979); b=md5hh(b,c,d,a,M[i+6],23,76029189);
+    a = md5hh(a,b,c,d,M[i+9],4,-640364487); d=md5hh(d,a,b,c,M[i+12],11,-421815835); c=md5hh(c,d,a,b,M[i+15],16,530742520); b=md5hh(b,c,d,a,M[i+2],23,-995338651);
+    a = md5ii(a,b,c,d,M[i],6,-198630844); d=md5ii(d,a,b,c,M[i+7],10,1126891415); c=md5ii(c,d,a,b,M[i+14],15,-1416354905); b=md5ii(b,c,d,a,M[i+5],21,-57434055);
+    a = md5ii(a,b,c,d,M[i+12],6,1700485571); d=md5ii(d,a,b,c,M[i+3],10,-1894986606); c=md5ii(c,d,a,b,M[i+10],15,-1051523); b=md5ii(b,c,d,a,M[i+1],21,-2054922799);
+    a = md5ii(a,b,c,d,M[i+8],6,1873313359); d=md5ii(d,a,b,c,M[i+15],10,-30611744); c=md5ii(c,d,a,b,M[i+6],15,-1560198380); b=md5ii(b,c,d,a,M[i+13],21,1309151649);
+    a = md5ii(a,b,c,d,M[i+4],6,-145523070); d=md5ii(d,a,b,c,M[i+11],10,-1120210379); c=md5ii(c,d,a,b,M[i+2],15,718787259); b=md5ii(b,c,d,a,M[i+9],21,-343485551);
+    a = safeAdd(a, olda); b = safeAdd(b, oldb); c = safeAdd(c, oldc); d = safeAdd(d, oldd);
+  }
+  return binl2hex([a, b, c, d]);
+}
+
+function str2binl(str: string): number[] {
+  const bin: number[] = [];
+  const mask = (1 << 8) - 1;
+  for (let i = 0; i < str.length * 8; i += 8) {
+    bin[i >> 5] |= (str.charCodeAt(i / 8) & mask) << i % 32;
+  }
+  return bin;
+}
+
+function binl2hex(binarray: number[]): string {
+  const hexTab = '0123456789abcdef';
+  let str = '';
+  for (let i = 0; i < binarray.length * 4; i++) {
+    str += hexTab.charAt((binarray[i >> 2] >> (i % 4 * 8 + 4)) & 0xf) +
+           hexTab.charAt((binarray[i >> 2] >> (i % 4 * 8)) & 0xf);
+  }
+  return str;
+}
+
+function buildSignatureString(params: Record<string, string>, passphrase?: string): string {
+  const entries = Object.entries(params).filter(([, v]) => v !== '');
+  const queryString = entries
+    .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v).replace(/%20/g, '+')}`)
+    .join('&');
+  return passphrase ? `${queryString}&passphrase=${encodeURIComponent(passphrase)}` : queryString;
+}
+
+function generateSignature(params: Record<string, string>, passphrase?: string): string {
+  return md5(buildSignatureString(params, passphrase));
+}
+
+const MERCHANT_ID = import.meta.env.VITE_PAYFAST_MERCHANT_ID || '10000100';
+const MERCHANT_KEY = import.meta.env.VITE_PAYFAST_MERCHANT_KEY || '46f0cd694581a';
+const PASSPHRASE = import.meta.env.VITE_PAYFAST_PASSPHRASE || '';
+const BASE_URL = import.meta.env.VITE_BASE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://gravitas.uno');
+const NOTIFY_URL = import.meta.env.VITE_PAYFAST_NOTIFY_URL || `${BASE_URL}/api/payfast/notify`;
+
+/**
+ * Build PayFast parameters for a once-off payment and redirect the browser.
+ */
+export function initiatePayfastOnceOff(params: PayfastOnceOffParams): void {
+  const pfParams: Record<string, string> = {
+    merchant_id: MERCHANT_ID,
+    merchant_key: MERCHANT_KEY,
+    return_url: `${BASE_URL}/dashboard?payment=success`,
+    cancel_url: `${BASE_URL}/dashboard?payment=cancelled`,
+    notify_url: NOTIFY_URL,
+    name_first: params.nameFirst || '',
+    name_last: params.nameLast || '',
+    email_address: params.emailAddress || '',
+    amount: params.amount.toFixed(2),
+    item_name: params.itemName,
+    item_description: params.itemDescription || '',
+    custom_str1: params.customStr1 || '',
+  };
+
+  // Remove empty values
+  Object.keys(pfParams).forEach((k) => {
+    if (pfParams[k] === '') delete pfParams[k];
+  });
+
+  pfParams.signature = generateSignature(pfParams, PASSPHRASE || undefined);
+
+  submitPayfastForm(pfParams);
+}
+
+/**
+ * Build PayFast parameters for a recurring subscription and redirect the browser.
+ */
+export function initiatePayfastSubscription(params: PayfastSubscriptionParams): void {
+  const pfParams: Record<string, string> = {
+    merchant_id: MERCHANT_ID,
+    merchant_key: MERCHANT_KEY,
+    return_url: `${BASE_URL}/dashboard?payment=success`,
+    cancel_url: `${BASE_URL}/dashboard?payment=cancelled`,
+    notify_url: NOTIFY_URL,
+    name_first: params.nameFirst || '',
+    name_last: params.nameLast || '',
+    email_address: params.emailAddress || '',
+    amount: params.amount.toFixed(2),
+    item_name: params.itemName,
+    item_description: params.itemDescription || '',
+    custom_str1: params.customStr1 || '',
+    subscription_type: '1',
+    billing_date: params.billingDate,
+    recurring_amount: params.recurringAmount.toFixed(2),
+    frequency: String(params.frequency ?? 3),
+    cycles: String(params.cycles ?? 0),
+  };
+
+  Object.keys(pfParams).forEach((k) => {
+    if (pfParams[k] === '') delete pfParams[k];
+  });
+
+  pfParams.signature = generateSignature(pfParams, PASSPHRASE || undefined);
+
+  submitPayfastForm(pfParams);
+}
+
+function submitPayfastForm(params: Record<string, string>): void {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = PAYFAST_URL;
+
+  Object.entries(params).forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+}

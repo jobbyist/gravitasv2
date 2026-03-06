@@ -12,6 +12,8 @@ interface AuthContextType {
   signup: (email: string, password: string, name: string) => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
+  isNewUser: boolean;
+  completeOnboarding: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -37,13 +39,21 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isNewUser, setIsNewUser] = useState(false);
 
   useEffect(() => {
     // Load user from localStorage on mount
     const storedUser = localStorage.getItem('gravitas_user');
     if (storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser) as User;
+        setUser(parsedUser);
+        // If the user has not completed onboarding, mark them as a new user so
+        // they are redirected to the onboarding flow on next visit.
+        const onboardingKey = `gravitas_onboarding_${parsedUser.id}`;
+        if (!localStorage.getItem(onboardingKey)) {
+          setIsNewUser(true);
+        }
       } catch (error) {
         console.error('Failed to parse stored user:', error);
         localStorage.removeItem('gravitas_user');
@@ -62,6 +72,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userData = { id: foundUser.id, email: foundUser.email, name: foundUser.name };
       setUser(userData);
       localStorage.setItem('gravitas_user', JSON.stringify(userData));
+      // Restore isNewUser state if onboarding was never completed
+      const onboardingKey = `gravitas_onboarding_${foundUser.id}`;
+      if (!localStorage.getItem(onboardingKey)) {
+        setIsNewUser(true);
+      }
       return true;
     }
     
@@ -91,12 +106,21 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const userData = { id: newUser.id, email: newUser.email, name: newUser.name };
     setUser(userData);
     localStorage.setItem('gravitas_user', JSON.stringify(userData));
+    setIsNewUser(true);
     
     return true;
   };
 
+  const completeOnboarding = () => {
+    setIsNewUser(false);
+    if (user) {
+      localStorage.setItem(`gravitas_onboarding_${user.id}`, 'complete');
+    }
+  };
+
   const logout = () => {
     setUser(null);
+    setIsNewUser(false);
     localStorage.removeItem('gravitas_user');
   };
 
@@ -106,6 +130,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     signup,
     logout,
     isAuthenticated: !!user,
+    isNewUser,
+    completeOnboarding,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

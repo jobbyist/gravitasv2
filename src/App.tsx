@@ -47,6 +47,8 @@ const BrandKits = lazy(() => import("./pages/BrandKits"));
 const PartnerProgram = lazy(() => import("./pages/PartnerProgram"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const Onboarding = lazy(() => import("./pages/Onboarding"));
 
 // Article pages
 const FutureOfAI = lazy(() => import("./pages/articles/FutureOfAI"));
@@ -117,6 +119,8 @@ const App = () => {
                     <Route path="/brand-kits" element={<BrandKits />} />
                     <Route path="/partner-program" element={<PartnerProgram />} />
                     <Route path="/coming-soon" element={<ComingSoon />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/onboarding" element={<Onboarding />} />
                     <Route path="/blog/:slug" element={<BlogDetail />} />
                     {/* Article pages */}
                     <Route path="/articles/future-of-ai" element={<FutureOfAI />} />
