@@ -77,7 +77,8 @@ export default function Onboarding() {
   };
 
   const handleFinish = () => {
-    // Save onboarding data to localStorage (in production, call the backend API)
+    // TODO: Replace with a backend API call to persist onboarding data server-side,
+    // e.g. PATCH /api/users/:id/profile with the onboarding payload.
     if (user) {
       localStorage.setItem(`gravitas_profile_${user.id}`, JSON.stringify(data));
     }

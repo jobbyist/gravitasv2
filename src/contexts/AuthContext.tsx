@@ -46,7 +46,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const storedUser = localStorage.getItem('gravitas_user');
     if (storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const parsedUser = JSON.parse(storedUser) as User;
+        setUser(parsedUser);
+        // If the user has not completed onboarding, mark them as a new user so
+        // they are redirected to the onboarding flow on next visit.
+        const onboardingKey = `gravitas_onboarding_${parsedUser.id}`;
+        if (!localStorage.getItem(onboardingKey)) {
+          setIsNewUser(true);
+        }
       } catch (error) {
         console.error('Failed to parse stored user:', error);
         localStorage.removeItem('gravitas_user');
@@ -65,6 +72,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const userData = { id: foundUser.id, email: foundUser.email, name: foundUser.name };
       setUser(userData);
       localStorage.setItem('gravitas_user', JSON.stringify(userData));
+      // Restore isNewUser state if onboarding was never completed
+      const onboardingKey = `gravitas_onboarding_${foundUser.id}`;
+      if (!localStorage.getItem(onboardingKey)) {
+        setIsNewUser(true);
+      }
       return true;
     }
     

@@ -47,7 +47,18 @@ export interface PayfastSubscriptionParams extends PayfastOnceOffParams {
   cycles?: number;
 }
 
-/** Minimal MD5 implementation (RFC 1321) for PayFast signature generation. */
+/** Minimal MD5 implementation (RFC 1321) for PayFast signature generation.
+ *
+ * Note: Web Crypto API (SubtleCrypto) does not support MD5, and PayFast requires
+ * MD5 for its request signatures. This implementation is derived from the
+ * well-known Paul Johnston / Andrew Kepert md5.js (MIT licence) which underpins
+ * widely-deployed packages such as spark-md5 and blueimp-md5. It is used only
+ * for generating PayFast payment signatures and never for security-critical
+ * key derivation or password hashing.
+ *
+ * TODO: When a server-side component is added, move signature generation there
+ * to keep merchant credentials and passphrase off the client entirely.
+ */
 function md5(str: string): string {
   function safeAdd(x: number, y: number): number {
     const lsw = (x & 0xffff) + (y & 0xffff);
@@ -140,7 +151,7 @@ function generateSignature(params: Record<string, string>, passphrase?: string):
 const MERCHANT_ID = import.meta.env.VITE_PAYFAST_MERCHANT_ID || '10000100';
 const MERCHANT_KEY = import.meta.env.VITE_PAYFAST_MERCHANT_KEY || '46f0cd694581a';
 const PASSPHRASE = import.meta.env.VITE_PAYFAST_PASSPHRASE || '';
-const BASE_URL = import.meta.env.VITE_BASE_URL || 'https://gravitas.uno';
+const BASE_URL = import.meta.env.VITE_BASE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://gravitas.uno');
 const NOTIFY_URL = import.meta.env.VITE_PAYFAST_NOTIFY_URL || `${BASE_URL}/api/payfast/notify`;
 
 /**

@@ -34,7 +34,7 @@ const QUICK_STATS = [
 ];
 
 export default function Dashboard() {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, isNewUser } = useAuth();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { toast } = useToast();
@@ -43,8 +43,11 @@ export default function Dashboard() {
   useEffect(() => {
     if (!isAuthenticated) {
       navigate('/login', { replace: true });
+    } else if (isNewUser) {
+      // New users who haven't completed onboarding are sent to the onboarding flow
+      navigate('/onboarding', { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, isNewUser, navigate]);
 
   // Handle PayFast return notifications
   useEffect(() => {
