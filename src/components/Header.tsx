@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Info, Users, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe, Smartphone, MessageCircle, Monitor, LogIn } from 'lucide-react';
+import { Search, Linkedin, Mail, Menu, X, User, LogOut, Newspaper, Info, Users, Mic, Folder, Calendar, Hammer, Package, ShoppingCart, Globe, Smartphone, MessageCircle, Monitor } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { useAuth } from '@/contexts/AuthContext';
@@ -78,12 +78,6 @@ const Header = () => {
                   <Link to="/partner-program" className="nav-link flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     PARTNERS
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link to="/login" className="nav-link flex items-center gap-2">
-                    <LogIn className="h-4 w-4" />
-                    CLIENT AREA
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
@@ -220,11 +214,6 @@ const Header = () => {
                 <Users className="h-4 w-4" />
                 PARTNERS
               </Link>
-              <Link to="/login" className="nav-link flex items-center gap-2" onClick={() => setIsMenuOpen(false)}>
-                <LogIn className="h-4 w-4" />
-                CLIENT AREA
-              </Link>
-              
               <div className="space-y-2">
                 <div className="text-sm font-medium text-foreground">EXPLORE</div>
                 <div className="pl-4 space-y-2">
