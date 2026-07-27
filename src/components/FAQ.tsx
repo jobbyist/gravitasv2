@@ -26,7 +26,7 @@ const FAQ = memo(() => {
     {
       question: 'Do you offer ongoing support after launch?',
       answer:
-        'Absolutely! We offer comprehensive maintenance packages, technical support, and continuous optimization services. Our client area portal gives you 24/7 access to submit tickets, track projects, and manage your services. We\'re committed to your long-term success.',
+        'Absolutely! We offer comprehensive maintenance packages, technical support, and continuous optimization services with 24/7 access to submit tickets, track projects, and manage your services. We\'re committed to your long-term success.',
     },
     {
       question: 'Can I see examples of your work?',
